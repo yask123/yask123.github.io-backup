@@ -4,7 +4,7 @@
     <title><![CDATA[Category: gsoc | Yask's Personal Blog]]></title>
     <link href="http://yask123.github.io/blog/categories/gsoc/atom.xml" rel="self"/>
     <link href="http://yask123.github.io/"/>
-    <updated>2015-07-15T19:04:44+05:30</updated>
+    <updated>2015-07-15T20:27:39+05:30</updated>
     <id>http://yask123.github.io/</id>
     <author>
         <name><![CDATA[Yask Srivastava]]></name>
@@ -74,7 +74,7 @@
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
-<p>Roger occasionally <code>forks</code> my repo to test my work. He noticed a bug <code>irregular header collabse in header in mobile view</code>. I fixed the issue in the last commit.</p>
+<p>Roger occasionally <code>forks</code> my repo to test my work. <a href="https://moinmo.in/MoinMoinChat/Logs/moin-dev/2015-07-08">He noticed a bug</a> <code>irregular header collabse in header in mobile view</code>. I fixed the issue in the last commit.</p>
 
 <p>For error validations which looked ugly :
 <img class="<a" src="href="http://i.imgur.com/iDnME65.png">http://i.imgur.com/iDnME65.png</a>"></p>
@@ -102,6 +102,8 @@
 <li>Highlight the content in the modernized theme else it looks too much like basic(✘)</li>
 </ul>
 
+
+<p><a href="https://bitbucket.org/yask123/moin-2.0/commits/d4611af03078538af15e488fda91fdc2c30385bb">Here</a> is the latest commit I pushed.</p>
 
 <h3>Other Updates</h3>
 
