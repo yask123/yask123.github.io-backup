@@ -1,0 +1,394 @@
+<!doctype html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+    
+      
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>GSoC Updates - Yask's Personal Blog</title>
+        <meta name="author" content="Yask Srivastava">
+        
+        <meta name="description" content="GSoC Updates Jul 15th, 2015 Lastly I worked on UserSetting. But most of that work had to be reverted after discussions. I was pointed to this issue &hellip;">
+        
+        <meta name="viewport" content="width=device-width">
+        <link rel="canonical" href="http://iyask.me/blog/2015/07/15/gsoc-updates">
+
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+
+        
+        <link href="/favicon.png" rel="icon">
+        <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet">
+        <link href="/atom.xml" rel="alternate" title="Yask's Personal Blog" type="application/atom+xml">
+    </head>
+
+
+    <body >
+
+        <header id="header">
+    <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-4">
+        <a href="/" class="site-title">Yask's Personal Blog</a>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-8">
+        <nav>
+    <input type="checkbox" id="toggle">
+    <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+    <ul class="menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/">Blog</a></li>
+</ul>
+
+</nav>
+
+    </div>
+</div>
+
+</header>
+
+
+        <div id="main-content">
+
+            <!--[if lte IE 9]>
+<div class="row upgrade-row">
+    <div class="col-lg-12">
+        <div class="upgrade">
+            <i class="upgrade__icon fa fa-warning"></i>
+            <h1 class="upgrade__title h6">Ohnoes!</h1>
+            <p class="upgrade__text">
+                Unfortunately, certain parts of this site may not display correctly in your version of Internet Explorer!<br>
+                If possible, you should consider <a href="http://browsehappy.com/">upgrading your browser</a>.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- <![endif]-->
+
+
+            
+
+            <div class="row top-xs center-sm center-md center-lg site-wrapper">
+                
+                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                
+                    <article class="article article--single">
+    <header class="article__header">
+    
+        <h1 class="article__title">GSoC Updates</h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2015-07-15T13:35:53+05:30" pubdate><i class="fa fa-calendar"></i> Jul 15th, 2015</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p><a href="https://codereview.appspot.com/252930043/">Lastly</a> I worked on UserSetting. But most of that work had to be reverted after discussions. I was pointed to <a href="https://bitbucket.org/thomaswaldmann/moin-2.0/issues/471/merge-most-basic-theme-templates-into">this issue</a> where it is suggested to merge template with common features.</p>
+
+<!--more-->
+
+
+<p>The alternative was to use <code>less mixins</code>. So for eg. form styling with Bootstrap :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">form</span> <span class="nt">input</span><span class="o">,</span><span class="nt">textarea</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">.</span><span class="n">form</span><span class="o">-</span><span class="n">control</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But this resulted in significant increase in <code>.css</code> file.</p>
+
+<p>Lastly I had to resort to editing form macros to use <code>Bootstrap compnents</code>.</p>
+
+<p>So exclusive form macros for themes. While this does increase the codebase slightly, their won&rsquo;t be any performing issue in site loading.</p>
+
+<p>But I <del>am not using</del>  can&rsquo;t use Bootstrap <code>nav-tabs</code>, instead I styled it to fit the theme. Here is how it looks:
+<img src="http://i.imgur.com/neyADlO.png"></p>
+
+<p><a href="https://codereview.appspot.com/252930043/">Previously</a>  I had implemented these tabs with Bootstrap components, but that did look like an overplay since I also had to write separate javascript for indicating <code>*</code> symbol to unsaved forms.</p>
+
+<p>I also worked on <code>index</code> page to use Bootstrap components (<code>Buttons, Paginations..</code>) .</p>
+
+<p><img src="http://i.imgur.com/YJQMH1N.png" title="" ></p>
+
+<p>Content inside the footer is now more consistent by a simple trick I learned from <code>css tricks blog</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.footer</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span><span class="k">relative</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">...</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nf">#moin-creditlogos</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">top</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">....</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Roger occasionally <code>forks</code> my repo to test my work. He noticed a bug <code>irregular header collabse in header in mobile view</code>. I fixed the issue in the last commit.</p>
+
+<p>For error validations which looked ugly :
+<img src="http://i.imgur.com/iDnME65.png"></p>
+
+<p>I used <code>HTML 5</code> validations and pattern maching (for emails, password.. etc).</p>
+
+<p><img src="http://i.imgur.com/WZumOQM.png"></p>
+
+<p><img src="http://i.imgur.com/czU7LR6.png"></p>
+
+<p>There was also a slight bummer last week.</p>
+
+<p> I was using some extension in mercurial which made numerous commits without my consent. <code>Ajitesh</code> suggested to delete the repo and recommit all changes.</p>
+
+<p> That took some time, but I took that as an opportunity to write more verbose <a href="https://bitbucket.org/yask123/moin-2.0/commits/all"><code>commit messages</code></a></p>
+
+<h3>CheckList:</h3>
+
+<ul>
+<li>Fix broken search (Fixed ✓)</li>
+<li>Fix footer icons coming almost at the border (Fixed ✓)</li>
+<li>Fix alignment of the buttons in modernized forms (Fixed ✓)</li>
+<li>Modernized item history still has old tables (I&rsquo;ll do it today)</li>
+<li>Give a border around text input boxes in modernized (✘)</li>
+<li>Highlight the content in the modernized theme else it looks too much like basic(✘)</li>
+</ul>
+
+
+<h3>Other Updates</h3>
+
+<p>I was invited to give a speech in <a href="https://www.facebook.com/events/874259285973030/?ref_newsfeed_story_type=regular&amp;action_history=null">Software Development: The Open Source Way</a> in IIIT-Delhi.</p>
+
+<p><img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/s2048x2048/11046471_10204394056679731_3389022122003502896_o.jpg"></p>
+
+<p>It was a wonderful experience, I love talking/motivating people to use and contribute <code>opensource</code> softwares.</p>
+
+<p>And the response was amazing! Couple of people complimented me personally and requested for link to my slides :)</p>
+
+<p><img src="http://i.imgur.com/IvEynh4.png"></p>
+
+<h3>Teaching Django in college</h3>
+
+<p>I love django and I am currently teaching first year students of my college python and Django. This is truely an amazing experience!</p>
+
+<p>Again, response is pretty good.</p>
+
+<blockquote><p>His words are so motivating . that i tend to do whatever he tells us .. he told us to start blogging …so here i am .. writing my first blog ."</p><footer><strong>Ankita Khurana @Wordpress</strong> <cite><a href='https://anki25.wordpress.com/2015/07/10/first-but-not-the-last/'>First but Not the Last</a></cite></footer></blockquote>
+
+
+
+
+<blockquote><p>"This Workshop is mentored by Yask Shirivastava ….he is 1 yr elder to us . But seriously is too good , infact better than the final year students"</p></blockquote>
+
+
+
+
+<blockquote><p>I think ,I’m particularly doing well in this, but yeah it needs a lot of time and hard work . You may have the best teacher but you only learn when u explore it yourself. "</p><footer><strong>Uday Upreti @Medium</strong> <cite><a href='https://medium.com/@uday1201/well-today-s-class-was-just-an-exploration-of-the-details-of-making-up-the-django-project-3b0315cf6537'>Personal Blog</a></cite></footer></blockquote>
+
+
+<p>Well, thats what keeps me motivated. I am trying my best not just to teach them concepts of web development but also to ignite passion among them.</p>
+
+<p>I also migrated my blog to <code>Octopress 3.0</code>. Migrating was easy as all my images are are hosted on <code>imgur</code>.</p>
+
+<p>Using the script I wrote which uploads screenshot to imgur and copies the url to clipboard. Very very convenient. <a href="http://iyask.me/AutoScreenshotUploader/">Check it out</a>:</p>
+
+
+
+</article>
+
+
+
+                </div>
+
+                
+                <aside class="sidebar col-xs-12 col-md-4 col-lg-4">
+                    <div class="row">
+
+    
+        <section class="hire--aside col-xs-12 col-sm-10 col-md-12">
+            
+    
+
+
+
+    
+
+
+
+
+<div class="hire hire--available">
+    <a class="hire__link" href="mailto:?subject=New%20job%20opportunity">
+        Available for new opportunities
+    </a>
+</div>
+
+
+        </section>
+    
+
+    
+<section class="social col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Follow me!
+    </h1>
+    <ul class="unstyled">
+        
+        
+        
+        
+        <li><a class="github" href="//github.com/yask123"><i class="fa fa-github"></i> Github</a></li>
+        <li><a class="googleplus" href="//plus.google.com/+yasksrivastava"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+        <li><a class="hackernews" href="//news.ycombinator.com/user?id=yask123"><i class="fa fa-hacker-news"></i> Hacker News</a></li>
+        
+        <li><a class="linkedin" href="//linkedin.com/in/yask123"><i class="fa fa-linkedin-square"></i> LinkedIn</a></li>
+        
+        <li><a class="reddit" href="//reddit.com/user/yask123"><i class="fa fa-reddit"></i> reddit</a></li>
+        <li><a class="stackoverflow" href="//stackoverflow.com/users/3574214/yask"><i class="fa fa-stack-overflow"></i> StackOverflow</a></li>
+        <li><a class="twitter" href="//twitter.com/yask123"><i class="fa fa-twitter"></i> Twitter</a></li>
+        <li><a class="youtube" href="//youtube.com/user/yask124"><i class="fa fa-youtube"></i> YouTube</a></li>
+    </ul>
+</section>
+
+
+
+    <section id="recent-posts" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>Recent Posts</h1>
+    <ul class="divided">
+        
+        <li class="post">
+            <a href="/blog/2015/07/15/gsoc-updates/">GSoC Updates</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/28/new-usersettings-and-various-tweaks/">New UserSettings and various tweaks</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/25/gsoc-update/">GSoC Updates | Hackathon | Teaching Django</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/17/gsoc-update/">Gsoc Update</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/04/21/i-have-been-vimified-graph-algo-2/">I have been vimified  | Graph algo #2</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+
+
+
+<section id="twitter-timeline" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Latest Tweets
+        
+        <small class="pull-right">
+            <a class="btn" href="//twitter.com/yask123" title="@yask123 on Twitter" target="_blank">
+                <i class="fa fa-external-link"></i>
+            </a>
+        </small>
+        
+    </h1>
+
+    <a class="twitter-timeline" data-dnt="true" href="//twitter.com/yask123"  data-widget-id="615244773633298432"  data-link-color="#049cdb" data-tweet-limit="" data-chrome="noheader nofooter transparent noscrollbar">Tweets by @yask123</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+
+
+</div>
+
+                </aside>
+                
+            </div>
+        </div>
+
+        
+
+    
+    
+
+
+
+
+<footer class="footer">
+    <div class="row middle-xs">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="footer__copyright">
+    All content copyright Yask Srivastava.<br>
+    Code under <a href="//github.com/coogie/oscailte/blob/master/README.md">MIT Licence</a>.
+</p>
+
+        </div>
+        
+        
+    </div>
+</footer>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script defer src="/javascripts/octopress.js"></script>
+
+
+<script>
+    var _gaq=[['_setAccount','UA-61023878-2'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+</html>

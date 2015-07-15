@@ -1,0 +1,384 @@
+<!doctype html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+    
+      
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Youtube AutoLooper JS script hack - Yask's Personal Blog</title>
+        <meta name="author" content="Yask Srivastava">
+        
+        <meta name="description" content="Youtube AutoLooper JS script hack Jan 23rd, 2015 This song Facebook - 10 Years Look Back Instrumental Music was stuck in my head today. I played &hellip;">
+        
+        <meta name="viewport" content="width=device-width">
+        <link rel="canonical" href="http://iyask.me/blog/2015/01/23/youtube-autolooper-js-script-hack">
+
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+
+        
+        <link href="/favicon.png" rel="icon">
+        <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet">
+        <link href="/atom.xml" rel="alternate" title="Yask's Personal Blog" type="application/atom+xml">
+    </head>
+
+
+    <body >
+
+        <header id="header">
+    <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-4">
+        <a href="/" class="site-title">Yask's Personal Blog</a>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-8">
+        <nav>
+    <input type="checkbox" id="toggle">
+    <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+    <ul class="menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/">Blog</a></li>
+</ul>
+
+</nav>
+
+    </div>
+</div>
+
+</header>
+
+
+        <div id="main-content">
+
+            <!--[if lte IE 9]>
+<div class="row upgrade-row">
+    <div class="col-lg-12">
+        <div class="upgrade">
+            <i class="upgrade__icon fa fa-warning"></i>
+            <h1 class="upgrade__title h6">Ohnoes!</h1>
+            <p class="upgrade__text">
+                Unfortunately, certain parts of this site may not display correctly in your version of Internet Explorer!<br>
+                If possible, you should consider <a href="http://browsehappy.com/">upgrading your browser</a>.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- <![endif]-->
+
+
+            
+
+            <div class="row top-xs center-sm center-md center-lg site-wrapper">
+                
+                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                
+                    <article class="article article--single">
+    <header class="article__header">
+    
+        <h1 class="article__title">Youtube AutoLooper JS script hack</h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2015-01-23T20:53:43+05:30" pubdate><i class="fa fa-calendar"></i> Jan 23rd, 2015</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>This song <a href="https://www.youtube.com/watch?v=NJX17WtsaCk">Facebook - 10 Years Look Back Instrumental Music</a> was stuck in my head today.</p>
+
+<p>I played this 3.4 minute video on youtube . Frustrated by clicking play button again and again after the music finished I decided to write a simple Javascript hack to auto-loop this music video.</p>
+
+<!--more-->
+
+
+<p></p>
+
+<h3>How did you do it ?</h3>
+
+<p>Using Chrome&rsquo;s Dev Tools I observed the source code , button properties and the youtube video player controls form.</p>
+
+<p>Found the button by <code>ClassName</code> attribute and initiated self written <code>doWork()</code> function which sleeps while the song is playing and wakes up only after the song has finished playing , thereby avoiding unnecessary workload by browser.</p>
+
+<h3>Show me the code!</h3>
+
+<p>Here is the final Javascript :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">repeater</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">doWork</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">time</span><span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;html5-progress-bar ytp-force-transform red&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;aria-valuetext&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;of&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">current_time</span>  <span class="o">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">t</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">end</span><span class="o">=</span><span class="nx">time</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;seconds&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">total_time</span> <span class="o">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">t</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span><span class="nx">end</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'> <span class="nx">current_time</span><span class="o">=</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">current_time</span><span class="p">);</span>
+</span><span class='line'> <span class="nx">total_time</span><span class="o">=</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">total_time</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">replayAfterTime</span><span class="o">=</span> <span class="p">(</span><span class="nx">total_time</span><span class="o">-</span><span class="nx">current_time</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Will replay after &quot;</span><span class="o">+</span><span class="nx">replayAfterTime</span><span class="o">+</span><span class="s2">&quot; Seconds&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;ytp-button ytp-button-replay&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Trying to press Replay button&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>      <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">click</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'> <span class="nx">repeater</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">doWork</span><span class="p">,</span> <span class="p">(</span><span class="nx">replayAfterTime</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span><span class="o">+</span><span class="mi">500</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">doWork</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I then built a Google Chrome extention to enable user&rsquo;s to easily enable <code>Auto-Looper</code> feauture on Youtube Player.</p>
+
+<p>I couldn&rsquo;t submit this extension to chrome&rsquo;s app store as I havn&rsquo;t paid $ 5 for Developer account so you&rsquo;ll have to install this manually.</p>
+
+<p>Here are the instructions:</p>
+
+<ol>
+<li>Go to chrome&rsquo;s setting page</li>
+<li>Select Extensions</li>
+<li>Enable <code>Developer Options</code></li>
+<li>Select <code>Load unpacked extension</code></li>
+<li>Select the downloaded extension&rsquo;s extracted folder.</li>
+</ol>
+
+
+<h3>How to use it?</h3>
+
+<p>A new youtube-looper icon will appear on your chrome after installation.</p>
+
+<p>While playing any youtube video , click on the youtube-autolooper icon. Your video is on loop!
+Enjoy!</p>
+
+<h3>Wait .. Download link.?</h3>
+
+<p>Whhoops ! almost forgot , <a href="https://www.dropbox.com/s/ivk5v0ekbxy1k92/Youtube-Looper-by-Yask%202.zip?dl=0">here you go</a></p>
+
+
+
+</article>
+
+
+
+                </div>
+
+                
+                <aside class="sidebar col-xs-12 col-md-4 col-lg-4">
+                    <div class="row">
+
+    
+        <section class="hire--aside col-xs-12 col-sm-10 col-md-12">
+            
+    
+
+
+
+    
+
+
+
+
+<div class="hire hire--available">
+    <a class="hire__link" href="mailto:?subject=New%20job%20opportunity">
+        Available for new opportunities
+    </a>
+</div>
+
+
+        </section>
+    
+
+    
+<section class="social col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Follow me!
+    </h1>
+    <ul class="unstyled">
+        
+        
+        
+        
+        <li><a class="github" href="//github.com/yask123"><i class="fa fa-github"></i> Github</a></li>
+        <li><a class="googleplus" href="//plus.google.com/+yasksrivastava"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+        <li><a class="hackernews" href="//news.ycombinator.com/user?id=yask123"><i class="fa fa-hacker-news"></i> Hacker News</a></li>
+        
+        <li><a class="linkedin" href="//linkedin.com/in/yask123"><i class="fa fa-linkedin-square"></i> LinkedIn</a></li>
+        
+        <li><a class="reddit" href="//reddit.com/user/yask123"><i class="fa fa-reddit"></i> reddit</a></li>
+        <li><a class="stackoverflow" href="//stackoverflow.com/users/3574214/yask"><i class="fa fa-stack-overflow"></i> StackOverflow</a></li>
+        <li><a class="twitter" href="//twitter.com/yask123"><i class="fa fa-twitter"></i> Twitter</a></li>
+        <li><a class="youtube" href="//youtube.com/user/yask124"><i class="fa fa-youtube"></i> YouTube</a></li>
+    </ul>
+</section>
+
+
+
+    <section id="recent-posts" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>Recent Posts</h1>
+    <ul class="divided">
+        
+        <li class="post">
+            <a href="/blog/2015/07/15/gsoc-updates/">GSoC Updates</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/28/new-usersettings-and-various-tweaks/">New UserSettings and various tweaks</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/25/gsoc-update/">GSoC Updates | Hackathon | Teaching Django</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/17/gsoc-update/">Gsoc Update</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/04/21/i-have-been-vimified-graph-algo-2/">I have been vimified  | Graph algo #2</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+
+
+
+<section id="twitter-timeline" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Latest Tweets
+        
+        <small class="pull-right">
+            <a class="btn" href="//twitter.com/yask123" title="@yask123 on Twitter" target="_blank">
+                <i class="fa fa-external-link"></i>
+            </a>
+        </small>
+        
+    </h1>
+
+    <a class="twitter-timeline" data-dnt="true" href="//twitter.com/yask123"  data-widget-id="615244773633298432"  data-link-color="#049cdb" data-tweet-limit="" data-chrome="noheader nofooter transparent noscrollbar">Tweets by @yask123</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+
+
+</div>
+
+                </aside>
+                
+            </div>
+        </div>
+
+        
+
+    
+    
+
+
+
+
+<footer class="footer">
+    <div class="row middle-xs">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="footer__copyright">
+    All content copyright Yask Srivastava.<br>
+    Code under <a href="//github.com/coogie/oscailte/blob/master/README.md">MIT Licence</a>.
+</p>
+
+        </div>
+        
+        
+    </div>
+</footer>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script defer src="/javascripts/octopress.js"></script>
+
+
+<script>
+    var _gaq=[['_setAccount','UA-61023878-2'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+</html>

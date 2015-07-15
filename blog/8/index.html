@@ -1,0 +1,892 @@
+<!doctype html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+    
+      
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Yask's Personal Blog</title>
+        <meta name="author" content="Yask Srivastava">
+        
+        <meta name="description" content="Continued.. Apr 27th, 2014 I will try to keep the code as simple as possible. Our first step is to connect to database , lets see how that is done. &hellip;">
+        
+        <meta name="viewport" content="width=device-width">
+        <link rel="canonical" href="http://iyask.me/blog/8">
+
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+
+        
+        <link href="/favicon.png" rel="icon">
+        <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet">
+        <link href="/atom.xml" rel="alternate" title="Yask's Personal Blog" type="application/atom+xml">
+    </head>
+
+
+    <body >
+
+        <header id="header">
+    <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-4">
+        <a href="/" class="site-title">Yask's Personal Blog</a>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-8">
+        <nav>
+    <input type="checkbox" id="toggle">
+    <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+    <ul class="menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/">Blog</a></li>
+</ul>
+
+</nav>
+
+    </div>
+</div>
+
+</header>
+
+
+        <div id="main-content">
+
+            <!--[if lte IE 9]>
+<div class="row upgrade-row">
+    <div class="col-lg-12">
+        <div class="upgrade">
+            <i class="upgrade__icon fa fa-warning"></i>
+            <h1 class="upgrade__title h6">Ohnoes!</h1>
+            <p class="upgrade__text">
+                Unfortunately, certain parts of this site may not display correctly in your version of Internet Explorer!<br>
+                If possible, you should consider <a href="http://browsehappy.com/">upgrading your browser</a>.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- <![endif]-->
+
+
+            
+
+            <div class="row top-xs center-sm center-md center-lg site-wrapper">
+                
+                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                
+                        
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/04/27/continued/">Continued..</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-04-27T15:28:59+05:30" pubdate><i class="fa fa-calendar"></i> Apr 27th, 2014</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>I will try to keep the code as simple as possible.</p>
+
+<p>Our first step is to connect to database , lets see how that is done.</p>
+
+<p>Create a file (connection.php) </p>
+
+<p>We use <code>mysql_connect()</code> function which takes host , username and password as the parameters.</p>
+
+<p>The we select the particular database my using function <code>mysql_select_db()</code> It takes the database name as the parameter.</p>
+
+<p>Lets write the whole code altogether</p>
+
+<p><code></p>
+
+<p>`</p>
+
+<p>&lt;?php</p>
+
+<p>$dbhost = &lsquo;localhost&rsquo;;<br/>
+$dbuser = &lsquo;root&rsquo;;<br/>
+$dbpass = &ldquo;;</p>
+
+<p>$db = &lsquo;my_data&rsquo;;</p>
+
+<p>$conn = mysql_connect($dbhost,$dbuser,$dbpass);</p>
+
+<p>mysql_select_db($db);</p>
+
+<p>?></p>
+
+<p>`</p>
+
+<p></code></p>
+
+<p>Awesome , now lets create the main page Index.php</p>
+
+<p>Here we will </p>
+
+<ul>
+<li><p>include the connection.php file</p></li>
+<li><p>create a variable $query and select data from the people(table)</p></li>
+<li><p>use the function <code> mysql_query()</code> to obtain the query from the table and store it in the $result variable.</p></li>
+<li><p>Next we create a while loop till the data extracted in the array form runs out</p></li>
+<li><p>Display the elements of Array</p></li>
+</ul>
+
+
+<p>Lets write the code</p>
+
+<p><code></p>
+
+<p>`</p>
+
+<p>&lt;?php<br/>
+include &lsquo;connection.php&rsquo;;</p>
+
+<p>$query = &ldquo;SELECT * FROM people&rdquo;;</p>
+
+<p>$result = mysql_query($query);</p>
+
+<p>while($person = mysql_fetch_array($result))<br/>
+{<br/>
+echo &ldquo;<h3>&rdquo;.$person[&lsquo;Name&rsquo;].&ldquo;</h3>&rdquo;;<br/>
+}</p>
+
+<p>echo &ldquo;<h2>YIPEEE , I finally outputted data from mysql !!</h2>&rdquo;;</p>
+
+<p>echo &ldquo;GREAT SUCCESS!!!!!!!!!&rdquo;;<br/>
+?></p>
+
+<p></code></p>
+
+<p>`</p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/04/27/quick-mysql-php-overview/">Quick Mysql + Php Overview</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-04-27T15:16:46+05:30" pubdate><i class="fa fa-calendar"></i> Apr 27th, 2014</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>Mysql is perhaps the most popular for database management.It is most extensively used in Web applications.Today will look into basics of creating a database in Mysql and adding data and displaying those data in a webpage by connecting Mysql by Php.</p>
+
+<p>Prerequisites :</p>
+
+<ul>
+<li><p>Basic knowledge of Php/Html required.</p></li>
+<li><p>Php and Mysql installed on the web server</p></li>
+<li><p>Code editor</p></li>
+</ul>
+
+
+<p>Okey , so let&rsquo;s get started.</p>
+
+<p>First we will create a database by GUI viz(Phpmyadmin) You can install this from here .</p>
+
+<p>Open up the phpmyadmin page .Head on to Database Tab and type in the database name and select createe database.</p>
+
+<p><img src="https://31.media.tumblr.com/5219b1812935de7c9b5f2d9e9aa1d95c/tumblr_inline_n4oo44MOKe1qcrpxa.png" alt="" /></p>
+
+<p>Now click on the newly created database and create table.</p>
+
+<p><img src="https://31.media.tumblr.com/38b971cf1459ce1551f7acf44bc65c4f/tumblr_inline_n4oo78QzZ41qcrpxa.png" alt="" /></p>
+
+<p>Let&rsquo;s call it people and number of columns as 3.</p>
+
+<p>We are going to create a database of people and there address .The last column will store S.No. </p>
+
+<p>Fill the data as shown in the figure.</p>
+
+<p><img src="https://31.media.tumblr.com/2ba995b1d62d9d9825a66364eb43fbb6/tumblr_inline_n4oocbzjIs1qcrpxa.png" alt="" /></p>
+
+<p>Next click go and then move over to insert tab and Let&rsquo;s insert some dummy data.</p>
+
+<p><img src="https://31.media.tumblr.com/c212329fc18ca59b60a81776ae0b5035/tumblr_inline_n4oofxwtrg1qcrpxa.png" alt="" /></p>
+
+<p>Click on go . And now we are half done.</p>
+
+<p>Now we just have to pull data from these database and display it on the webpage.</p>
+
+<p>I&rsquo;ll continue that in the next article</p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/04/21/theusb-spacial-densities/">No Content Found</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-04-21T18:56:06+05:30" pubdate><i class="fa fa-calendar"></i> Apr 21st, 2014</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p><img src="http://yask007.files.wordpress.com/2014/04/tumblr_n30l1nue5l1rycn25o1_500.gif" alt="" /></p>
+
+<p><a href="http://babylonianstates.com/post/82135368769/spacial-densities">theusb</a>:</p>
+
+<blockquote>
+
+> 
+> Spacial Densities.
+> 
+> 
+</blockquote>
+
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/04/21/prostheticknowledge-bionickangaroo-robotic/">No Content Found</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-04-21T18:54:33+05:30" pubdate><i class="fa fa-calendar"></i> Apr 21st, 2014</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>[gallery]</p>
+
+<p><a href="http://prostheticknowledge.tumblr.com/post/82411457085/bionickangaroo-robotic-recreation-of-the-kangaroo">prostheticknowledge</a>:</p>
+
+<blockquote>
+
+> 
+> **BionicKangaroo**
+> 
+> 
+
+> 
+> Robotic recreation of the Kangaroo form put together by [Festo](http://www.festo.com/cms/en_corp/13704.htm) to demonstrate energy-efficient movement (this was initially announced on April the 1st, but turns out to be real) - video embedded below:
+> 
+> 
+
+> 
+> [youtube http://www.youtube.com/watch?v=_4luJ0ZSqy8]
+> 
+> 
+
+> 
+> <blockquote>
+
+>> 
+>> With the BionicKangaroo, Festo has technologically reproduced the unique way a kangaroo moves. Like its natural model, it can recover the energy when jumping, store it and efficiently use it for the next jump.
+>> 
+>> 
+
+>> 
+>> On the artificial kangaroo, Festo intelligently combines pneumatic and electrical drive technology to produce a highly dynamic system. The stable jump kinematics plus the precise control technology ensure stability when jumping and landing. The consistent lightweight construction facilitates the unique jumping behaviour. The system is controlled by gestures.
+>> 
+>> 
+</blockquote>
+> 
+> 
+
+> 
+> More [Here](http://www.festo.com/cms/en_corp/13704.htm)
+> 
+> 
+</blockquote>
+
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/04/20/http-www-youtube-com-attribution-link-a-qco1mdgqvko-u/">http://www.youtube.com/attribution_link?a=QCO1MdgqvKo&u=/watch?v=psuRGfAaju4&feature=share</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-04-20T17:23:53+05:30" pubdate><i class="fa fa-calendar"></i> Apr 20th, 2014</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p><a href="http://www.youtube.com/attribution_link?a=QCO1MdgqvKo&amp;u=/watch?v=psuRGfAaju4&amp;feature=share">http://www.youtube.com/attribution_link?a=QCO1MdgqvKo&amp;u=/watch?v=psuRGfAaju4&amp;feature=share</a></p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/04/20/order-changing-in-double-integrals/">Order changing in double Integrals</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-04-20T17:17:36+05:30" pubdate><i class="fa fa-calendar"></i> Apr 20th, 2014</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>Wouldn&rsquo;t it be easier If I memorize I have to cut horizontal slices to change from dydx &ndash;> dxdy and vice versa?</p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/04/20/macbeth/">Macbeth</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-04-20T14:05:00+05:30" pubdate><i class="fa fa-calendar"></i> Apr 20th, 2014</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>DUNCAN:
+There&rsquo;s no art
+To find the mind&rsquo;s construction in the face
+He was a gentleman on whom I built
+An absolute trust.</p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/04/20/cherry-merchant-snowflake-transformation/">No Content Found</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-04-20T11:58:27+05:30" pubdate><i class="fa fa-calendar"></i> Apr 20th, 2014</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p><img src="http://yask007.files.wordpress.com/2014/04/tumblr_n45pzi0b6f1s4wycoo1_1280.gif" alt="" /></p>
+
+<p><a href="http://cherry-merchant.tumblr.com/post/82963388934/snowflake-transformation">cherry-merchant</a>:</p>
+
+<blockquote>
+
+> 
+> Snowflake transformation
+> 
+> 
+</blockquote>
+
+
+<p>Reminded me the documentary I watched about Fractal , A mathematical beauty , This way of observation changed everything , The link between natural God&rsquo;s geometry was discovered which led to the formation of computer animation films and video games.</p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/04/20/earthly-awakening-it-does-not-do-to-dwell-on/">No Content Found</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-04-20T11:54:28+05:30" pubdate><i class="fa fa-calendar"></i> Apr 20th, 2014</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p><img src="http://yask007.files.wordpress.com/2014/04/tumblr_n03qkwnfha1r1l60so1_500.jpg" alt="" /></p>
+
+<p><a href="http://earthly-awakening.tumblr.com/post/75676287969/it-does-not-do-to-dwell-on-dreams-and-forget-to">earthly-awakening</a>:</p>
+
+<blockquote>
+
+> 
+> <blockquote>
+
+>> 
+>> “It does not do to dwell on dreams and forget to live.”   
+― [J.K. Rowling](http://www.goodreads.com/author/show/1077326.J_K_Rowling), _[Harry Potter and the Sorcerer’s Stone](http://www.goodreads.com/work/quotes/4640799)_
+>> 
+>> 
+</blockquote>
+> 
+> 
+
+> 
+> [awaken your soul](http://earthly-awakening.tumblr.com/)
+> 
+> 
+</blockquote>
+
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/04/20/complex-integration/">Complex Integration</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-04-20T11:46:00+05:30" pubdate><i class="fa fa-calendar"></i> Apr 20th, 2014</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>Well , complex is the new world , different from the real world and imaginary numbers do exist here. We learnt to perform simple operations in complex numbers such as addition /multiplication division and even plotting it in Argand plane . We played with it&rsquo;s amplitude and used Nth unity of complex numbers to prove various expression and also found out sums of Sin angles in AP (it was N/2<sup>n-1</sup>) [If I remember correctly ]</p>
+
+<p>Now in college , it&rsquo;s time to form functions of complex numbers(w=u + iv) =f(z) and perform some advance operations like integration.</p>
+
+<p>Well , usually in complex function , there is a need to integrate a function along a curve or a line , (or even a closed loop which is my favourite and can be easily solved by Cauchy&rsquo;s formula).</p>
+
+<p>Lets take an example .Let f(z)=x<sup>2</sup>+2yi . To integrate it , we write intg(f(z)dz)</p>
+
+<p>Now , we only need to find out dz , since z=x+iy , dz=dx + idy.</p>
+
+<p>After substituting , we write the function in the form by which it is integrate;e , ie , if dy is in multiplication with a term comsisting of both x and y , we express x in terms of y(from the expression given along which we have to integrate).</p>
+
+<p>How to integrate closed integrals?</p>
+
+<p>2 ways to do so(That I know) :-</p>
+
+<p>1) This is easier approach , we use the result by Cauchy&rsquo;s formula that if the pole lies outside the circular region , the integral is zero( I can&rsquo;t derive it).</p>
+
+<p>This makes the question much simpler , all those intergals whose poles are outside are ZERO .</p>
+
+<p>There is another result from Cauchy&rsquo;s Integral ie Integ[ f(x)/(z-a)] = 2 pi i [f(a)].</p>
+
+<p>Well , so for a given integral , we will first remove that pole which lies outside the circle (by dividing by the same factor in numerator and denominator )</p>
+
+<p>Then we use the 2n result of C&rsquo;s formula to get the integral.</p>
+
+<p><b></p>
+
+<p>2)This method isn&rsquo;t quite easy , and is used for handling more complex integrals by finding residue..</p>
+
+
+
+        </article>
+        <hr>
+    
+
+    <div class="pagination">
+    
+        <a class="btn pull-left" href="/blog/9">&larr; Older</a>
+    
+
+    
+        <a class="btn pull-right" href="/blog/7">Newer &rarr;</a>
+    
+    </div>
+
+                </div>
+
+                
+                <aside class="sidebar col-xs-12 col-md-4 col-lg-4">
+                    <div class="row">
+
+    
+        <section class="hire--aside col-xs-12 col-sm-10 col-md-12">
+            
+    
+
+
+
+    
+
+
+
+
+<div class="hire hire--available">
+    <a class="hire__link" href="mailto:?subject=New%20job%20opportunity">
+        Available for new opportunities
+    </a>
+</div>
+
+
+        </section>
+    
+
+    
+<section class="social col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Follow me!
+    </h1>
+    <ul class="unstyled">
+        
+        
+        
+        
+        <li><a class="github" href="//github.com/yask123"><i class="fa fa-github"></i> Github</a></li>
+        <li><a class="googleplus" href="//plus.google.com/+yasksrivastava"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+        <li><a class="hackernews" href="//news.ycombinator.com/user?id=yask123"><i class="fa fa-hacker-news"></i> Hacker News</a></li>
+        
+        <li><a class="linkedin" href="//linkedin.com/in/yask123"><i class="fa fa-linkedin-square"></i> LinkedIn</a></li>
+        
+        <li><a class="reddit" href="//reddit.com/user/yask123"><i class="fa fa-reddit"></i> reddit</a></li>
+        <li><a class="stackoverflow" href="//stackoverflow.com/users/3574214/yask"><i class="fa fa-stack-overflow"></i> StackOverflow</a></li>
+        <li><a class="twitter" href="//twitter.com/yask123"><i class="fa fa-twitter"></i> Twitter</a></li>
+        <li><a class="youtube" href="//youtube.com/user/yask124"><i class="fa fa-youtube"></i> YouTube</a></li>
+    </ul>
+</section>
+
+
+
+    <section id="recent-posts" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>Recent Posts</h1>
+    <ul class="divided">
+        
+        <li class="post">
+            <a href="/blog/2015/07/15/gsoc-updates/">GSoC Updates</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/28/new-usersettings-and-various-tweaks/">New UserSettings and various tweaks</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/25/gsoc-update/">GSoC Updates | Hackathon | Teaching Django</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/17/gsoc-update/">Gsoc Update</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/04/21/i-have-been-vimified-graph-algo-2/">I have been vimified  | Graph algo #2</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+
+
+
+<section id="twitter-timeline" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Latest Tweets
+        
+        <small class="pull-right">
+            <a class="btn" href="//twitter.com/yask123" title="@yask123 on Twitter" target="_blank">
+                <i class="fa fa-external-link"></i>
+            </a>
+        </small>
+        
+    </h1>
+
+    <a class="twitter-timeline" data-dnt="true" href="//twitter.com/yask123"  data-widget-id="615244773633298432"  data-link-color="#049cdb" data-tweet-limit="" data-chrome="noheader nofooter transparent noscrollbar">Tweets by @yask123</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+
+
+</div>
+
+                </aside>
+                
+            </div>
+        </div>
+
+        
+
+    
+    
+
+
+
+
+<footer class="footer">
+    <div class="row middle-xs">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="footer__copyright">
+    All content copyright Yask Srivastava.<br>
+    Code under <a href="//github.com/coogie/oscailte/blob/master/README.md">MIT Licence</a>.
+</p>
+
+        </div>
+        
+        
+    </div>
+</footer>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script defer src="/javascripts/octopress.js"></script>
+
+
+<script>
+    var _gaq=[['_setAccount','UA-61023878-2'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+</html>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[Category: google | Yask's Personal Blog]]></title>
+    <link href="http://iyask.me/blog/categories/google/atom.xml" rel="self"/>
+    <link href="http://iyask.me/"/>
+    <updated>2015-07-15T15:49:03+05:30</updated>
+    <id>http://iyask.me/</id>
+    <author>
+        <name><![CDATA[Yask Srivastava]]></name>
+        
+      </author>
+    <generator uri="http://octopress.org/">Octopress</generator>
+
+    
+    <entry>
+        <title type="html"><![CDATA[BVPmart ~Web App]]></title>
+        <link href="http://iyask.me/blog/2014/08/18/bvpmart-web-app/"/>
+        <updated>2014-08-18T23:41:06+05:30</updated>
+        <id>http://iyask.me/blog/2014/08/18/bvpmart-web-app</id>
+        <content type="html"><![CDATA[<p><a href="https://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204217.png"><img src="http://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204217.png" alt="Screenshot from 2014-08-18 20:42:17" /></a></p>
+
+<p>Today I finished writing the web app &lsquo;<a href="http://www.bvpmart.co.nr/">BVPmart'</a> and deployed it on Google App engine.This is my 4th application on this platform and I followed the same scripting language , Python 2.7 for this.Although I did get a bit adventurous this time and decided to use <a href="http://jinja.pocoo.org/">Jijna2 Python Template</a> [instead of Django] ,Nevertheless  it was fairly easy to learn due to its comprehensive documentation.</p>
+
+<p>The idea was to serve the website as a place for advertisement for the products you want to sell/ donate.I intend to make this platform exclusively for my college students.The website has a clean form for taking input for advertisements.The advertisement data entered by the user is stored in our Google App Engine DataStore and displayed by a running loop in the front page querying the data from the database and displaying it on the main page arranged in descending order of ad&rsquo;s submit server time.</p>
+
+<p>For the lovely front end I am using<a href="https://github.com/coto/gae-boilerplate"> Google App Engine Boilerplate </a></p>
+
+<p>This is how it looks.</p>
+
+<p><a href="https://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204217.png"><img src="http://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204217.png" alt="Screenshot from 2014-08-18 20:42:17" /></a> <a href="https://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204343.png"><img src="http://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204343.png" alt="Screenshot from 2014-08-18 20:43:43" /></a> <a href="https://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204411.png"><img src="http://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204411.png" alt="Screenshot from 2014-08-18 20:44:11" /></a></p>
+
+<p>I believe there is lots of stuff yet to be done , like:</p>
+
+<p>1)Google/Facebook sign in</p>
+
+<p>2)AD content verification</p>
+
+<p>3)SMS notification</p>
+
+<p>4) I don&rsquo;t like the idea of openly sharing the phone number of the seller.Some mechanism to avoid this.</p>
+
+<p>If you have any suggestions , please comment bellow or mail me at <a href="&#109;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x79;&#97;&#x73;&#107;&#49;&#50;&#51;&#x40;&#103;&#109;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109;">&#x79;&#x61;&#x73;&#x6b;&#x31;&#50;&#51;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a></p>
+
+<p>App Link: <a href="http://www.bvpmart.co.nr/">http://www.bvpmart.co.nr/</a></p>
+
+<p>, <a href="http://bvpmart.appspot.com/">http://bvpmart.appspot.com/</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Built my own Search Engine!]]></title>
+        <link href="http://iyask.me/blog/2014/07/22/built-my-own-search-engine/"/>
+        <updated>2014-07-22T13:48:57+05:30</updated>
+        <id>http://iyask.me/blog/2014/07/22/built-my-own-search-engine</id>
+        <content type="html"><![CDATA[<p>From reading writing from text file , storing database in pickle(Python) ,using SQLlite for large DBMS and finally using GAE datastore .This is the journey of writing my very own Search Engine.</p>
+
+<p>The concept is very simple.Start with a &lsquo;Seed Page&rsquo; , look for links recursively ,create a hash-table for storing links with name as addresses and finally store this data for quick search next time(Indexing).Then there are ways you can improve efficiency of indexing , rankings by using different algorithms.I have just finished testing the app on my computer.Soon I will be uploading the code and deploy the app on the web.</p>
+
+<p>This tool although looks very simple is quite useful.I am thinking of putting this search engine in my blog indexing post links.Another item in my to-do list.</p>
+
+<p>Signing off.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[I am on the cloud!]]></title>
+        <link href="http://iyask.me/blog/2014/05/19/i-am-on-the-cloud/"/>
+        <updated>2014-05-19T21:32:52+05:30</updated>
+        <id>http://iyask.me/blog/2014/05/19/i-am-on-the-cloud</id>
+        <content type="html"><![CDATA[<p>Sucessfully deployed my first Google app engine app on the cloud.</p>
+
+<p>Here are some pics.</p>
+
+<p><a href="http://yask007.files.wordpress.com/2014/05/selection_003.png"><img src="http://yask007.files.wordpress.com/2014/05/selection_003.png" alt="Selection_003" /></a></p>
+
+<p>Here is how the app looks in the browser:</p>
+
+<p><a href="http://yask007.files.wordpress.com/2014/05/selection_002.png"><img src="http://yask007.files.wordpress.com/2014/05/selection_002.png" alt="Selection_002" /></a></p>
+
+<p>About the app:</p>
+
+<p>It uses google engine api user to display contextual message entered by the user.The user can log in or use service as an anonymous user.</p>
+
+<p>Here is the url:<a href="http://yaskchat.appspot.com/">Yask&rsquo;s Chat</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Another Migration!]]></title>
+        <link href="http://iyask.me/blog/2014/05/13/another-migration/"/>
+        <updated>2014-05-13T00:39:12+05:30</updated>
+        <id>http://iyask.me/blog/2014/05/13/another-migration</id>
+        <content type="html"><![CDATA[<p>I started Web Development by reading O'relly&rsquo;s book.The book was super motivating.Ever since then I have followed thereof instructions for running Php  based website on Apache web server.</p>
+
+<p>I have recently been involved with lots of Python Coding.I must admit  , this is getting weird.It&rsquo;s becoming my favourite programming language.The more I code in it , the more I love it.There is just so much to learn , and Python is Damn easy!</p>
+
+<p>Any one with endless coding sessions can get bored.That&rsquo;s why , I often get myself involved in small projects related to what I am learning.Yea!I am thinking to take my Python web app to the cloud.</p>
+
+<p>Welcome Google app engine.Today was the first day(not technically , it&rsquo;s 2:36  AM now) .Installing this piece of beauty on Linux was damn easy!I almost got started after downloading a small 50mb file.</p>
+
+<p>Good bye Apache! , I&rsquo;m moving to GAE.</p>
+
+<p>Another cool advantage of GAE is that you can upload your small projects on their web server for FREE!This couldn&rsquo;t get any better!Where have you been all this time in my life?</p>
+
+<p>I think I love Google too much.</p>
+]]></content>
+    </entry>
+    
+</feed>

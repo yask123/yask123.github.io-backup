@@ -1,0 +1,360 @@
+<!doctype html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+    
+      
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Coin problem! - Yask's Personal Blog</title>
+        <meta name="author" content="Yask Srivastava">
+        
+        <meta name="description" content="Coin problem! Aug 2nd, 2014 python I got stuck at Question 31 of project Euler for 2 days!It required me to find out total number of possible ways &hellip;">
+        
+        <meta name="viewport" content="width=device-width">
+        <link rel="canonical" href="http://iyask.me/blog/2014/08/02/change-for-2-pounds">
+
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+
+        
+        <link href="/favicon.png" rel="icon">
+        <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet">
+        <link href="/atom.xml" rel="alternate" title="Yask's Personal Blog" type="application/atom+xml">
+    </head>
+
+
+    <body >
+
+        <header id="header">
+    <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-4">
+        <a href="/" class="site-title">Yask's Personal Blog</a>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-8">
+        <nav>
+    <input type="checkbox" id="toggle">
+    <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+    <ul class="menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/">Blog</a></li>
+</ul>
+
+</nav>
+
+    </div>
+</div>
+
+</header>
+
+
+        <div id="main-content">
+
+            <!--[if lte IE 9]>
+<div class="row upgrade-row">
+    <div class="col-lg-12">
+        <div class="upgrade">
+            <i class="upgrade__icon fa fa-warning"></i>
+            <h1 class="upgrade__title h6">Ohnoes!</h1>
+            <p class="upgrade__text">
+                Unfortunately, certain parts of this site may not display correctly in your version of Internet Explorer!<br>
+                If possible, you should consider <a href="http://browsehappy.com/">upgrading your browser</a>.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- <![endif]-->
+
+
+            
+
+            <div class="row top-xs center-sm center-md center-lg site-wrapper">
+                
+                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                
+                    <article class="article article--single">
+    <header class="article__header">
+    
+        <h1 class="article__title">Coin problem!</h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-08-02T12:28:48+05:30" pubdate><i class="fa fa-calendar"></i> Aug 2nd, 2014</time>
+
+
+
+
+            
+
+    <div class="article__tags pull-left">
+        <i class="fa fa-tags"></i>
+        <ul class="unstyled">
+        
+
+            
+                <li><a class='category' href='/blog/categories/python/'>python</a></li>
+            
+        
+        </ul>
+    </div>
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p><a href="http://yask007.files.wordpress.com/2014/08/46.jpg"><img src="http://yask007.files.wordpress.com/2014/08/46.jpg" alt="46" /></a></p>
+
+<p>I got stuck at Question 31 of project Euler for 2 days!It required me to find out total number of possible ways to give change for 2 pounds.I wrote down the equation $latex 200 \times a + 100 \times b + 50 \times c + 20\times c + 10 \times d + 5 \times e + f= 200$ and pondered.The vague memory of solving the number of possible solutions for $latex x + y + z =100$ suddenly started to dawn on me , whose solution would be  $latex \binom {n+r-1}{r-1}$</p>
+
+<p>Unfortunately I couldn&rsquo;t solve further. I posted the question on stack exchange , Maths section and people suggested this approach wouldn&rsquo;t take me any further .So , I had to choose a different path.</p>
+
+<p>I did plan to solve it with brute force , but the program looked really long and stupid .It had quite a lot of loops inside it ,but it did work.I tried to plug all the possible values of &lsquo;a&rsquo; , &lsquo;b&rsquo;,&lsquo;c&rsquo; ,&hellip; .The bounds were logical , ‘a’ bound was [0,1] , ‘b’ ‘s bound was [0,2] and so on.And I checked for condition[code] if sum==200 [/code]
+[code]break[/code] at appropriate time and further checked that if ‘sum’ ‘s value remained less that 200 , if it exceeded at any point without being equal to 200 , I trashed the assumed values of constant.As you can guess , this idea is no-brainer and was resource  intense.I had to come up with a better solution.After trying a lot , I resumed my Google search and found an awesome PDF explaining a similar problem with recursion.Although , the approach is still brute force , the solution looked very elegant .But I had to spent considerable amount of time understanding the recursion technique to spit coins.
+Let’s begun.</p>
+
+<p>Well , lets say some one gave us 200 pounds and we were to give him change , how would we approach this problem
+naturally?We will accept the cash and look in our pocket , hey , I found 50 pence in my left pocket , cool now I only have to search for 150 Pence.Woah! there is 100 pence in my right pocket .Now I only need a change for 50 Pence.Leh! , I have 5,10 pence coins too! , here you go bro!</p>
+
+<p>Notice after following few instructions , we follow the same instructions again , but with different values of data.First we had to find a change for 200 , then for 150 , then for 100 and so on!</p>
+
+<p>Let’s write it in mathematical form</p>
+
+<p>Step 1 :$latex f(200)= 50 + f(150)$</p>
+
+<p>Step 2 : $latex f(150)=100 + f(50)$</p>
+
+<p>Step 3: $latex f(50)= 10 /times 5 + f( 0 )$</p>
+
+<p>Step 4: I don’t have any money left now :) process over!</p>
+
+<p>But , there is a problem . Notice if we substitute f( 6 ) , we get 3 but it should have been 2.Why did that happen?</p>
+
+<p>Naturally the possibilities were 5 +1 ,6 coins of 1 pence each that’s all! But this formula added another case , 1 +5!</p>
+
+<p>Whoops! Every time it will count extras.But we can exclude this error by specifying an instruction.Let us make a rule ! We</p>
+
+<p>will start with the highest value of coin first.In that case we are bound to accept 5 + 1 and not 1 + 5 , higher value</p>
+
+<p>coin must be picked first!</p>
+
+<p>With that it mind , let’s write the code!</p>
+
+<p>[code language=&ldquo;python&rdquo;]</p>
+
+<p>def find_change(amount, coins):
+    # A successful find, add 1
+    if amount == 0:</p>
+
+<pre><code>    return 1
+# An unsuccessful find, add 0
+elif amount &lt; 0 or len(coins) &lt; 1:
+
+    return 0
+# Deduct the coin, and calculate and don't deduct and calculate with
+# rest of the coins
+else:
+    coin, rest = coins[0], coins[1:]
+
+    return  find_change(amount-coin, coins) + find_change(amount, rest);
+</code></pre>
+
+<p>def main():
+    coins = [200,100,50,20,10,1]
+    amount = 200
+    print (find_change(amount, coins))</p>
+
+<p>main()</p>
+
+<p>[/code]</p>
+
+<p>Code explanation:</p>
+
+<p>We have kept sorted coins in our coins list starting with the biggest value.We are bound to start counting , by taking out our first coin in order.
+I will come to the end point of recursion later , but first understand what happens in else part.We extract the biggest coin from our collection and start combining with all other possible coins within the constraints.First 200 value got in as amount , in our first case we found 2 pound bill , so we deducted from the total amount , now since amount == 0 , that meant our combination , i.e 2 pounds * 1 does equal to 200 pence , thus count this as one of the possible ways.
+Now lets forget about 200 , we have coins from 100 to 1 pence .We send this as an input to the same function and it keeps running.Now due to Amount-Coin , there will be a time , when this either becomes zero , or becomes a negative number.
+If negative , the combinations chosen must be wrong , return zero , if zero , our combinations were right , I have exactly zero pence left , thus the combination used to make 200 must have been correct , as it as one possible ways!</p>
+
+<p>Hope that made sense !</p>
+
+
+
+</article>
+
+
+
+                </div>
+
+                
+                <aside class="sidebar col-xs-12 col-md-4 col-lg-4">
+                    <div class="row">
+
+    
+        <section class="hire--aside col-xs-12 col-sm-10 col-md-12">
+            
+    
+
+
+
+    
+
+
+
+
+<div class="hire hire--available">
+    <a class="hire__link" href="mailto:?subject=New%20job%20opportunity">
+        Available for new opportunities
+    </a>
+</div>
+
+
+        </section>
+    
+
+    
+<section class="social col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Follow me!
+    </h1>
+    <ul class="unstyled">
+        
+        
+        
+        
+        <li><a class="github" href="//github.com/yask123"><i class="fa fa-github"></i> Github</a></li>
+        <li><a class="googleplus" href="//plus.google.com/+yasksrivastava"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+        <li><a class="hackernews" href="//news.ycombinator.com/user?id=yask123"><i class="fa fa-hacker-news"></i> Hacker News</a></li>
+        
+        <li><a class="linkedin" href="//linkedin.com/in/yask123"><i class="fa fa-linkedin-square"></i> LinkedIn</a></li>
+        
+        <li><a class="reddit" href="//reddit.com/user/yask123"><i class="fa fa-reddit"></i> reddit</a></li>
+        <li><a class="stackoverflow" href="//stackoverflow.com/users/3574214/yask"><i class="fa fa-stack-overflow"></i> StackOverflow</a></li>
+        <li><a class="twitter" href="//twitter.com/yask123"><i class="fa fa-twitter"></i> Twitter</a></li>
+        <li><a class="youtube" href="//youtube.com/user/yask124"><i class="fa fa-youtube"></i> YouTube</a></li>
+    </ul>
+</section>
+
+
+
+    <section id="recent-posts" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>Recent Posts</h1>
+    <ul class="divided">
+        
+        <li class="post">
+            <a href="/blog/2015/07/15/gsoc-updates/">GSoC Updates</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/28/new-usersettings-and-various-tweaks/">New UserSettings and various tweaks</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/25/gsoc-update/">GSoC Updates | Hackathon | Teaching Django</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/17/gsoc-update/">Gsoc Update</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/04/21/i-have-been-vimified-graph-algo-2/">I have been vimified  | Graph algo #2</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+
+
+
+<section id="twitter-timeline" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Latest Tweets
+        
+        <small class="pull-right">
+            <a class="btn" href="//twitter.com/yask123" title="@yask123 on Twitter" target="_blank">
+                <i class="fa fa-external-link"></i>
+            </a>
+        </small>
+        
+    </h1>
+
+    <a class="twitter-timeline" data-dnt="true" href="//twitter.com/yask123"  data-widget-id="615244773633298432"  data-link-color="#049cdb" data-tweet-limit="" data-chrome="noheader nofooter transparent noscrollbar">Tweets by @yask123</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+
+
+</div>
+
+                </aside>
+                
+            </div>
+        </div>
+
+        
+
+    
+    
+
+
+
+
+<footer class="footer">
+    <div class="row middle-xs">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="footer__copyright">
+    All content copyright Yask Srivastava.<br>
+    Code under <a href="//github.com/coogie/oscailte/blob/master/README.md">MIT Licence</a>.
+</p>
+
+        </div>
+        
+        
+    </div>
+</footer>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script defer src="/javascripts/octopress.js"></script>
+
+
+<script>
+    var _gaq=[['_setAccount','UA-61023878-2'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+</html>

@@ -1,0 +1,1076 @@
+<!doctype html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+    
+      
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Yask's Personal Blog</title>
+        <meta name="author" content="Yask Srivastava">
+        
+        <meta name="description" content="Amicable numbers fast search Jul 28th, 2014 python In this question we are required to find all the amicable numbers in the given range.As explained &hellip;">
+        
+        <meta name="viewport" content="width=device-width">
+        <link rel="canonical" href="http://iyask.me/blog/5">
+
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+
+        
+        <link href="/favicon.png" rel="icon">
+        <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet">
+        <link href="/atom.xml" rel="alternate" title="Yask's Personal Blog" type="application/atom+xml">
+    </head>
+
+
+    <body >
+
+        <header id="header">
+    <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-4">
+        <a href="/" class="site-title">Yask's Personal Blog</a>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-8">
+        <nav>
+    <input type="checkbox" id="toggle">
+    <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+    <ul class="menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/">Blog</a></li>
+</ul>
+
+</nav>
+
+    </div>
+</div>
+
+</header>
+
+
+        <div id="main-content">
+
+            <!--[if lte IE 9]>
+<div class="row upgrade-row">
+    <div class="col-lg-12">
+        <div class="upgrade">
+            <i class="upgrade__icon fa fa-warning"></i>
+            <h1 class="upgrade__title h6">Ohnoes!</h1>
+            <p class="upgrade__text">
+                Unfortunately, certain parts of this site may not display correctly in your version of Internet Explorer!<br>
+                If possible, you should consider <a href="http://browsehappy.com/">upgrading your browser</a>.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- <![endif]-->
+
+
+            
+
+            <div class="row top-xs center-sm center-md center-lg site-wrapper">
+                
+                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                
+                        
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/07/28/amicable-numbers-fast-search/">Amicable numbers fast search</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-07-28T20:53:45+05:30" pubdate><i class="fa fa-calendar"></i> Jul 28th, 2014</time>
+
+
+
+
+            
+
+    <div class="article__tags pull-left">
+        <i class="fa fa-tags"></i>
+        <ul class="unstyled">
+        
+            
+                <li><a class='category' href='/blog/categories/python/'>python</a></li>
+            
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p><a href="https://yask007.files.wordpress.com/2014/07/e21.png"><img src="http://yask007.files.wordpress.com/2014/07/e21.png" alt="e21" /></a></p>
+
+<p>In this question we are required to find all the amicable numbers in the given range.As explained amicable number&rsquo;s condition , they exists in pair and one&rsquo;s sum of all divisor is equal to the other number and sum of all the divisor of the other number is equal to the first number.</p>
+
+<p>As you might have guess , we will be calculating the sum of divisor a lot! We better make this function efficient.We can in fact find the sum of divisor without actually finding each and summing each divisor.Take a look at this proof!</p>
+
+<p>If a number[p] is prime , it&rsquo;s sum of divisor is p+1</p>
+
+<p>if the number is  $latex p<sup>n</sup>$ then sum of divisor = $latex p ^1 + p<sup>2</sup>+&hellip;.. p<sup>n</sup> + 1$</p>
+
+<p>This is a G.P whose sum is $latex \frac { { p }^{ n+1 }-1 }{ p-1 }$</p>
+
+<p>Another thing to remember is  , if $latex f(x) $ is a function which returns sum of divisors ,then $latex f(ab)= f(a). f(b) $</p>
+
+<p>Since  , as Euler once said any number can be represented uniquely by it&rsquo;s multiple of prime numbers , lets re write $latex N$</p>
+
+<p>$latex N = p<sup>n</sup>+ Q^{n_1}$ where p , q .. are it&rsquo;s prime factors.</p>
+
+<p>For a prime number raised to a power , we already saw a formula to find the sum of all it&rsquo;s divisor .</p>
+
+<p>Note:</p>
+
+<p>I have implemented the same logic in this code.I am using the same prime factorizing method from the previous problem.The approach is simple.I find the sum of divisors of all numbers in the range and in hash-map store in this fashion {Number:Sum of divisor}</p>
+
+<p>.While calculating any number&rsquo;s sum of divisor I see if any mapped value exist for the same number as the key , if yes , I further check if the value in that key [divisor of some other number ] is equal to the number I am currently pointing at.If both conditions are met , I store both the numbers in a List  , and return it after a full scan.</p>
+
+<p>[code language=&ldquo;python&rdquo;]</p>
+
+<p>import math
+import collections</p>
+
+<p>def isprime(n):
+    for num in range(2,math.floor(math.sqrt(n))+1):
+        if n%num==0:
+            return(False)
+    return(True)</p>
+
+<p>def findfactors(n):
+    primes=[]
+    b=0
+    for num in range(2,math.floor(n/2)+1):
+        if isprime(n):
+            primes.append(n)
+            break
+        c=n
+        if(n%num==0 and isprime(num)):#Numbers must be prime and should divide n
+            &ldquo;&rdquo;&ldquo;B=n and A=num and C=B/A&rdquo;&ldquo;&rdquo;
+            c=n/num#Refer to the image in Blog
+            primes.append(num)
+            while(c%num==0):#Continue using num as long as it divides
+                primes.append(num)
+                b=c
+                c=b/num
+        n=c#Refer to the image in blog
+    return(primes)</p>
+
+<p>def divisor_sum(n):#Returns sum of all proper divisors
+    factors=collections.Counter(findfactors(n))
+    pro=1</p>
+
+<pre><code>for each_key in factors:
+    #for 2^n [2:n] means 2 is key and n is value
+    try:
+        pro*=(math.pow(each_key,factors[each_key]+1)-1)/(each_key-1)
+    except:
+        pass
+
+return pro-n
+</code></pre>
+
+<p>def get_amicable():
+    data={}
+    amics=[]
+    for num in range(2,10000):
+        d_sum=math.floor(divisor_sum(num))
+        #I store like [num:data]
+        if d_sum in data:
+            if num == data[d_sum]:
+                amics.extend([d_sum,num])
+        else:
+            data[num]=d_sum
+    return(amics)</p>
+
+<p>print (sum(get_amicable()))</p>
+
+<p>[/code]</p>
+
+<p><a href="https://yask007.files.wordpress.com/2014/07/ans_e21.png"><img src="http://yask007.files.wordpress.com/2014/07/ans_e21.png" alt="ans_e21" /></a></p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/07/28/finding-total-maximum-by-tree-recursion/">Finding total maximum by Tree Recursion</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-07-28T03:00:53+05:30" pubdate><i class="fa fa-calendar"></i> Jul 28th, 2014</time>
+
+
+
+
+            
+
+    <div class="article__tags pull-left">
+        <i class="fa fa-tags"></i>
+        <ul class="unstyled">
+        
+            
+                <li><a class='category' href='/blog/categories/python/'>python</a></li>
+            
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>I was trying this problem for quite some time and got frustrated!I didn&rsquo;t have much recursion practice lately  , that&rsquo;s why i stumbled so badly.I tried doing some basics problem on recursion first, like multiplication[a+a*(b-1)] , Fibonacci series and then came back to this problem and was finally able to solve  it  :)</p>
+
+<p>This is the problem.</p>
+
+<p><a href="https://yask007.files.wordpress.com/2014/07/e18q.png"><img src="http://yask007.files.wordpress.com/2014/07/e18q.png" alt="e18Q" /></a></p>
+
+<p>The idea may seem a bit complex at first , trying to find length of each path and then selecting the max one.But there is an easier approach. Let&rsquo;s start from the top &lsquo;3&rsquo; , now should we go right &lsquo;7&rsquo; or &lsquo;4&rsquo;? Actually , we don&rsquo;t know yet , which path we should take so we pause at this condition for a while we collect some more information.[Heading toward recursion , right!]</p>
+
+<p>Hmm  , lets write it 7+x and 4+y .We can&rsquo;t compare them yet.x /y is the sum obtained from the complete path[Maximum possible].</p>
+
+<p>So now we put 7 and 4 as the father of the tree respectively and repeat the same process , should 7 go with 2 or 4? We don&rsquo;t know so lets write 2+x1 and 4+y1 and pause while we find out maximum x1 and y1 possible. Now we put 2 and 4 as root of the tree , and ultimately we reach at the child with no longer any child.So then , the maximum value they can return is their original value .This value is passed on to the top ,where we paused for this solution ,we calculate and pass more information to upper level and so on until we reach the top of the tree!</p>
+
+<p>Another query you may have is how to store this triangular data ?I have stored them all in double dimension array and where there were spaces I have added &lsquo;0&rsquo; ,[probably should be replace by &lsquo;-&rsquo; ].
+[code language=&ldquo;python&rdquo;]</p>
+
+<p>data =  [[0,0,0,3,0,0,0,],
+         [0,0,7,0,4,0,0],
+         [0,2,0,4,0,6,0],
+         [8,0,5,0,9,0,3]]</p>
+
+<p>def find_max(data,x,y):
+    if x>=len(data):
+        return 0
+    left_value=find_max(data,x+1,y-1)#Making left child father
+    right_value=find_max(data,x+1,y+1)#Making right child father</p>
+
+<pre><code>if left_value&gt;right_value:
+    return left_value+data[x][y]
+else:
+    return right_value+data[x][y]
+</code></pre>
+
+<p>print (find_max(data,0,3))#Pass the position of root</p>
+
+<p>[/code]</p>
+
+<p><a href="https://yask007.files.wordpress.com/2014/07/anse18.png"><img src="http://yask007.files.wordpress.com/2014/07/anse18.png" alt="anse18" /></a></p>
+
+<p>This works for small triangles , but will be incredibly slow for bigger data.Notice like the previous problem ,we are repeating the same instructions for finding out the values which were already calculated .Thus we can store the values in hash-map and use ;Memorization' technique for boosting the speed.</p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/07/27/solving-problem-by-memorization-2/">Solving problem by ‘Memorization’</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-07-27T14:17:40+05:30" pubdate><i class="fa fa-calendar"></i> Jul 27th, 2014</time>
+
+
+
+
+            
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/07/27/solving-problem-by-memorization/">Solving problem by ‘Memorization’</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-07-27T02:14:48+05:30" pubdate><i class="fa fa-calendar"></i> Jul 27th, 2014</time>
+
+
+
+
+            
+
+    <div class="article__tags pull-left">
+        <i class="fa fa-tags"></i>
+        <ul class="unstyled">
+        
+            
+                <li><a class='category' href='/blog/categories/python/'>python</a></li>
+            
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p><a href="http://yask007.files.wordpress.com/2014/07/qqqqqure.png"><img src="http://yask007.files.wordpress.com/2014/07/qqqqqure.png" alt="QQQQQure" /></a></p>
+
+<p>Take a look at this problem .We are supposed to find out the starting number for which chain produced is Maximum [Number should be less than a million]</p>
+
+<p>By simple brute force method</p>
+
+<p>[code language=&ldquo;c&rdquo;]</p>
+
+<h1>include &lt;stdio.h></h1>
+
+<h1>include &lt;stdlib.h></h1>
+
+<p>long getnext(long);
+int main()
+{
+    unsigned long num=1000000;
+    unsigned long maxlength=0;
+    unsigned long l,temp,number;
+    while(num>1)
+    {
+        temp=num;
+        l=1;
+        while(temp>=2)
+        {
+            l++;
+            temp=getnext(temp);</p>
+
+<pre><code>    }
+    if(l&gt;maxlength)
+    {
+        maxlength=l;
+        number=num;
+    }
+    num=num-1;
+}
+printf("%lu %lu",maxlength,num);
+</code></pre>
+
+<p>}</p>
+
+<p>long getnext(long n)
+{</p>
+
+<pre><code>if(n%2==0)
+{
+
+    return(n/2);
+}
+else
+{
+    return((3*n)+1);
+}
+</code></pre>
+
+<p>}</p>
+
+<p>[/code]</p>
+
+<p>The problem is , it takes forever to find the solution.It works for smaller values of &lsquo;num&rsquo; only.But we can significantly reduced this amount of time consumed.Notice the sequence for <strong>10->5->16->8->4->2->1</strong> , length=7 .Now fo<strong>r 20 , 20->10->5&hellip;</strong> , notice after 20 , the sequence of<strong> 10 is repeated</strong> , instead we can just say chain length for 20 is 1 + chain_length of 10.</p>
+
+<p>Thus we keep finding out the length of each chain and store it in a hash-map with the number as a key and it&rsquo;s length as the value.If we encounter the same number again for which the length has already been calculated , we can just pull that value out by hash-map.This is how I have implemented it , written in Python</p>
+
+<p>Here I am using &lsquo;cache&rsquo; as a dictionary containing hash-mapped entries.I store values and also pull out values very conveniently in function calc_length()</p>
+
+<p>[code language=&ldquo;python&rdquo;]
+cache={}#Stores mapped result
+def find_next(n):#Next value of sequence
+    if n%2==0:
+        return(n/2)
+    else:
+        return(3*n+1)
+def calc_length(n):#Magical method
+    temp=n
+    length=0
+    while(temp>=2):</p>
+
+<pre><code>    if temp in cache:#If we have answer already!
+        if n not in cache:#To avoid duplicates
+            cache[n]=length+cache[temp]
+        return(length + cache[temp])#Cool , eh!
+    else:
+        temp=find_next(temp)
+        length+=1
+
+cache[n]=length+1#Useless
+return(length+1)
+</code></pre>
+
+<p>num=1000000#Big number!
+answer=0
+max_length=0</p>
+
+<p>for num in range(2,num):
+        #Finding length of each num</p>
+
+<pre><code>length=calc_length(num)
+
+if length&gt;max_length:#Only max needed
+    max_length=length
+    answer=num
+</code></pre>
+
+<p>print(max_length)
+print(answer)</p>
+
+<p>[/code]</p>
+
+<p><a href="https://yask007.files.wordpress.com/2014/07/pyresult.png"><img src="http://yask007.files.wordpress.com/2014/07/pyresult.png" alt="pyresult" /></a></p>
+
+<p>This made easier because of our awesome dictionary , which is currently holding tons of values!So, we can say the work load of processor was eased by the expense of memory use.This is how our maps look like! ;)</p>
+
+<p><a href="https://yask007.files.wordpress.com/2014/07/2ure.png"><img src="http://yask007.files.wordpress.com/2014/07/2ure.png" alt="2ure" /></a></p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/07/25/further-enhancing-divisor-finding-tool/">Further enhancing divisor finding tool</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-07-25T18:49:41+05:30" pubdate><i class="fa fa-calendar"></i> Jul 25th, 2014</time>
+
+
+
+
+            
+
+    <div class="article__tags pull-left">
+        <i class="fa fa-tags"></i>
+        <ul class="unstyled">
+        
+            
+                <li><a class='category' href='/blog/categories/python/'>python</a></li>
+            
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>I just recalled we had  a topic in Permutation and Combination where we were asked to find total number of divisor just by finding it’s prime factors.</p>
+
+<p>Let’s see if we can apply this concept.As Euler said , every number can be expressed by unique prime numbers eg:</p>
+
+<p>Number=p1<sup>a</sup> * p2<sup>b</sup> * p3<sup>c</sup> , where p1,p2 .. are unique prime numbers.Then the total number of divisors will be (x+1) <em>(y+1)</em>…etc [Fundamental multiplication theorem].</p>
+
+<p>Here is how I did it.</p>
+
+<p>(This is the problem number 13 from Euler’s project)</p>
+
+<p>Concept image (analogous to the variables used in code)</p>
+
+<p><a href="https://yask007.files.wordpress.com/2014/07/untitled.png"><img src="http://yask007.files.wordpress.com/2014/07/untitled.png" alt="concept" /></a></p>
+
+<p><a href="https://gist.github.com/yask123/861c29cdd5ca1462f788">https://gist.github.com/yask123/861c29cdd5ca1462f788</a></p>
+
+<p><a href="https://gist.github.com/yask123/90d04159d5f96d4d4c37">https://gist.github.com/yask123/90d04159d5f96d4d4c37</a></p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/07/24/efficiently-count-number-of-factors/">Efficiently count number of factors</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-07-24T21:33:57+05:30" pubdate><i class="fa fa-calendar"></i> Jul 24th, 2014</time>
+
+
+
+
+            
+
+    <div class="article__tags pull-left">
+        <i class="fa fa-tags"></i>
+        <ul class="unstyled">
+        
+            
+                <li><a class='category' href='/blog/categories/life/'>life</a></li>
+            
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>Let’s say , we have to find the number of factors of a given number.Let’s see if we can enhance the test speed.</p>
+
+<p>[code language=&ldquo;python&rdquo;]
+number=78979</p>
+
+<p>number_of_factor=0</p>
+
+<p>for num in range(1,math.floor(math.sqrt(number))):
+    if number%num == 0:
+        number_of_factor+=1
+number_of_factor*=2
+[/code]</p>
+
+<p>The reason why we run loop till square root of the number is because there exist a neat symmetry.For a number to be factor it must divide it leaving behind no remainder.So , lets say ‘a’ is a factor of ‘num’.In that case num/a=b which should be an integer.We can now write a*b=num.</p>
+
+<p>if ‘a’ is a factor ‘b’ must also be a factor.So , for every ‘a’ we find in this equation , there would be a different ‘b’ to satisfy this equation.Neat eh?So if we could find total number of ‘a’ s (unique) only , we could say total number of factors should be twice the number of values of ‘a’s satisfying the equation.So , how should we find total number of unique ‘a’s?</p>
+
+<p>Notice in the equation , as ‘a’ increases ‘b’ decreases.At one point both ‘a’ and ‘b’ would get same and after that we will notice ‘b’ starts taking the same value that ‘a’ had taken before reaching the point where both ‘a’ and ‘b’ are same.Thus we should only find the factors less than square root of the number.This is the unique value of ‘a’.Thus the number of factors is twice the count we find.</p>
+
+<p>:Test upload by windows live writer</p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/07/22/combining-instances-and-data-structure-together-for-organizing-data/">Combining instances and data structure together for organizing data</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-07-22T15:39:04+05:30" pubdate><i class="fa fa-calendar"></i> Jul 22nd, 2014</time>
+
+
+
+
+            
+
+    <div class="article__tags pull-left">
+        <i class="fa fa-tags"></i>
+        <ul class="unstyled">
+        
+            
+                <li><a class='category' href='/blog/categories/python/'>python</a></li>
+            
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>Say , we have to store details(name,age,branch,pointers in each semester ..etc) of every student in class.What could be the best way of organized data collection which could make it easy for us to access the details ?</p>
+
+<p>In python ,we could use a list for storing details eg:</p>
+
+<p><code>
+shyam=['Shyam Gupta','19','SE',[8.1,9.5,9.4]]
+</code></p>
+
+<p>for numerous people , this will be a hectic process.We think of using OOP aproach , creating instance of a class Student and storing the details.Also , using hash-map would be a better way to organize stuff.If we could combine these two ?</p>
+
+<p>Let&rsquo;s create a hash-map which stores the instances of different students mapped by a key , their name.
+We can use inbuilt datastructure dictionary in python to understand it&rsquo;s implementation.</p>
+
+<p>Let&rsquo;s create instances of student and store them in dictionary index&rsquo;d by each students name.This way all our instances are organized in hash-map. How convenient would it be to extract details of every student!We will use this structure to find out the maximum pointers obtained by a particular student.
+[Sample input in text file:Ram kumar,18,SE,9.4,9.5,7.5]</p>
+
+<p>Note:I had to write the complete programe to show the concept working , the main step is in the function store_data() where we use maps dictionary to hold all the instances.Observe how easy it was at last for us to scroll through names of all student at last ;)</p>
+
+<p><a href="https://gist.github.com/yask123/007842da6b3d141bace8">https://gist.github.com/yask123/007842da6b3d141bace8</a></p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/07/22/built-my-own-search-engine/">Built my own Search Engine!</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-07-22T13:48:57+05:30" pubdate><i class="fa fa-calendar"></i> Jul 22nd, 2014</time>
+
+
+
+
+            
+
+    <div class="article__tags pull-left">
+        <i class="fa fa-tags"></i>
+        <ul class="unstyled">
+        
+            
+                <li><a class='category' href='/blog/categories/google/'>google</a></li>
+            
+                <li><a class='category' href='/blog/categories/python/'>python</a></li>
+            
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>From reading writing from text file , storing database in pickle(Python) ,using SQLlite for large DBMS and finally using GAE datastore .This is the journey of writing my very own Search Engine.</p>
+
+<p>The concept is very simple.Start with a &lsquo;Seed Page&rsquo; , look for links recursively ,create a hash-table for storing links with name as addresses and finally store this data for quick search next time(Indexing).Then there are ways you can improve efficiency of indexing , rankings by using different algorithms.I have just finished testing the app on my computer.Soon I will be uploading the code and deploy the app on the web.</p>
+
+<p>This tool although looks very simple is quite useful.I am thinking of putting this search engine in my blog indexing post links.Another item in my to-do list.</p>
+
+<p>Signing off.</p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/06/10/linux-experience-for-a-while/">Linux experience for a while</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-06-10T20:29:54+05:30" pubdate><i class="fa fa-calendar"></i> Jun 10th, 2014</time>
+
+
+
+
+            
+
+    <div class="article__tags pull-left">
+        <i class="fa fa-tags"></i>
+        <ul class="unstyled">
+        
+            
+                <li><a class='category' href='/blog/categories/linux/'>linux</a></li>
+            
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>I had heard quite a lot about nix operating system.I had Mac OS X Mountain Lion installed on my desktop (Technically Hackintosh) , but just as I updated it , it ran into kernel panic mode.Due to busy schedule , I didn&rsquo;t bother repairing it and installed windows.</p>
+
+<p>It&rsquo;s been a while since I moved to Linux.It was a bit frustrating a bit in early stages , but now I seem to have made a full transition.</p>
+
+<p>There were lots of problems for a general user.First , there are so many packaging for different distro.There isn&rsquo;t a uniformity.Developers have to employ significant amount of time , just to get there software working on Linux(Different Distros).Secondly , there are quite a few Linux users(Desktop) , that means the market is low for major software developers.Google Drive is still not available to Linux(Although Dropbox is , thank GOD!) ,GUI GIT isn&rsquo;t available(Who cares?) , but the list doesn&rsquo;t stop there.There are many softwares you won&rsquo;t find on windows.Remember how easy it was to install uTorrent client on windows , It is sick on linux.It runs inside a freaking browser!</p>
+
+<p>&hellip;</p>
+
+
+
+        </article>
+        <hr>
+    
+        
+        <article class="article article--index">
+            <header class="article__header">
+    
+        <h1 class="h2 article__title">
+            <a href="/blog/2014/05/19/i-am-on-the-cloud/">I am on the cloud!</a>
+        </h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2014-05-19T21:32:52+05:30" pubdate><i class="fa fa-calendar"></i> May 19th, 2014</time>
+
+
+
+
+            
+
+    <div class="article__tags pull-left">
+        <i class="fa fa-tags"></i>
+        <ul class="unstyled">
+        
+            
+                <li><a class='category' href='/blog/categories/google/'>google</a></li>
+            
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>Sucessfully deployed my first Google app engine app on the cloud.</p>
+
+<p>Here are some pics.</p>
+
+<p><a href="http://yask007.files.wordpress.com/2014/05/selection_003.png"><img src="http://yask007.files.wordpress.com/2014/05/selection_003.png" alt="Selection_003" /></a></p>
+
+<p>Here is how the app looks in the browser:</p>
+
+<p><a href="http://yask007.files.wordpress.com/2014/05/selection_002.png"><img src="http://yask007.files.wordpress.com/2014/05/selection_002.png" alt="Selection_002" /></a></p>
+
+<p>About the app:</p>
+
+<p>It uses google engine api user to display contextual message entered by the user.The user can log in or use service as an anonymous user.</p>
+
+<p>Here is the url:<a href="http://yaskchat.appspot.com/">Yask&rsquo;s Chat</a></p>
+
+
+
+        </article>
+        <hr>
+    
+
+    <div class="pagination">
+    
+        <a class="btn pull-left" href="/blog/6">&larr; Older</a>
+    
+
+    
+        <a class="btn pull-right" href="/blog/4">Newer &rarr;</a>
+    
+    </div>
+
+                </div>
+
+                
+                <aside class="sidebar col-xs-12 col-md-4 col-lg-4">
+                    <div class="row">
+
+    
+        <section class="hire--aside col-xs-12 col-sm-10 col-md-12">
+            
+    
+
+
+
+    
+
+
+
+
+<div class="hire hire--available">
+    <a class="hire__link" href="mailto:?subject=New%20job%20opportunity">
+        Available for new opportunities
+    </a>
+</div>
+
+
+        </section>
+    
+
+    
+<section class="social col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Follow me!
+    </h1>
+    <ul class="unstyled">
+        
+        
+        
+        
+        <li><a class="github" href="//github.com/yask123"><i class="fa fa-github"></i> Github</a></li>
+        <li><a class="googleplus" href="//plus.google.com/+yasksrivastava"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+        <li><a class="hackernews" href="//news.ycombinator.com/user?id=yask123"><i class="fa fa-hacker-news"></i> Hacker News</a></li>
+        
+        <li><a class="linkedin" href="//linkedin.com/in/yask123"><i class="fa fa-linkedin-square"></i> LinkedIn</a></li>
+        
+        <li><a class="reddit" href="//reddit.com/user/yask123"><i class="fa fa-reddit"></i> reddit</a></li>
+        <li><a class="stackoverflow" href="//stackoverflow.com/users/3574214/yask"><i class="fa fa-stack-overflow"></i> StackOverflow</a></li>
+        <li><a class="twitter" href="//twitter.com/yask123"><i class="fa fa-twitter"></i> Twitter</a></li>
+        <li><a class="youtube" href="//youtube.com/user/yask124"><i class="fa fa-youtube"></i> YouTube</a></li>
+    </ul>
+</section>
+
+
+
+    <section id="recent-posts" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>Recent Posts</h1>
+    <ul class="divided">
+        
+        <li class="post">
+            <a href="/blog/2015/07/15/gsoc-updates/">GSoC Updates</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/28/new-usersettings-and-various-tweaks/">New UserSettings and various tweaks</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/25/gsoc-update/">GSoC Updates | Hackathon | Teaching Django</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/17/gsoc-update/">Gsoc Update</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/04/21/i-have-been-vimified-graph-algo-2/">I have been vimified  | Graph algo #2</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+
+
+
+<section id="twitter-timeline" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Latest Tweets
+        
+        <small class="pull-right">
+            <a class="btn" href="//twitter.com/yask123" title="@yask123 on Twitter" target="_blank">
+                <i class="fa fa-external-link"></i>
+            </a>
+        </small>
+        
+    </h1>
+
+    <a class="twitter-timeline" data-dnt="true" href="//twitter.com/yask123"  data-widget-id="615244773633298432"  data-link-color="#049cdb" data-tweet-limit="" data-chrome="noheader nofooter transparent noscrollbar">Tweets by @yask123</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+
+
+</div>
+
+                </aside>
+                
+            </div>
+        </div>
+
+        
+
+    
+    
+
+
+
+
+<footer class="footer">
+    <div class="row middle-xs">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="footer__copyright">
+    All content copyright Yask Srivastava.<br>
+    Code under <a href="//github.com/coogie/oscailte/blob/master/README.md">MIT Licence</a>.
+</p>
+
+        </div>
+        
+        
+    </div>
+</footer>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script defer src="/javascripts/octopress.js"></script>
+
+
+<script>
+    var _gaq=[['_setAccount','UA-61023878-2'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+</html>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[Category: maths | Yask's Personal Blog]]></title>
+    <link href="http://iyask.me/blog/categories/maths/atom.xml" rel="self"/>
+    <link href="http://iyask.me/"/>
+    <updated>2015-07-15T15:49:03+05:30</updated>
+    <id>http://iyask.me/</id>
+    <author>
+        <name><![CDATA[Yask Srivastava]]></name>
+        
+      </author>
+    <generator uri="http://octopress.org/">Octopress</generator>
+
+    
+    <entry>
+        <title type="html"><![CDATA[Q] Find out the middle node of a linked list]]></title>
+        <link href="http://iyask.me/blog/2014/10/28/q-find-out-the-middle-node-of-a-linked-list/"/>
+        <updated>2014-10-28T17:04:09+05:30</updated>
+        <id>http://iyask.me/blog/2014/10/28/q-find-out-the-middle-node-of-a-linked-list</id>
+        <content type="html"><![CDATA[<p>There is a better way of doing this compared to the Counting the number of nodes <code>L</code> first and then traversing back to <code>L/2</code> .</p>
+
+<p>This method is called <strong>Floyd&rsquo;s cycle-finding algorithm </strong>also known as</p>
+
+<h3>Tortoise and hare</h3>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Tortoise_and_hare_algorithm.svg/300px-Tortoise_and_hare_algorithm.svg.png" alt="" /></p>
+
+<p>The problem encounter earlier was that once we found out what the length of the node was , we had to traverse from the <code>head</code> to <code>l/2</code> again.</p>
+
+<ul>
+<li><p>But what if there are 2 pointers instead of one?</p></li>
+<li><p>One pointing at the node one by one (&lsquo;x&rsquo;)  and the other pointing at &lsquo;2*x`</p></li>
+</ul>
+
+
+<p>This way , just as we encounter the end of the node at <code>2*x</code> we can quickly print the middle node at <code>x</code> .</p>
+
+<p>This method could also be used to find out if the linked list is circular or not! While traversing since <code>Rabbit</code> will always be at <code>2*x</code> so if the linked list is circular there will come a time when both <code>Rabbit</code> &rsquo;s and <code>Tortoise</code> &rsquo;s position will be same.</p>
+
+<p>Time for some code :D</p>
+
+<p>[code lang=c]</p>
+
+<pre>
+# include <stdio.h>
+# include <stdlib.h>
+void display(struct node *start);
+void push(struct node **headref,int new_data);
+void display_middle(struct node *tort);
+
+
+
+struct node {
+ int data;
+ struct node *next;
+};
+
+int main()
+{
+ struct node *head =(struct node *) malloc(sizeof(node));
+ struct node *second =(struct node *)malloc(sizeof(node));
+ struct node *third=(struct node *)malloc(sizeof(node));
+ struct node *fourth=(struct node *)malloc(sizeof(node));
+
+ head ->data = 10;
+ head ->next=second;
+
+ second->data = 20;
+ second->next=third;
+
+ third->data = 30;
+ third->next=fourth;
+
+ fourth->data=40;
+ fourth->next=NULL;
+
+
+ display(head);
+
+ push(&head,40);
+
+ display(head);
+
+ display_middle(head);
+
+}
+
+
+void display(struct node *start)
+{
+ while(start!=NULL)
+ {
+ printf("%d ",start->data );
+ start=start->next;
+ }
+ printf("n");
+}
+
+void push(struct node **headref,int new_data)
+{
+ struct node *new_node=(struct node *)malloc(sizeof(node));
+
+ new_node->next=*headref;
+ new_node->data=new_data;
+
+ *headref=new_node;
+}
+
+void display_middle(struct node *tort)
+{
+ struct node *hare=(tort->next);
+
+ while(hare!=NULL)
+ {
+ if(hare->next==NULL)
+ {
+ break;
+ }
+ hare = (hare->next)->next;
+ tort=tort->next;
+ }
+ printf("%d ",tort->data );
+
+
+
+}</pre>
+
+
+<p>[/code]</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[The  Hot secretary problem!]]></title>
+        <link href="http://iyask.me/blog/2014/08/09/the-hot-secretary-problem/"/>
+        <updated>2014-08-09T18:06:08+05:30</updated>
+        <id>http://iyask.me/blog/2014/08/09/the-hot-secretary-problem</id>
+        <content type="html"><![CDATA[<p><a href="https://yask007.files.wordpress.com/2014/08/dick-parsons-explains-why-the-way-to-carl-icahns-heart-is-through-his-secretaries1.jpg"><img src="http://yask007.files.wordpress.com/2014/08/dick-parsons-explains-why-the-way-to-carl-icahns-heart-is-through-his-secretaries1.jpg" alt="secretary" /></a></p>
+
+<p>Imagine a situation , where you have to recruit a secretary and there are large number of them to choose from.Each one of them arrives one by one for an interview and you are supposed to select only one of them , at the spot and decide which one to recruit .
+ <!--more--></p>
+
+<p>What could be the most optimal way to select the best one?If the first applicant arrives and she seems average  , should you select her?Maybe a better one is standing next in the queue , or maybe she the best one of all! We don&rsquo;t know ! There are so many possibilities!</p>
+
+<p>To select the best one , we obviously can&rsquo;t select the first one.We need some data before we can start comparing.This way we may lose the best candidate , but will select a good candidate for sure.But how many should we scan before actually starting recruiting?Let&rsquo;s say , we will scan all the applicants till the position &lsquo;k&rsquo; and not recruit a single one of them.Then next applicant better than all of applicants scanned till k , will be selected.This method could be confirmed by trying with only 3 applicants and for k=1 here we get the best probability .Now for infinite number of applicants , we can&rsquo;t do hit and trial. Let&rsquo;s find &lsquo;K&rsquo;. The probably of selecting the best candidate by this method will be [Using Total probability method]</p>
+
+<p>$latex p(x)=\sum p_i * \frac {1}{N} $</p>
+
+<p>Lets start taking cases , probability of selection under position k is zero.</p>
+
+<p>Maybe the applicant just after k is the best one , probability of her selection is $latex \frac{1}{1}$</p>
+
+<p>Maybe the best one is after k+1 is the best ,  probability of her selection is $latex \frac{1}{K+1}$w</p>
+
+<p>We continue to do so and add them all , we get:-</p>
+
+<p>$latex p<em>(\frac{k}{n})= 0 + \frac{1}{n} * 1 + \frac{1}{n}</em>\frac{1}{k+1} + \frac{1}{n}<em>\frac{1}{k+2}+ \frac{1}{n}</em>\frac{1}{k+3}+ &hellip;.. \frac{1}{n}*\frac{1}{n-1} $</p>
+
+<p>Taking $latex \frac{k}{n}$ common , we get:</p>
+
+<p>$latex \frac{k}{n} * ( \frac{1}{k} + \frac{1}{k+1}+ \dotsi$</p>
+
+<p>We know this series ! , lets substitute!</p>
+
+<p>$latex \int \frac{1}{x} \, \mathrm{d}x$ from k to n</p>
+
+<p>Integrating we get $latex \log x $</p>
+
+<p>where x = $latex \frac {k}{n} $</p>
+
+<p>Now our function is $latex -x * \log x $</p>
+
+<p>This function has a maximal , we get the maximum value by differentiating and equating to zero.</p>
+
+<p>We get k = 37%</p>
+
+<p>Thus we should scan 37% of all the secretary and select the next one if she is better than all we have scanned.This will give us the best result possible.</p>
+
+<p>You can learn more about the problem <a href="http://en.wikipedia.org/wiki/Secretary_problem">here </a>:</p>
+]]></content>
+    </entry>
+    
+</feed>

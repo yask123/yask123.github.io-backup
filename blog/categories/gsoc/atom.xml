@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[Category: gsoc | Yask's Personal Blog]]></title>
+    <link href="http://iyask.me/blog/categories/gsoc/atom.xml" rel="self"/>
+    <link href="http://iyask.me/"/>
+    <updated>2015-07-15T15:49:03+05:30</updated>
+    <id>http://iyask.me/</id>
+    <author>
+        <name><![CDATA[Yask Srivastava]]></name>
+        
+      </author>
+    <generator uri="http://octopress.org/">Octopress</generator>
+
+    
+    <entry>
+        <title type="html"><![CDATA[New UserSettings and various tweaks]]></title>
+        <link href="http://iyask.me/blog/2015/06/28/new-usersettings-and-various-tweaks/"/>
+        <updated>2015-06-28T02:45:13+05:30</updated>
+        <id>http://iyask.me/blog/2015/06/28/new-usersettings-and-various-tweaks</id>
+        <content type="html"><![CDATA[<p>My last commit for xstatic was finally <a href="https://bitbucket.org/thomaswaldmann/xstatic-bootstrap/pull-request/2/updated-bootstrap-to-version-version-335">merged</a>.
+The less file compiled for both the themes successfully and there were no issues even with <code>Basic theme</code>.</p>
+
+<p>Instead of making a todo list in etherpad, I have started making issues in <code>Bitbucket</code>. Since the theme has started coming out with basic functionality. Other people who notice the bug may also create issues there.
+<a href="https://bitbucket.org/yask123/moin-2.0">Issues Page</a> :</p>
+
+<!--more-->
+
+
+<p><code>`
+RogerHaase pointed another bug which was the weird overlay of forms and menu when</code>hamburger<code>button was clicked to collapse the navbar in menu bar. This issue was fixed in [cumulative patch</code>#2` of CR](<a href="https://codereview.appspot.com/245670043/">https://codereview.appspot.com/245670043/</a>)</p>
+
+<h3>New User Setting</h3>
+
+<p><img src="http://i.imgur.com/R0dbC1R.png">
+I finally implemented a new user setting page which uses bootstrap forms. This wasn&rsquo;t as easy at it sounds. We use <code>flatland</code> for forms. The way we rendered the form was through pre-defined macros. But the pre-defined macros also rendered unwanted stuff such as <code>label</code>,<code>table</code>,<code>td</code>.. etc.</p>
+
+<p>So the way forms work in <code>Moin Moin</code> is like this.
+There are <code>html</code> macros defined in <code>forms.html</code>. There is a <code>forms.py</code> while which contains  <code>Flatland</code>form related constants.
+So lets say we wish to render a form for <code>css input</code> field.
+Code snippet :
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">forms</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">css_url</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;])</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>We have form&rsquo;s class defined in <code>views.py</code> file:
+In this case it looks like:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">UserSettingsUIForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">name</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">usersettings_ui</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">theme_name</span> <span class="o">=</span> <span class="n">Select</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">L</span><span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Theme</span> <span class="n">name</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;))</span><span class="o">.</span><span class="n">out_of</span><span class="p">(</span>
+</span><span class='line'>            <span class="p">((</span><span class="nb">unicode</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">identifier</span><span class="p">),</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">get_themes_list</span><span class="p">()),</span> <span class="n">sort_by</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">css_url</span> <span class="o">=</span> <span class="n">URL</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">L</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">User</span> <span class="n">CSS</span> <span class="n">URL</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;),</span> <span class="n">optional</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">with_properties</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">placeholder</span><span class="o">=</span><span class="n">L</span><span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Give</span> <span class="n">the</span> <span class="n">URL</span> <span class="n">of</span> <span class="n">your</span> <span class="n">custom</span> <span class="n">CSS</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;))</span>
+</span><span class='line'>        <span class="n">edit_rows</span> <span class="o">=</span> <span class="n">Natural</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">L</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Editor</span> <span class="n">size</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;))</span><span class="o">.</span><span class="n">with_properties</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">placeholder</span><span class="o">=</span><span class="n">L</span><span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Editor</span> <span class="n">textarea</span> <span class="n">height</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">auto</span><span class="p">)</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;))</span>
+</span><span class='line'>        <span class="n">results_per_page</span> <span class="o">=</span> <span class="n">Natural</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">L</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">History</span> <span class="n">results</span> <span class="n">per</span> <span class="n">page</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;))</span><span class="o">.</span><span class="n">with_properties</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">placeholder</span><span class="o">=</span><span class="n">L</span><span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">Number</span> <span class="n">of</span> <span class="n">results</span> <span class="n">per</span> <span class="n">page</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">no</span> <span class="n">paging</span><span class="p">)</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;))</span>
+</span><span class='line'>        <span class="n">submit_label</span> <span class="o">=</span> <span class="n">L</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">Save</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>This class creates provides the basic skeleton for forms. The forms.py file detects the kind of html tag required for the form field, example:input text, checkbox,submit.. etc and renders the macros present in <code>forms.html</code>file.</p>
+
+<p>For convenience we have macros defined which contains some unwanted stuff such as <code>labels</code> with <code>table form</code> design (<code>td dd,dt</code>)</p>
+
+<p>Editing this file would have changed the behavior in other non bootstrap themes which depend on this design.
+So I had to make exclusive <code>forms.html</code> template file for <code>modernized</code> theme.</p>
+
+<p>I also changed the setting tabs design to match the current design of the theme.</p>
+
+<p>Another issue I encountered was with the <code>common.css</code>. It contains global css style rules that are supposed to be used by all themes.
+But Bootstrap contains its own style rules. I was inheriting style rules from both the files which resulted in weird layout.
+The only hack was to override these styles.
+If only their was something like this:
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.className</span><span class="p">{</span>
+</span><span class='line'>  <span class="n">reset</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>So I ended up opening developers tool and under style tab it showed me the properties which were being inherited and I manually override thos styles in my <code>modernized theme.less</code> file.
+This hack fixes the weird table layout in <code>global history</code> template page.
+<a href="https://codereview.appspot.com/245670043/">Code Review patch(pending)</a> :</p>
+
+<h4>ChangeLogs for the patch</h4>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Uses latest xstatic, bootstrap version: 3.3.5.1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Fix for footer jump. Now footer won&rsquo;t jump in any page ( Even when the content is null).&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>User setting forms rewritten in bootstrap form design fashion (without &lt;td> &lt;tl> tags) to suit the current design of theme.&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Macros in forms.html changed for compatibility reasons (as their is no requirement of labels and input box to be in &lt;td>.. tags.&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>written css rules in theme.less to override default styling of tables written in &lt;code>common.css&lt;/code>.&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>minor changes in footer.&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Various style improvements&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Changelog2:&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>overlay issues afer reducing table width to ~900 pixels and clicking on the hamburger thing&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Darker text&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></p>
+
+<p>Anyway, this is how it</p>
+
+<h3>looked:</h3>
+
+<p><img class="<a" src="href="http://i.imgur.com/9NHUZpw.png">http://i.imgur.com/9NHUZpw.png</a>"></p>
+
+<h3>Now</h3>
+
+<p><img class="<a" src="href="http://i.imgur.com/R0dbC1R.png">http://i.imgur.com/R0dbC1R.png</a>"></p>
+
+<p><img class="<a" src="href="http://i.imgur.com/sxbcX6d.png">http://i.imgur.com/sxbcX6d.png</a>"></p>
+
+<p><img class="<a" src="href="http://i.imgur.com/aLyGwaj.png">http://i.imgur.com/aLyGwaj.png</a>"></p>
+
+<p><img class="<a" src="href="http://i.imgur.com/tpaF7DJ.png">http://i.imgur.com/tpaF7DJ.png</a>"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[GSoC Updates | Hackathon | Teaching Django]]></title>
+        <link href="http://iyask.me/blog/2015/06/25/gsoc-update/"/>
+        <updated>2015-06-25T18:24:33+05:30</updated>
+        <id>http://iyask.me/blog/2015/06/25/gsoc-update</id>
+        <content type="html"><![CDATA[<h3>Informal Intro</h3>
+
+<p><blockquote><p>Ah! This week was a bit hectic. But I was able to do considerable amount of work.</p><footer><strong>@yask123</strong></footer></blockquote></p>
+
+<p>I got all my pending code reviewed and commited the changes to my repo after resolving issues. The patch had to go through a number of interations to resolve the issues in prior patches. The last patch fixed all the major bugs.</p>
+
+<!--more-->
+
+
+<p>As I mentioned in my previous post I ported modernized <code>stylus</code> theme to <code>bootstrap</code> by making changes in <code>Global Tempates</code>. But Roger Haase suggested to make exlusive templates for Bootstrap themes as making changes to <code>Global templates</code> would restrict all the other theme developers to use Bootstrap&rsquo;s components such as <code>row</code> , <code>col-md-x</code> , <code>nav</code> , <code>panel</code>.. etc. I also made changes in Global Templates to make sure that it doesn&rsquo;t conflict with any bootstrap theme that work on top of it.</p>
+
+<h2>Show me the code!!</h2>
+
+<p><a href="https://codereview.appspot.com/242460043/">ChangeLogs from CR #2</a>:
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>ChangeLog from patch #2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Fixed the alignment of sub menu tabs and item views tabs
+</span><span class='line'>Added active visual effect to the current tab view
+</span><span class='line'>Fixed horizontal scroll bug
+</span><span class='line'>Fixed padding inside sub menu
+</span><span class='line'>Increased font size for wiki contents&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Automation + Global History&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Changelog 3 , new cr patch 1&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Added automation. run &lt;code>$ ./m css&lt;/code> to automatically compile all the less files.
+</span><span class='line'>Modernized theme now runs with the current version of xstatic bootstrap.
+</span><span class='line'>Rewrote &lt;code>global history&lt;/code> template
+</span><span class='line'>Changed font sizes at various places&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Changelog #4
+</span><span class='line'>Made changes as suggested in last CR&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>ChangeLog #5
+</span><span class='line'>Created a special directory exclusively for modernized theme&rsquo;s template.
+</span><span class='line'>Added footer and breadcrumb.
+</span><span class='line'>Made changes as suggested by mentors in previous patch</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Some of the bugs in previous CRs were:</p>
+
+<ul>
+<li><p>HTML validation error due to use of  form  inside ul and unclosed div tags.This is fixed in my last commit.</p></li>
+<li><p>Design break issues in mobile views. Fixed in commit:</p></li>
+<li><p>Design break issue when breadcrumb&rsquo;s patch is too large. Fixed in this commit.</p></li>
+</ul>
+
+
+<p><a href="https://codereview.appspot.com/245560043/">ChangeLogs from CR #3:</a>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Changes in User Setting and common.js to support highlighting of current links in menu&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Added common.css&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Current opened tab now highlights in menu&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Various css rules written to work on top/with common.css&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Fixed the issue &lsquo;jumping of footer while changing tabs in user setting&rsquo;&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Fixed issue with breadcrumbs when the location address gets too long.&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>Fixed all the HTML error validation errors&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></p>
+
+<p>The issues with last CR&rsquo;s were discussed with mentors and fixed.
+Quick summary of my commits:</p>
+
+<p>I actually made a new branch in my fork of repo called <code>improvethemes</code>. Since I am doing things step by step and some things get broken in intermediatlry stages, It wouldn&rsquo;t have been right to commit changes in main branch. This can be easily merged when this feature is working 100% without any bugs.</p>
+
+<p>Now back to summary:
+I have made 3 commits as yet , 4th one with improvements in usersetting page is exptected soon :).
+Anyway:</p>
+
+<ol>
+<li><p><a href="https://bitbucket.org/yask123/moin-2.0/commits/1aefd749090633d9e8f456ee0bbe8ae64f99cd0c">Commit #1</a> : Created a new branch <code>improvethemes</code></p></li>
+<li><p><a href="https://bitbucket.org/yask123/moin-2.0/commits/90961106254ee93a02f7d9ec1cc1b94a85457f7a">Commit #2</a> : Wrote a new modernized theme based on bootstrap and also made it&rsquo;s template files (layout.html, global_history.html)
+The template contains all the basic components such as navbar,sub menu, item menu, breadcrumb, footer.. etc.</p></li>
+<li><p><a href="https://bitbucket.org/yask123/moin-2.0/commits/2739ae9d435146871c6aec152ae809e065df6637">Commit #3</a> :
+Further improvements in modernized theme and few style fixes in basic theme
+Improvements in modernized theme:# Added common.css
+Current opened tab now highlights in menu
+Various css rules written to work on top/with common.css
+Fixed the issue &lsquo;jumping of footer while changing tabs in user setting&rsquo;
+Fixed issue with breadcrumbs when the location address gets too long.
+Fixed footer jump while changing tabs in user setting in basic theme
+Fixed design break issue in Basic theme&rsquo;s subscription box: <a href="http://i.imgur.com/4s1CIb3.png">http://i.imgur.com/4s1CIb3.png</a>
+Fixed design break in small resolution and removed form from under &lsquo;ul&rsquo;</p></li>
+<li><p><a href="https://bitbucket.org/yask123/moin-2.0/commits/473b16c00b1597c2a9b8464d8dc852959d0f537b">Commit #4</a>: Fixed HTML validation error due to unclosed div tag</p></li>
+</ol>
+
+
+<p>I also updated xstatic bootstrap here is the <a href="https://bitbucket.org/yask123/xstatic-bootstrap/commits/942330589c64df20f73f2c6b77ca4afee8a09f73">commmit</a>.
+This updates Bootstrap to version : 3.3.5</p>
+
+<h2>Show me the screenshots!!</h2>
+
+<p><img class="<a" src="href="http://i.imgur.com/mVXNklu.png">http://i.imgur.com/mVXNklu.png</a>"></p>
+
+<p><img class="<a" src="href="http://i.imgur.com/cxHhrfB.png">http://i.imgur.com/cxHhrfB.png</a>"></p>
+
+<p><img class="<a" src="href="http://i.imgur.com/sd9HPD8.png">http://i.imgur.com/sd9HPD8.png</a>"></p>
+
+<p><img class="<a" src="href="http://i.imgur.com/2Wg10ej.png">http://i.imgur.com/2Wg10ej.png</a>"></p>
+
+<p><img class="<a" src="href="http://i.imgur.com/ssN3WCy.png">http://i.imgur.com/ssN3WCy.png</a>"></p>
+
+<p><img class="<a" src="href="http://i.imgur.com/AzuSJSv.png">http://i.imgur.com/AzuSJSv.png</a>"></p>
+
+<h2>Other Updates ?</h2>
+
+<h4>Hackathon</h4>
+
+<p>Yea! I participated in  continuous 34 hours AngelHack Hackathon this week. It was a greeat experience and we made an opensource chat summarizer tool. I am really proud of this app. We worked together all night all day! It was a great experience. Well done Vinayak Mehta, Ketan bhutt , Pranu!.</p>
+
+<p>About this app:
+Summarize it is a chat summarizer plugin for instant messaging applications. It summarizes the large content of chat logs which enables users to quickly understand the current context of the conversation. Currently Summarize it works on top of Slack as its plugin.</p>
+
+<p><a href="http://iyask.me/SummarizeIt/">App Link</a></p>
+
+<h2>One last thing&hellip;!</h2>
+
+<h4>Teaching Django</h4>
+
+<p> I have started teaching Django web developement to college students as a part of their summer training. First class was on tuesday which was an introductory class. All of the students are enthusiastic! I really like Django and this is going to be a great experiance.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Gsoc Update]]></title>
+        <link href="http://iyask.me/blog/2015/06/17/gsoc-update/"/>
+        <updated>2015-06-17T20:45:38+05:30</updated>
+        <id>http://iyask.me/blog/2015/06/17/gsoc-update</id>
+        <content type="html"><![CDATA[<h3>Informal Intro</h3>
+
+<p><blockquote><p>Phew! So my end-terms exams just ended on 15th June.</p><footer><strong>@yask123</strong> <cite><a href="https://twitter.com/yask123/status/611206296411344897">https://twitter.com/yask123/status/611206296411344897</a></cite></footer></blockquote>
+But I had long gaps in between my exams so I was contributing to MoinMoin side by side in my free time.
+Now since my exams have finally ended, I can devote myself 100% to this. \o/</p>
+
+<!--more-->
+
+
+<h3>Progress</h3>
+
+<p>As I mentioned in my introductory blog post, we decided to use <code>Less</code>. I started by <code>modernized</code> theme. It used <code>stylus</code> for <code>CSS preprocessing</code>. Since our new <code>basic</code> theme worked on top of <code>Bootstrap's less</code> files we decided to redesign and port theme to work on top of it.
+I finished writing the base new theme for <code>modernized</code> and also rewrote the base template <code>layout.html</code> to use this theme.</p>
+
+<h3>Show me the code!!</h3>
+
+<p><a href="https://codereview.appspot.com/245270044/">Code Review</a> <em>On process</em></p>
+
+<h4>Description:</h4>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>This is a rewrite of the &lt;code>layout.html&lt;/code> template to work on top of Boostrap.
+</span><span class='line'>It also replaces the old stylus theme by new modernized bootstrap theme. The theme is written in &lt;code>theme.less&lt;/code> and &lt;code>modernized.less&lt;/code> file. The rest of the .less files are Bootstrap&rsquo;s default less files.
+</span><span class='line'>To test it on your machine: compile this file MoinMoin/themes/modernized/static/css/theme.less by lessc &lt;code>$ lessc theme.less &gt; ../css/&lt;/code>
+</span><span class='line'>So the files to look for are:
+</span><span class='line'>&lt;code>theme.less&lt;/code>
+</span><span class='line'>&lt;code>layout.html&lt;/code>
+</span><span class='line'>&lt;code>modernized.less&lt;/code>
+</span><span class='line'>Rest of the less files are from bootstrap source.
+</span><span class='line'>Rest of the css files are compiled form of less files by lessc.&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>ChangeLog from patch #2&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Fixed the alignment of sub menu tabs and item views tabs
+</span><span class='line'>Added active visual effect to the current tab view
+</span><span class='line'>Fixed horizontal scroll bug
+</span><span class='line'>Fixed padding inside sub menu
+</span><span class='line'>Increased font size for wiki contents&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Now the files to look for are :
+</span><span class='line'>&lt;code>theme.less&lt;/code>
+</span><span class='line'>&lt;code>layout.html&lt;/code>
+</span><span class='line'>&lt;code>modernized.less&lt;/code>
+</span><span class='line'>&lsquo;common.js&rsquo;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure>
+This is how our previous modernized theme looks:</p>
+
+<p><img class="<a" src="href="http://i.imgur.com/Z3giFwq.png">http://i.imgur.com/Z3giFwq.png</a>"></p>
+
+<p>This is how I styled it&rsquo;s menu and sub menu tabs:
+<img class="<a" src="href="http://i.imgur.com/0gaA1qh.png">http://i.imgur.com/0gaA1qh.png</a>"></p>
+
+<p>New Roboto fonts for the wiki contents
+<img class="<a" src="href="http://i.imgur.com/uYuMYoj.png">http://i.imgur.com/uYuMYoj.png</a>"></p>
+
+<p>Complete new look:</p>
+
+<p><img class="<a" src="href="http://i.imgur.com/2SHHUOJ.png">http://i.imgur.com/2SHHUOJ.png</a>"></p>
+
+<p>The code review is still under process so no commits have been made as yet.
+We also had a weekly meeting yesterday on <em>IRC channel</em> : <em>#moin-dev</em> where we discussed about our progress and future plannnings with all our mentors.</p>
+
+<h3>My developement configuration</h3>
+
+<p>I like to see the changes as I make thus compiling less file to css everytime after I made minor change was a big No No.</p>
+
+<p>I have added the complete project to <code>Codekit</code> and it automatically compiles and refreshes the page as soon as it detects any changes in the source code. :)</p>
+
+<p>We use mercurial as our version control system and this project is hosted on Bitbucket.
+I like to use sublime text as its super light.</p>
+
+<h3>Future Plans</h3>
+
+<ol>
+<li>Make changes in <code>make.py</code> file to automate the less file&rsquo;s compilation for modernized theme.</li>
+<li>Write CSS rules for all the elements</li>
+<li>Design footer, user setting page,&hellip; etc.</li>
+<li>Implement the changes mentioned my mentors on previous CR.</li>
+</ol>
+
+]]></content>
+    </entry>
+    
+</feed>

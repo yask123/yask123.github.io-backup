@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[Category: life | Yask's Personal Blog]]></title>
+    <link href="http://iyask.me/blog/categories/life/atom.xml" rel="self"/>
+    <link href="http://iyask.me/"/>
+    <updated>2015-07-15T15:49:03+05:30</updated>
+    <id>http://iyask.me/</id>
+    <author>
+        <name><![CDATA[Yask Srivastava]]></name>
+        
+      </author>
+    <generator uri="http://octopress.org/">Octopress</generator>
+
+    
+    <entry>
+        <title type="html"><![CDATA[I have been vimified  | Graph algo #2]]></title>
+        <link href="http://iyask.me/blog/2015/04/21/i-have-been-vimified-graph-algo-2/"/>
+        <updated>2015-04-21T14:01:26+05:30</updated>
+        <id>http://iyask.me/blog/2015/04/21/i-have-been-vimified-graph-algo-2</id>
+        <content type="html"><![CDATA[<p>Inspired from <a href="https://www.dropbox.com/sh/ot1cdzqoorzobm6/AAAObIcj8xgsOfGbj4CppPPCa?dl=0">slides</a> I decided to write my own DFS implementation [ Just to get the hang of vim ].
+ <!--more--></p>
+
+<p>Nah! I actually wrote lots of code [ Now I force my self to make Django applications on vim , more on that later. ] to get the hang of it, Just passing DFS gist here because I think it is cool :P .</p>
+
+<p>It was fun writing it because now I feel like a vim ninja. After weeks of frustration I finally feel like I have got the hang of it. I can perform all the basic thing like buffer copy paste , clipboard copy paste with indentations :) ,beautiful color scheme , awesome iterative search , auto complete , python auto indent , gist , running scripts from vim and much more :</p>
+
+<p>Here instead of making <code>visited</code> dictionary object I instead made <code>visited</code> list and conditioned <code>if in list</code> to avoid putting up the visited in <code>stack</code> .
+<div><script src='https://gist.github.com/cedc8944b3460f0970f4.js'></script>
+<noscript><pre><code>graph = { &#39;A&#39;:set([&#39;B&#39;, &#39;C&#39;]),
+         &#39;B&#39;: set([&#39;A&#39;, &#39;D&#39;, &#39;E&#39;]),
+         &#39;C&#39;: set([&#39;A&#39;, &#39;F&#39;]),
+         &#39;D&#39;: set([&#39;B&#39;]),
+         &#39;E&#39;: set([&#39;B&#39;, &#39;F&#39;]),
+         &#39;F&#39;: set([&#39;C&#39;, &#39;E&#39;])}
+
+s= &#39;A&#39;
+visited = set()
+stack = [s]
+
+while stack:
+    vertex = stack.pop()
+    if vertex not in visited:
+        visited.add(vertex)
+        stack.extend(graph[vertex] - visited)
+
+print visited</code></pre></noscript></div>
+</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Dev tools changes]]></title>
+        <link href="http://iyask.me/blog/2015/04/19/dev-tools-changes/"/>
+        <updated>2015-04-19T18:54:56+05:30</updated>
+        <id>http://iyask.me/blog/2015/04/19/dev-tools-changes</id>
+        <content type="html"><![CDATA[<p>Spoiler : By dev tools I mean Text Editor 😒</p>
+
+<p>I have started using <code>vim</code> these days. Sublime text is distracting for me. The random popups to register and it doesn&rsquo;t run inside from a terminal.😤
+ <!--more--></p>
+
+<p>On the other hand working on vim is much distraction free environment. It&rsquo;s full screen , you don&rsquo;t even touch mouse and the thought of checking Facebook notification goes because you are too lazy to move to mouse  .😜</p>
+
+<p>I was using <code>Janus</code> first which cluttered my <code>.vimrc</code> file with ugly configurations I could barely understand. On mac I upgraded to latest vim <code>brew install vim</code> and straight away went to this awesome website. <a href="http://vimawesome.com">http://vimawesome.com</a></p>
+
+<p>Installed the most important stuff required in code-editor <code>solarized color scheme</code>. And some more custom plugins I can&rsquo;t like without like <code>NERDTree</code> <code>CTRLP</code> <code>Gist</code> .. and stuff.</p>
+
+<p>I have a basic .vimrc file most of the stuff related to color scheme and the last line for python file execution [remapping key f9]
+<a href="https://gist.github.com/361e25c91a29c0ce176a">https://gist.github.com/361e25c91a29c0ce176a</a></p>
+
+<p>Here is a list of bundles I installed , pasting it here for future reference: 😇</p>
+
+<p>➜ bundle ls
+auto-pairs gist-vim molokai python-syntax test.py vim-colors-solarized vim-indent-guides vim-surround
+ctrlp.vim html5.vim nerdtree supertab vim-airline vim-colorschemes vim-javascript-syntax webapi-vim</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Nodes -> Reversal -> FindingMiddleTerm-> None]]></title>
+        <link href="http://iyask.me/blog/2015/04/19/nodes-reversal-findingmiddleterm-none/"/>
+        <updated>2015-04-19T18:36:18+05:30</updated>
+        <id>http://iyask.me/blog/2015/04/19/nodes-reversal-findingmiddleterm-none</id>
+        <content type="html"><![CDATA[<p>Linked list is OLD</p>
+
+<p>I can&rsquo;t think of it&rsquo;s implementation these days. It should be a crime to be even discussing about it today when  we can use awesome objects such as a list [as in Python]. But somewhere across a reddit post some one mentioned linked list reversal thing and I thought to myself to implement this in python because I have nothing to do.
+ <!--more--></p>
+
+<p>I haven&rsquo;t done much object-oriented related stuff in python much. Mostly working with script without ever making classes or even a function. So this was  just to revise pretty basic stuff.</p>
+
+<p>Here is a simple implementation on linked list , function to reverse it and to find the middle element by Floyed&rsquo;s Algorithm.</p>
+
+<p>(% gist aceae3d2cda50740ec25 %}</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Simple BFS implementation in Python]]></title>
+        <link href="http://iyask.me/blog/2015/04/01/simple-dfs-implementation-in-python/"/>
+        <updated>2015-04-01T01:19:24+05:30</updated>
+        <id>http://iyask.me/blog/2015/04/01/simple-dfs-implementation-in-python</id>
+        <content type="html"><![CDATA[<p>I was revising some basic DS stuff. So this is mine basic implementation of BFS algorithm in the most simplistic form.
+ <!--more-->
+[code language=&ldquo;python&rdquo;]
+graph = {&lsquo;0&rsquo;: set([&lsquo;1&rsquo;, &lsquo;2&rsquo;]),
+         &lsquo;1&rsquo;: set([&lsquo;2&rsquo;]),
+         &lsquo;2&rsquo;: set([&lsquo;0&rsquo;, &lsquo;3&rsquo;]),
+         &lsquo;3&rsquo;: set([&lsquo;3&rsquo;])}</p>
+
+<p>visited={}
+for each_node in graph:
+    visited[each_node]=False</p>
+
+<p>s=&lsquo;2&rsquo;</p>
+
+<p>queue=[]
+queue.append(s)</p>
+
+<p>while len(queue) &amp;gt;0:
+    s=queue.pop(0)
+    print s
+    for each_node in graph[s]:
+        #print queue
+        if not visited[each_node]:
+            visited[each_node]=True
+            queue.append(each_node)
+[/code]</p>
+
+<p>Neat eh?</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[My secret for productivity :P]]></title>
+        <link href="http://iyask.me/blog/2015/03/29/my-secret-for-productivity-p/"/>
+        <updated>2015-03-29T00:04:20+05:30</updated>
+        <id>http://iyask.me/blog/2015/03/29/my-secret-for-productivity-p</id>
+        <content type="html"><![CDATA[<p>I was recently writng a summer of code proposal where I had to put up screnshots. Many many screenshots!</p>
+
+<p>So it was:</p>
+
+<p> <!--more--></p>
+
+<ol>
+<li><p>Press command+shift+4</p></li>
+<li><p>open url browser</p></li>
+<li><p>visit some image sharing website</p></li>
+<li><p>click upload</p></li>
+<li><p>browse the screenshot file</p></li>
+<li><p>click upload</p></li>
+<li><p>Phew</p></li>
+<li><p>Now right click the url</p></li>
+<li><p>click copy</p></li>
+<li><p>Delete the screenshot file from my computer</p></li>
+</ol>
+
+
+<p>Thats freaking 10 steps which were driving me crazy! So I had to write a script.</p>
+
+<p>It’s a python script which will do all of that in one keyboard short cut.</p>
+
+<p>I was going to use my own web app [imagepastry] for this.But then I saw imgurl has really cool api for image upload.So I used it instead.</p>
+
+<p>For creating unique file names for every screenshot I used <code>currentDatecurrentTime</code>.png format</p>
+
+<p>Create as many screenshots without cluttering your screen!</p>
+
+<p><a href="https://github.com/yask123/AutoScreenshotUploader-/tree/master">Link</a></p>
+
+<p>In OSX you can add keyboard shortcuts to the script by Automator.</p>
+
+<p>[code language=&ldquo;python&rdquo;]</p>
+
+<p>import base64
+import requests
+import os
+from datetime import datetime
+import os
+import webbrowser
+os.getcwd()</p>
+
+<h1>This api key is only for testing. If you plan to use this script , please get your own api :)</h1>
+
+<p>api_key = &ldquo;4adaaf1bd8caec42a5b007405e829eb0&rdquo;
+url = &ldquo;<a href="http://api.imgur.com/2/upload.json">http://api.imgur.com/2/upload.json</a>&rdquo;</p>
+
+<p>os.system(&lsquo;&rsquo;)</p>
+
+<p>filename=datetime.now().strftime(&lsquo;%Y-%m-%d%H:%M:%S&rsquo;)
+t=filename+&lsquo;.png&rsquo;</p>
+
+<p>print t
+os.system(&lsquo;screencapture &rsquo;+t)
+fileadd=os.getcwd()+&lsquo;/&rsquo;+t</p>
+
+<p>fh = open(fileadd, &lsquo;rb&rsquo;);
+base64img = base64.b64encode(fh.read())
+r = requests.post(url, data={&lsquo;key&rsquo;: api_key, &lsquo;image&rsquo;:base64img})
+print (r.json()[&lsquo;upload&rsquo;][&lsquo;links&rsquo;][&lsquo;original&rsquo;])
+link = r.json()[&lsquo;upload&rsquo;][&lsquo;links&rsquo;][&lsquo;original&rsquo;]</p>
+
+<p>os.system(&ldquo;echo &lsquo;%s&rsquo; | pbcopy&rdquo; % link)
+webbrowser.open(link)
+os.command(&lsquo;rm fileadd&rsquo;)</p>
+
+<p>[/code]</p>
+
+<p><img src="http://yask007.files.wordpress.com/2015/03/a4847d08-2c66-4cd7-9205-3526ceb94558.png" alt="" /></p>
+]]></content>
+    </entry>
+    
+</feed>

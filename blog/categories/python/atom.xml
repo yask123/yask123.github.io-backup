@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[Category: python | Yask's Personal Blog]]></title>
+    <link href="http://iyask.me/blog/categories/python/atom.xml" rel="self"/>
+    <link href="http://iyask.me/"/>
+    <updated>2015-07-15T15:49:03+05:30</updated>
+    <id>http://iyask.me/</id>
+    <author>
+        <name><![CDATA[Yask Srivastava]]></name>
+        
+      </author>
+    <generator uri="http://octopress.org/">Octopress</generator>
+
+    
+    <entry>
+        <title type="html"><![CDATA[Tree implementation in python]]></title>
+        <link href="http://iyask.me/blog/2015/04/10/tree-implementation-in-python/"/>
+        <updated>2015-04-10T18:25:08+05:30</updated>
+        <id>http://iyask.me/blog/2015/04/10/tree-implementation-in-python</id>
+        <content type="html"><![CDATA[<p>Python doesn&rsquo;t come with pre-defined tree objects but due to it&rsquo;s dynamic nature we can easily implement it either via objects attributes or by dictionary. For tree traversing I find this representation to be the most simplistic
+ <!--more--></p>
+
+<p>[code language=&ldquo;python&rdquo;]</p>
+
+<p>tree  = { parent : [left_child,right_child] , parent #2 :[left_child,right_child]&hellip;.}</p>
+
+<p>[/code]</p>
+
+<p>It&rsquo;s easy for traversing , check out my inorder,postorder,pre-order traversal [by recursion]</p>
+
+<pre><code class="python ">tree = {1:[2,3],2:[4,5],3:[None,None],4:[None,None],5:[None,None]}
+
+def inorder(root):
+
+    if root == None:
+        return 0
+    inorder(tree[root][0])
+    print (root)
+    inorder(tree[root][1])
+
+print inorder(1)
+
+def postorder(root):
+    if root == None:
+        return 0
+
+    postorder(tree[root][0])
+    postorder(tree[root][1])
+    print root
+
+print postorder(1)
+
+def preorder(root):
+    if root == None:
+        return 0
+
+    print root
+    preorder(tree[root][0])
+    preorder(tree[root][1])
+
+print preorder(1)
+</code></pre>
+
+<p>And while we are at it lets modify this to calculate the size of the tree
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">tree</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="mi">2</span><span class="p">:[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span><span class="mi">3</span><span class="p">:[</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">],</span><span class="mi">4</span><span class="p">:[</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">],</span><span class="mi">5</span><span class="p">:[</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">]}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">root</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">root</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">size</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">root</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+</span><span class='line'><span class="k">print</span> <span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>This technique is slow and uses recursion which can be ofcourse enhanced by implementing threaded tree.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Phew! Just finished writing AnonymousChatters Application ! It's live :)]]></title>
+        <link href="http://iyask.me/blog/2015/03/07/phew-just-finished-writing-anonymouschatters-application-its-live/"/>
+        <updated>2015-03-07T03:45:45+05:30</updated>
+        <id>http://iyask.me/blog/2015/03/07/phew-just-finished-writing-anonymouschatters-application-its-live</id>
+        <content type="html"><![CDATA[<p>&ldquo;Man is least himself when he talks in his own person. Give him a <strong>mask</strong>, and he will tell you the truth.&rdquo; - <em>Oscar Wilde</em></p>
+
+<p>Ah! So finally I took out some time to build this application!</p>
+
+<p>About the app:
+ <!--more-->
+How it works?</p>
+
+<p><strong><em>Create secret chat rooms -> share keys with the people you wish to discuss the topic -> Start bold discussions! </em></strong></p>
+
+<p>No signups ! No registrations ! No IP address  tracking!</p>
+
+<p>In fact there isn&rsquo;t any column in the backend table to store anything other than chat messages and their timings.</p>
+
+<p>emojis are awesome :D</p>
+
+<p>Here are the screenshots:</p>
+
+<p><a href="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-38-46.png"><img src="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-38-46.png?w=605" alt="Screenshot_2015-03-07-02-38-46" /></a> <a href="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-42-21.png"><img src="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-42-21.png?w=605" alt="Screenshot_2015-03-07-02-42-21" /></a> <a href="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-43-01.png"><img src="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-43-01.png?w=605" alt="Screenshot_2015-03-07-02-43-01" /></a> <a href="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-55-00.png"><img src="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-55-00.png?w=605" alt="Screenshot_2015-03-07-02-55-00" /></a> <a href="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-55-05.png"><img src="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-55-05.png?w=188" alt="Screenshot_2015-03-07-02-55-05" /></a> <a href="https://yask007.files.wordpress.com/2015/03/screen-shot-2015-03-06-at-12-23-34-pm.png"><img src="https://yask007.files.wordpress.com/2015/03/screen-shot-2015-03-06-at-12-23-34-pm.png?w=605" alt="Screen Shot 2015-03-06 at 12.23.34 PM" /></a></p>
+
+<p>Thats too much for a single post I guess :P</p>
+
+<p>This is just the beta version , few things which will be updated very quickly :</p>
+
+<ol>
+<li><p>Encrypted room keys</p></li>
+<li><p>Live reloading in chats</p></li>
+<li><p>Design improvements</p></li>
+</ol>
+
+
+<p>Website is live here: <a href="http://anonymouschatters.appspot.com/">http://anonymouschatters.appspot.com/</a></p>
+
+<p>Suggestions are welcome.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[What's up?]]></title>
+        <link href="http://iyask.me/blog/2015/03/02/whats-up/"/>
+        <updated>2015-03-02T02:00:36+05:30</updated>
+        <id>http://iyask.me/blog/2015/03/02/whats-up</id>
+        <content type="html"><![CDATA[<h3>Opensource</h3>
+
+<p>Inspiration :</p>
+
+<p>&ldquo;I&rsquo;m doing a free operating system just a hobby, won&rsquo;t be big and professional like gnu for 386 (486) AT clones.&rdquo;
+-Linus Torvalds</p>
+
+<p>It&rsquo;s not that I haven&rsquo;t been writing lately. It&rsquo;s just that I am writing at too many places now <strong>sigh</strong>.
+ <!--more--></p>
+
+<p>Updates?</p>
+
+<p>Well my exams got over last week.</p>
+
+<p>These days I am super active in open source contribution. I was super psyched and was even fixing bugs during my exams.</p>
+
+<p>I started open source contribution with  Kuma a django based project of Mozilla community. I had fixed a few bugs and some of my patches were eventually merged in the main branch. It felt really  exhilarating that my code was running on Mozilla Developer Network website and was effecting thousands of users worldwide.</p>
+
+<p>But then my focus shifted towards my self taken projects and competitive programming due to ACM-ICPC event. The event was awesome ! We <a href="http://icpc.baylor.edu/regionals/finder/kharagpur-2014/standings">ranked under 50 </a> (<a href="http://icpc.baylor.edu/regionals/finder/kharagpur-2014/standings">Baylor&rsquo;s rank list</a>) [Team name: <code>limitless</code>].</p>
+
+<p>We were also called for Directi internship interview. I cleared the 1st round. The competition on round 2 was a bit tough for me and I couldn&rsquo;t clear it. Really need to improve myself in this. But overall it was a nice experience and we also got Amazon shopping vouchers :D .</p>
+
+<p>Coming back to open source I think I really found the project that I am passionate about. Yes I am working in a python community , Duh! One of which is python library for symbolic mathematics and the other one is a python wiki. Till now I have posted 4-5 bugs and submitted patches for 4 bugs. Some of my patches have been merged on the main branch while the others are on their way.</p>
+
+<p>I am learning a lot in this community. Open source  really teaches teamwork and discipline.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[BVPmart ~Web App]]></title>
+        <link href="http://iyask.me/blog/2014/08/18/bvpmart-web-app/"/>
+        <updated>2014-08-18T23:41:06+05:30</updated>
+        <id>http://iyask.me/blog/2014/08/18/bvpmart-web-app</id>
+        <content type="html"><![CDATA[<p><a href="https://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204217.png"><img src="http://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204217.png" alt="Screenshot from 2014-08-18 20:42:17" /></a></p>
+
+<p>Today I finished writing the web app &lsquo;<a href="http://www.bvpmart.co.nr/">BVPmart'</a> and deployed it on Google App engine.This is my 4th application on this platform and I followed the same scripting language , Python 2.7 for this.Although I did get a bit adventurous this time and decided to use <a href="http://jinja.pocoo.org/">Jijna2 Python Template</a> [instead of Django] ,Nevertheless  it was fairly easy to learn due to its comprehensive documentation.</p>
+
+<p>The idea was to serve the website as a place for advertisement for the products you want to sell/ donate.I intend to make this platform exclusively for my college students.The website has a clean form for taking input for advertisements.The advertisement data entered by the user is stored in our Google App Engine DataStore and displayed by a running loop in the front page querying the data from the database and displaying it on the main page arranged in descending order of ad&rsquo;s submit server time.</p>
+
+<p>For the lovely front end I am using<a href="https://github.com/coto/gae-boilerplate"> Google App Engine Boilerplate </a></p>
+
+<p>This is how it looks.</p>
+
+<p><a href="https://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204217.png"><img src="http://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204217.png" alt="Screenshot from 2014-08-18 20:42:17" /></a> <a href="https://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204343.png"><img src="http://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204343.png" alt="Screenshot from 2014-08-18 20:43:43" /></a> <a href="https://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204411.png"><img src="http://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204411.png" alt="Screenshot from 2014-08-18 20:44:11" /></a></p>
+
+<p>I believe there is lots of stuff yet to be done , like:</p>
+
+<p>1)Google/Facebook sign in</p>
+
+<p>2)AD content verification</p>
+
+<p>3)SMS notification</p>
+
+<p>4) I don&rsquo;t like the idea of openly sharing the phone number of the seller.Some mechanism to avoid this.</p>
+
+<p>If you have any suggestions , please comment bellow or mail me at <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x79;&#x61;&#x73;&#107;&#x31;&#50;&#51;&#64;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#121;&#97;&#115;&#x6b;&#x31;&#x32;&#51;&#x40;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;</a></p>
+
+<p>App Link: <a href="http://www.bvpmart.co.nr/">http://www.bvpmart.co.nr/</a></p>
+
+<p>, <a href="http://bvpmart.appspot.com/">http://bvpmart.appspot.com/</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Result Checker App Demo]]></title>
+        <link href="http://iyask.me/blog/2014/08/10/result-checker-app-demo/"/>
+        <updated>2014-08-10T16:06:20+05:30</updated>
+        <id>http://iyask.me/blog/2014/08/10/result-checker-app-demo</id>
+        <content type="html"><![CDATA[<p>Here is the Demo video of the application.</p>
+
+<p><a href="https://github.com/yask123/ipu_result">Github Link</a></p>
+
+<p><a href="https://github.com/yask123/ipu_result">[youtube=https://www.youtube.com/watch?v=riI9AeHpUxU]</a></p>
+]]></content>
+    </entry>
+    
+</feed>

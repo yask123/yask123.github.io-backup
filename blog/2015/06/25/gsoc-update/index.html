@@ -1,0 +1,434 @@
+<!doctype html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+    
+      
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>GSoC Updates | Hackathon | Teaching Django - Yask's Personal Blog</title>
+        <meta name="author" content="Yask Srivastava">
+        
+        <meta name="description" content="GSoC Updates | Hackathon | Teaching Django Jun 25th, 2015 gsoc Informal Intro Ah! This week was a bit hectic. But I was able to do considerable &hellip;">
+        
+        <meta name="viewport" content="width=device-width">
+        <link rel="canonical" href="http://iyask.me/blog/2015/06/25/gsoc-update">
+
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+
+        
+        <link href="/favicon.png" rel="icon">
+        <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet">
+        <link href="/atom.xml" rel="alternate" title="Yask's Personal Blog" type="application/atom+xml">
+    </head>
+
+
+    <body >
+
+        <header id="header">
+    <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-4">
+        <a href="/" class="site-title">Yask's Personal Blog</a>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-8">
+        <nav>
+    <input type="checkbox" id="toggle">
+    <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+    <ul class="menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/">Blog</a></li>
+</ul>
+
+</nav>
+
+    </div>
+</div>
+
+</header>
+
+
+        <div id="main-content">
+
+            <!--[if lte IE 9]>
+<div class="row upgrade-row">
+    <div class="col-lg-12">
+        <div class="upgrade">
+            <i class="upgrade__icon fa fa-warning"></i>
+            <h1 class="upgrade__title h6">Ohnoes!</h1>
+            <p class="upgrade__text">
+                Unfortunately, certain parts of this site may not display correctly in your version of Internet Explorer!<br>
+                If possible, you should consider <a href="http://browsehappy.com/">upgrading your browser</a>.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- <![endif]-->
+
+
+            
+
+            <div class="row top-xs center-sm center-md center-lg site-wrapper">
+                
+                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                
+                    <article class="article article--single">
+    <header class="article__header">
+    
+        <h1 class="article__title">GSoC Updates | Hackathon | Teaching Django</h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2015-06-25T18:24:33+05:30" pubdate><i class="fa fa-calendar"></i> Jun 25th, 2015</time>
+
+
+
+
+            
+
+    <div class="article__tags pull-left">
+        <i class="fa fa-tags"></i>
+        <ul class="unstyled">
+        
+
+            
+                <li><a class='category' href='/blog/categories/gsoc/'>gsoc</a></li>
+            
+        
+        </ul>
+    </div>
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <h3>Informal Intro</h3>
+
+<blockquote><p>Ah! This week was a bit hectic. But I was able to do considerable amount of work.</p><footer><strong>@yask123</strong></footer></blockquote>
+
+
+<p>I got all my pending code reviewed and commited the changes to my repo after resolving issues. The patch had to go through a number of interations to resolve the issues in prior patches. The last patch fixed all the major bugs.</p>
+
+<!--more-->
+
+
+<p>As I mentioned in my previous post I ported modernized <code>stylus</code> theme to <code>bootstrap</code> by making changes in <code>Global Tempates</code>. But Roger Haase suggested to make exlusive templates for Bootstrap themes as making changes to <code>Global templates</code> would restrict all the other theme developers to use Bootstrap&rsquo;s components such as <code>row</code> , <code>col-md-x</code> , <code>nav</code> , <code>panel</code>.. etc. I also made changes in Global Templates to make sure that it doesn&rsquo;t conflict with any bootstrap theme that work on top of it.</p>
+
+<h2>Show me the code!!</h2>
+
+<p><a href="https://codereview.appspot.com/242460043/">ChangeLogs from CR #2</a>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#ChangeLog from patch #2
+</span><span class='line'>Fixed the alignment of sub menu tabs and item views tabs
+</span><span class='line'>Added active visual effect to the current tab view
+</span><span class='line'>Fixed horizontal scroll bug
+</span><span class='line'>Fixed padding inside sub menu
+</span><span class='line'>Increased font size for wiki contents
+</span><span class='line'>
+</span><span class='line'>Automation + Global History
+</span><span class='line'># Changelog 3 , new cr patch 1
+</span><span class='line'>Added automation. run `$ ./m css ` to automatically compile all the less files.
+</span><span class='line'>Modernized theme now runs with the current version of xstatic bootstrap.
+</span><span class='line'>Rewrote `global history` template
+</span><span class='line'>Changed font sizes at various places
+</span><span class='line'>
+</span><span class='line'>Changelog #4
+</span><span class='line'>Made changes as suggested in last CR
+</span><span class='line'>
+</span><span class='line'>ChangeLog #5
+</span><span class='line'>Created a special directory exclusively for modernized theme's template.
+</span><span class='line'>Added footer and breadcrumb.
+</span><span class='line'>Made changes as suggested by mentors in previous patch</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Some of the bugs in previous CRs were:</p>
+
+<ul>
+<li><p>HTML validation error due to use of  form  inside ul and unclosed div tags.This is fixed in my last commit.</p></li>
+<li><p>Design break issues in mobile views. Fixed in commit:</p></li>
+<li><p>Design break issue when breadcrumb&rsquo;s patch is too large. Fixed in this commit.</p></li>
+</ul>
+
+
+<p><a href="https://codereview.appspot.com/245560043/">ChangeLogs from CR #3:</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Changes in User Setting and common.js to support highlighting of current links in menu
+</span><span class='line'># Added common.css
+</span><span class='line'># Current opened tab now highlights in menu
+</span><span class='line'># Various css rules written to work on top/with common.css
+</span><span class='line'># Fixed the issue 'jumping of footer while changing tabs in user setting'
+</span><span class='line'># Fixed issue with breadcrumbs when the location address gets too long.
+</span><span class='line'># Fixed all the HTML error validation errors</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The issues with last CR&rsquo;s were discussed with mentors and fixed.
+Quick summary of my commits:</p>
+
+<p>I actually made a new branch in my fork of repo called <code>improvethemes</code>. Since I am doing things step by step and some things get broken in intermediatlry stages, It wouldn&rsquo;t have been right to commit changes in main branch. This can be easily merged when this feature is working 100% without any bugs.</p>
+
+<p>Now back to summary:
+I have made 3 commits as yet , 4th one with improvements in usersetting page is exptected soon :).
+Anyway:</p>
+
+<ol>
+<li><p><a href="https://bitbucket.org/yask123/moin-2.0/commits/1aefd749090633d9e8f456ee0bbe8ae64f99cd0c">Commit #1</a> : Created a new branch <code>improvethemes</code></p></li>
+<li><p><a href="https://bitbucket.org/yask123/moin-2.0/commits/90961106254ee93a02f7d9ec1cc1b94a85457f7a">Commit #2</a> : Wrote a new modernized theme based on bootstrap and also made it&rsquo;s template files (layout.html, global_history.html)
+The template contains all the basic components such as navbar,sub menu, item menu, breadcrumb, footer.. etc.</p></li>
+<li><p><a href="https://bitbucket.org/yask123/moin-2.0/commits/2739ae9d435146871c6aec152ae809e065df6637">Commit #3</a> :
+Further improvements in modernized theme and few style fixes in basic theme
+Improvements in modernized theme:# Added common.css
+Current opened tab now highlights in menu
+Various css rules written to work on top/with common.css
+Fixed the issue &lsquo;jumping of footer while changing tabs in user setting&rsquo;
+Fixed issue with breadcrumbs when the location address gets too long.
+Fixed footer jump while changing tabs in user setting in basic theme
+Fixed design break issue in Basic theme&rsquo;s subscription box: <a href="http://i.imgur.com/4s1CIb3.png">http://i.imgur.com/4s1CIb3.png</a>
+Fixed design break in small resolution and removed form from under &lsquo;ul&rsquo;</p></li>
+<li><p><a href="https://bitbucket.org/yask123/moin-2.0/commits/473b16c00b1597c2a9b8464d8dc852959d0f537b">Commit #4</a>: Fixed HTML validation error due to unclosed div tag</p></li>
+</ol>
+
+
+<p>I also updated xstatic bootstrap here is the <a href="https://bitbucket.org/yask123/xstatic-bootstrap/commits/942330589c64df20f73f2c6b77ca4afee8a09f73">commmit</a>.
+This updates Bootstrap to version : 3.3.5</p>
+
+<h2>Show me the screenshots!!</h2>
+
+<p><img src="http://i.imgur.com/mVXNklu.png"></p>
+
+<p><img src="http://i.imgur.com/cxHhrfB.png"></p>
+
+<p><img src="http://i.imgur.com/sd9HPD8.png"></p>
+
+<p><img src="http://i.imgur.com/2Wg10ej.png"></p>
+
+<p><img src="http://i.imgur.com/ssN3WCy.png"></p>
+
+<p><img src="http://i.imgur.com/AzuSJSv.png"></p>
+
+<h2>Other Updates ?</h2>
+
+<h4>Hackathon</h4>
+
+<p>Yea! I participated in  continuous 34 hours AngelHack Hackathon this week. It was a greeat experience and we made an opensource chat summarizer tool. I am really proud of this app. We worked together all night all day! It was a great experience. Well done Vinayak Mehta, Ketan bhutt , Pranu!.</p>
+
+<p>About this app:
+Summarize it is a chat summarizer plugin for instant messaging applications. It summarizes the large content of chat logs which enables users to quickly understand the current context of the conversation. Currently Summarize it works on top of Slack as its plugin.</p>
+
+<p><a href="http://iyask.me/SummarizeIt/">App Link</a></p>
+
+<h2>One last thing&hellip;!</h2>
+
+<h4>Teaching Django</h4>
+
+<p> I have started teaching Django web developement to college students as a part of their summer training. First class was on tuesday which was an introductory class. All of the students are enthusiastic! I really like Django and this is going to be a great experiance.</p>
+
+
+
+</article>
+
+
+
+                </div>
+
+                
+                <aside class="sidebar col-xs-12 col-md-4 col-lg-4">
+                    <div class="row">
+
+    
+        <section class="hire--aside col-xs-12 col-sm-10 col-md-12">
+            
+    
+
+
+
+    
+
+
+
+
+<div class="hire hire--available">
+    <a class="hire__link" href="mailto:?subject=New%20job%20opportunity">
+        Available for new opportunities
+    </a>
+</div>
+
+
+        </section>
+    
+
+    
+<section class="social col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Follow me!
+    </h1>
+    <ul class="unstyled">
+        
+        
+        
+        
+        <li><a class="github" href="//github.com/yask123"><i class="fa fa-github"></i> Github</a></li>
+        <li><a class="googleplus" href="//plus.google.com/+yasksrivastava"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+        <li><a class="hackernews" href="//news.ycombinator.com/user?id=yask123"><i class="fa fa-hacker-news"></i> Hacker News</a></li>
+        
+        <li><a class="linkedin" href="//linkedin.com/in/yask123"><i class="fa fa-linkedin-square"></i> LinkedIn</a></li>
+        
+        <li><a class="reddit" href="//reddit.com/user/yask123"><i class="fa fa-reddit"></i> reddit</a></li>
+        <li><a class="stackoverflow" href="//stackoverflow.com/users/3574214/yask"><i class="fa fa-stack-overflow"></i> StackOverflow</a></li>
+        <li><a class="twitter" href="//twitter.com/yask123"><i class="fa fa-twitter"></i> Twitter</a></li>
+        <li><a class="youtube" href="//youtube.com/user/yask124"><i class="fa fa-youtube"></i> YouTube</a></li>
+    </ul>
+</section>
+
+
+
+    <section id="recent-posts" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>Recent Posts</h1>
+    <ul class="divided">
+        
+        <li class="post">
+            <a href="/blog/2015/07/15/gsoc-updates/">GSoC Updates</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/28/new-usersettings-and-various-tweaks/">New UserSettings and various tweaks</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/25/gsoc-update/">GSoC Updates | Hackathon | Teaching Django</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/17/gsoc-update/">Gsoc Update</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/04/21/i-have-been-vimified-graph-algo-2/">I have been vimified  | Graph algo #2</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+
+
+
+<section id="twitter-timeline" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Latest Tweets
+        
+        <small class="pull-right">
+            <a class="btn" href="//twitter.com/yask123" title="@yask123 on Twitter" target="_blank">
+                <i class="fa fa-external-link"></i>
+            </a>
+        </small>
+        
+    </h1>
+
+    <a class="twitter-timeline" data-dnt="true" href="//twitter.com/yask123"  data-widget-id="615244773633298432"  data-link-color="#049cdb" data-tweet-limit="" data-chrome="noheader nofooter transparent noscrollbar">Tweets by @yask123</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+
+
+</div>
+
+                </aside>
+                
+            </div>
+        </div>
+
+        
+
+    
+    
+
+
+
+
+<footer class="footer">
+    <div class="row middle-xs">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="footer__copyright">
+    All content copyright Yask Srivastava.<br>
+    Code under <a href="//github.com/coogie/oscailte/blob/master/README.md">MIT Licence</a>.
+</p>
+
+        </div>
+        
+        
+    </div>
+</footer>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script defer src="/javascripts/octopress.js"></script>
+
+
+<script>
+    var _gaq=[['_setAccount','UA-61023878-2'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+</html>

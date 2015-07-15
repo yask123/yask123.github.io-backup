@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[Yask's Personal Blog]]></title>
+    <link href="http://iyask.me/atom.xml" rel="self"/>
+    <link href="http://iyask.me/"/>
+    <updated>2015-07-15T15:49:03+05:30</updated>
+    <id>http://iyask.me/</id>
+    <author>
+        <name><![CDATA[Yask Srivastava]]></name>
+        
+    </author>
+    <generator uri="http://octopress.org/">Octopress</generator>
+
+    
+    <entry>
+        <title type="html"><![CDATA[GSoC Updates]]></title>
+        <link href="http://iyask.me/blog/2015/07/15/gsoc-updates/"/>
+        <updated>2015-07-15T13:35:53+05:30</updated>
+        <id>http://iyask.me/blog/2015/07/15/gsoc-updates</id>
+        <content type="html"><![CDATA[<p><a href="https://codereview.appspot.com/252930043/">Lastly</a> I worked on UserSetting. But most of that work had to be reverted after discussions. I was pointed to <a href="https://bitbucket.org/thomaswaldmann/moin-2.0/issues/471/merge-most-basic-theme-templates-into">this issue</a> where it is suggested to merge template with common features.</p>
+
+<!--more-->
+
+
+<p>The alternative was to use <code>less mixins</code>. So for eg. form styling with Bootstrap :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">form</span> <span class="nt">input</span><span class="o">,</span><span class="nt">textarea</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">.</span><span class="n">form</span><span class="o">-</span><span class="n">control</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But this resulted in significant increase in <code>.css</code> file.</p>
+
+<p>Lastly I had to resort to editing form macros to use <code>Bootstrap compnents</code>.</p>
+
+<p>So exclusive form macros for themes. While this does increase the codebase slightly, their won&rsquo;t be any performing issue in site loading.</p>
+
+<p>But I <del>am not using</del>  can&rsquo;t use Bootstrap <code>nav-tabs</code>, instead I styled it to fit the theme. Here is how it looks:
+<img src="http://i.imgur.com/neyADlO.png"></p>
+
+<p><a href="https://codereview.appspot.com/252930043/">Previously</a>  I had implemented these tabs with Bootstrap components, but that did look like an overplay since I also had to write separate javascript for indicating <code>*</code> symbol to unsaved forms.</p>
+
+<p>I also worked on <code>index</code> page to use Bootstrap components (<code>Buttons, Paginations..</code>) .</p>
+
+<p><img src="http://i.imgur.com/YJQMH1N.png" title="" ></p>
+
+<p>Content inside the footer is now more consistent by a simple trick I learned from <code>css tricks blog</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.footer</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span><span class="k">relative</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">...</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nf">#moin-creditlogos</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">top</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">....</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Roger occasionally <code>forks</code> my repo to test my work. He noticed a bug <code>irregular header collabse in header in mobile view</code>. I fixed the issue in the last commit.</p>
+
+<p>For error validations which looked ugly :
+<img src="http://i.imgur.com/iDnME65.png"></p>
+
+<p>I used <code>HTML 5</code> validations and pattern maching (for emails, password.. etc).</p>
+
+<p><img src="http://i.imgur.com/WZumOQM.png"></p>
+
+<p><img src="http://i.imgur.com/czU7LR6.png"></p>
+
+<p>There was also a slight bummer last week.</p>
+
+<p> I was using some extension in mercurial which made numerous commits without my consent. <code>Ajitesh</code> suggested to delete the repo and recommit all changes.</p>
+
+<p> That took some time, but I took that as an opportunity to write more verbose <a href="https://bitbucket.org/yask123/moin-2.0/commits/all"><code>commit messages</code></a></p>
+
+<h3>CheckList:</h3>
+
+<ul>
+<li>Fix broken search (Fixed ✓)</li>
+<li>Fix footer icons coming almost at the border (Fixed ✓)</li>
+<li>Fix alignment of the buttons in modernized forms (Fixed ✓)</li>
+<li>Modernized item history still has old tables (I&rsquo;ll do it today)</li>
+<li>Give a border around text input boxes in modernized (✘)</li>
+<li>Highlight the content in the modernized theme else it looks too much like basic(✘)</li>
+</ul>
+
+
+<h3>Other Updates</h3>
+
+<p>I was invited to give a speech in <a href="https://www.facebook.com/events/874259285973030/?ref_newsfeed_story_type=regular&amp;action_history=null">Software Development: The Open Source Way</a> in IIIT-Delhi.</p>
+
+<p><img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/s2048x2048/11046471_10204394056679731_3389022122003502896_o.jpg"></p>
+
+<p>It was a wonderful experience, I love talking/motivating people to use and contribute <code>opensource</code> softwares.</p>
+
+<p>And the response was amazing! Couple of people complimented me personally and requested for link to my slides :)</p>
+
+<p><img src="http://i.imgur.com/IvEynh4.png"></p>
+
+<h3>Teaching Django in college</h3>
+
+<p>I love django and I am currently teaching first year students of my college python and Django. This is truely an amazing experience!</p>
+
+<p>Again, response is pretty good.</p>
+
+<blockquote><p>His words are so motivating . that i tend to do whatever he tells us .. he told us to start blogging …so here i am .. writing my first blog ."</p><footer><strong>Ankita Khurana @Wordpress</strong> <cite><a href='https://anki25.wordpress.com/2015/07/10/first-but-not-the-last/'>First but Not the Last</a></cite></footer></blockquote>
+
+
+
+
+<blockquote><p>"This Workshop is mentored by Yask Shirivastava ….he is 1 yr elder to us . But seriously is too good , infact better than the final year students"</p></blockquote>
+
+
+
+
+<blockquote><p>I think ,I’m particularly doing well in this, but yeah it needs a lot of time and hard work . You may have the best teacher but you only learn when u explore it yourself. "</p><footer><strong>Uday Upreti @Medium</strong> <cite><a href='https://medium.com/@uday1201/well-today-s-class-was-just-an-exploration-of-the-details-of-making-up-the-django-project-3b0315cf6537'>Personal Blog</a></cite></footer></blockquote>
+
+
+<p>Well, thats what keeps me motivated. I am trying my best not just to teach them concepts of web development but also to ignite passion among them.</p>
+
+<p>I also migrated my blog to <code>Octopress 3.0</code>. Migrating was easy as all my images are are hosted on <code>imgur</code>.</p>
+
+<p>Using the script I wrote which uploads screenshot to imgur and copies the url to clipboard. Very very convenient. <a href="http://iyask.me/AutoScreenshotUploader/">Check it out</a>:</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[New UserSettings and various tweaks]]></title>
+        <link href="http://iyask.me/blog/2015/06/28/new-usersettings-and-various-tweaks/"/>
+        <updated>2015-06-28T02:45:13+05:30</updated>
+        <id>http://iyask.me/blog/2015/06/28/new-usersettings-and-various-tweaks</id>
+        <content type="html"><![CDATA[<p>My last commit for xstatic was finally <a href="https://bitbucket.org/thomaswaldmann/xstatic-bootstrap/pull-request/2/updated-bootstrap-to-version-version-335">merged</a>.
+The less file compiled for both the themes successfully and there were no issues even with <code>Basic theme</code>.</p>
+
+<p>Instead of making a todo list in etherpad, I have started making issues in <code>Bitbucket</code>. Since the theme has started coming out with basic functionality. Other people who notice the bug may also create issues there.
+<a href="https://bitbucket.org/yask123/moin-2.0">Issues Page</a> :</p>
+
+<!--more-->
+
+
+<p><code>`
+RogerHaase pointed another bug which was the weird overlay of forms and menu when</code>hamburger<code>button was clicked to collapse the navbar in menu bar. This issue was fixed in [cumulative patch</code>#2` of CR](<a href="https://codereview.appspot.com/245670043/">https://codereview.appspot.com/245670043/</a>)</p>
+
+<h3>New User Setting</h3>
+
+<p><img src="http://i.imgur.com/R0dbC1R.png">
+I finally implemented a new user setting page which uses bootstrap forms. This wasn&rsquo;t as easy at it sounds. We use <code>flatland</code> for forms. The way we rendered the form was through pre-defined macros. But the pre-defined macros also rendered unwanted stuff such as <code>label</code>,<code>table</code>,<code>td</code>.. etc.</p>
+
+<p>So the way forms work in <code>Moin Moin</code> is like this.
+There are <code>html</code> macros defined in <code>forms.html</code>. There is a <code>forms.py</code> while which contains  <code>Flatland</code>form related constants.
+So lets say we wish to render a form for <code>css input</code> field.
+Code snippet :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">forms</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s">&#39;css_url&#39;</span><span class="p">])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We have form&rsquo;s class defined in <code>views.py</code> file:
+In this case it looks like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">UserSettingsUIForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;usersettings_ui&#39;</span>
+</span><span class='line'>        <span class="n">theme_name</span> <span class="o">=</span> <span class="n">Select</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&#39;Theme name&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">out_of</span><span class="p">(</span>
+</span><span class='line'>            <span class="p">((</span><span class="nb">unicode</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">identifier</span><span class="p">),</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">get_themes_list</span><span class="p">()),</span> <span class="n">sort_by</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">css_url</span> <span class="o">=</span> <span class="n">URL</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&#39;User CSS URL&#39;</span><span class="p">),</span> <span class="n">optional</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">with_properties</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">placeholder</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&quot;Give the URL of your custom CSS (optional)&quot;</span><span class="p">))</span>
+</span><span class='line'>        <span class="n">edit_rows</span> <span class="o">=</span> <span class="n">Natural</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&#39;Editor size&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">with_properties</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">placeholder</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&quot;Editor textarea height (0=auto)&quot;</span><span class="p">))</span>
+</span><span class='line'>        <span class="n">results_per_page</span> <span class="o">=</span> <span class="n">Natural</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&#39;History results per page&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">with_properties</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">placeholder</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&quot;Number of results per page (0=no paging)&quot;</span><span class="p">))</span>
+</span><span class='line'>        <span class="n">submit_label</span> <span class="o">=</span> <span class="n">L_</span><span class="p">(</span><span class="s">&#39;Save&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This class creates provides the basic skeleton for forms. The forms.py file detects the kind of html tag required for the form field, example:input text, checkbox,submit.. etc and renders the macros present in <code>forms.html</code>file.</p>
+
+<p>For convenience we have macros defined which contains some unwanted stuff such as <code>labels</code> with <code>table form</code> design (<code>td dd,dt</code>)</p>
+
+<p>Editing this file would have changed the behavior in other non bootstrap themes which depend on this design.
+So I had to make exclusive <code>forms.html</code> template file for <code>modernized</code> theme.</p>
+
+<p>I also changed the setting tabs design to match the current design of the theme.</p>
+
+<p>Another issue I encountered was with the <code>common.css</code>. It contains global css style rules that are supposed to be used by all themes.
+But Bootstrap contains its own style rules. I was inheriting style rules from both the files which resulted in weird layout.
+The only hack was to override these styles.
+If only their was something like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.className</span><span class="p">{</span>
+</span><span class='line'>  <span class="n">reset</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So I ended up opening developers tool and under style tab it showed me the properties which were being inherited and I manually override thos styles in my <code>modernized theme.less</code> file.
+This hack fixes the weird table layout in <code>global history</code> template page.
+<a href="https://codereview.appspot.com/245670043/">Code Review patch(pending)</a> :</p>
+
+<h4>ChangeLogs for the patch</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Uses latest xstatic, bootstrap version: 3.3.5.1
+</span><span class='line'># Fix for footer jump. Now footer won't jump in any page ( Even when the content is null).
+</span><span class='line'>
+</span><span class='line'># User setting forms rewritten in bootstrap form design fashion (without &lt;td> &lt;tl> tags) to suit the current design of theme.
+</span><span class='line'># Macros in forms.html changed for compatibility reasons (as their is no requirement of labels and input box to be in &lt;td>.. tags.
+</span><span class='line'># written css rules in theme.less to override default styling of tables written in `common.css`.
+</span><span class='line'># minor changes in footer.
+</span><span class='line'># Various style improvements
+</span><span class='line'>
+</span><span class='line'>Changelog2:
+</span><span class='line'>#overlay issues afer reducing table width to ~900 pixels and clicking on the hamburger thing
+</span><span class='line'>#Darker text</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Anyway, this is how it</p>
+
+<h3>looked:</h3>
+
+<p><img src="http://i.imgur.com/9NHUZpw.png"></p>
+
+<h3>Now</h3>
+
+<p><img src="http://i.imgur.com/R0dbC1R.png"></p>
+
+<p><img src="http://i.imgur.com/sxbcX6d.png"></p>
+
+<p><img src="http://i.imgur.com/aLyGwaj.png"></p>
+
+<p><img src="http://i.imgur.com/tpaF7DJ.png"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[GSoC Updates | Hackathon | Teaching Django]]></title>
+        <link href="http://iyask.me/blog/2015/06/25/gsoc-update/"/>
+        <updated>2015-06-25T18:24:33+05:30</updated>
+        <id>http://iyask.me/blog/2015/06/25/gsoc-update</id>
+        <content type="html"><![CDATA[<h3>Informal Intro</h3>
+
+<blockquote><p>Ah! This week was a bit hectic. But I was able to do considerable amount of work.</p><footer><strong>@yask123</strong></footer></blockquote>
+
+
+<p>I got all my pending code reviewed and commited the changes to my repo after resolving issues. The patch had to go through a number of interations to resolve the issues in prior patches. The last patch fixed all the major bugs.</p>
+
+<!--more-->
+
+
+<p>As I mentioned in my previous post I ported modernized <code>stylus</code> theme to <code>bootstrap</code> by making changes in <code>Global Tempates</code>. But Roger Haase suggested to make exlusive templates for Bootstrap themes as making changes to <code>Global templates</code> would restrict all the other theme developers to use Bootstrap&rsquo;s components such as <code>row</code> , <code>col-md-x</code> , <code>nav</code> , <code>panel</code>.. etc. I also made changes in Global Templates to make sure that it doesn&rsquo;t conflict with any bootstrap theme that work on top of it.</p>
+
+<h2>Show me the code!!</h2>
+
+<p><a href="https://codereview.appspot.com/242460043/">ChangeLogs from CR #2</a>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#ChangeLog from patch #2
+</span><span class='line'>Fixed the alignment of sub menu tabs and item views tabs
+</span><span class='line'>Added active visual effect to the current tab view
+</span><span class='line'>Fixed horizontal scroll bug
+</span><span class='line'>Fixed padding inside sub menu
+</span><span class='line'>Increased font size for wiki contents
+</span><span class='line'>
+</span><span class='line'>Automation + Global History
+</span><span class='line'># Changelog 3 , new cr patch 1
+</span><span class='line'>Added automation. run `$ ./m css ` to automatically compile all the less files.
+</span><span class='line'>Modernized theme now runs with the current version of xstatic bootstrap.
+</span><span class='line'>Rewrote `global history` template
+</span><span class='line'>Changed font sizes at various places
+</span><span class='line'>
+</span><span class='line'>Changelog #4
+</span><span class='line'>Made changes as suggested in last CR
+</span><span class='line'>
+</span><span class='line'>ChangeLog #5
+</span><span class='line'>Created a special directory exclusively for modernized theme's template.
+</span><span class='line'>Added footer and breadcrumb.
+</span><span class='line'>Made changes as suggested by mentors in previous patch</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Some of the bugs in previous CRs were:</p>
+
+<ul>
+<li><p>HTML validation error due to use of  form  inside ul and unclosed div tags.This is fixed in my last commit.</p></li>
+<li><p>Design break issues in mobile views. Fixed in commit:</p></li>
+<li><p>Design break issue when breadcrumb&rsquo;s patch is too large. Fixed in this commit.</p></li>
+</ul>
+
+
+<p><a href="https://codereview.appspot.com/245560043/">ChangeLogs from CR #3:</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Changes in User Setting and common.js to support highlighting of current links in menu
+</span><span class='line'># Added common.css
+</span><span class='line'># Current opened tab now highlights in menu
+</span><span class='line'># Various css rules written to work on top/with common.css
+</span><span class='line'># Fixed the issue 'jumping of footer while changing tabs in user setting'
+</span><span class='line'># Fixed issue with breadcrumbs when the location address gets too long.
+</span><span class='line'># Fixed all the HTML error validation errors</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The issues with last CR&rsquo;s were discussed with mentors and fixed.
+Quick summary of my commits:</p>
+
+<p>I actually made a new branch in my fork of repo called <code>improvethemes</code>. Since I am doing things step by step and some things get broken in intermediatlry stages, It wouldn&rsquo;t have been right to commit changes in main branch. This can be easily merged when this feature is working 100% without any bugs.</p>
+
+<p>Now back to summary:
+I have made 3 commits as yet , 4th one with improvements in usersetting page is exptected soon :).
+Anyway:</p>
+
+<ol>
+<li><p><a href="https://bitbucket.org/yask123/moin-2.0/commits/1aefd749090633d9e8f456ee0bbe8ae64f99cd0c">Commit #1</a> : Created a new branch <code>improvethemes</code></p></li>
+<li><p><a href="https://bitbucket.org/yask123/moin-2.0/commits/90961106254ee93a02f7d9ec1cc1b94a85457f7a">Commit #2</a> : Wrote a new modernized theme based on bootstrap and also made it&rsquo;s template files (layout.html, global_history.html)
+The template contains all the basic components such as navbar,sub menu, item menu, breadcrumb, footer.. etc.</p></li>
+<li><p><a href="https://bitbucket.org/yask123/moin-2.0/commits/2739ae9d435146871c6aec152ae809e065df6637">Commit #3</a> :
+Further improvements in modernized theme and few style fixes in basic theme
+Improvements in modernized theme:# Added common.css
+Current opened tab now highlights in menu
+Various css rules written to work on top/with common.css
+Fixed the issue &lsquo;jumping of footer while changing tabs in user setting&rsquo;
+Fixed issue with breadcrumbs when the location address gets too long.
+Fixed footer jump while changing tabs in user setting in basic theme
+Fixed design break issue in Basic theme&rsquo;s subscription box: <a href="http://i.imgur.com/4s1CIb3.png">http://i.imgur.com/4s1CIb3.png</a>
+Fixed design break in small resolution and removed form from under &lsquo;ul&rsquo;</p></li>
+<li><p><a href="https://bitbucket.org/yask123/moin-2.0/commits/473b16c00b1597c2a9b8464d8dc852959d0f537b">Commit #4</a>: Fixed HTML validation error due to unclosed div tag</p></li>
+</ol>
+
+
+<p>I also updated xstatic bootstrap here is the <a href="https://bitbucket.org/yask123/xstatic-bootstrap/commits/942330589c64df20f73f2c6b77ca4afee8a09f73">commmit</a>.
+This updates Bootstrap to version : 3.3.5</p>
+
+<h2>Show me the screenshots!!</h2>
+
+<p><img src="http://i.imgur.com/mVXNklu.png"></p>
+
+<p><img src="http://i.imgur.com/cxHhrfB.png"></p>
+
+<p><img src="http://i.imgur.com/sd9HPD8.png"></p>
+
+<p><img src="http://i.imgur.com/2Wg10ej.png"></p>
+
+<p><img src="http://i.imgur.com/ssN3WCy.png"></p>
+
+<p><img src="http://i.imgur.com/AzuSJSv.png"></p>
+
+<h2>Other Updates ?</h2>
+
+<h4>Hackathon</h4>
+
+<p>Yea! I participated in  continuous 34 hours AngelHack Hackathon this week. It was a greeat experience and we made an opensource chat summarizer tool. I am really proud of this app. We worked together all night all day! It was a great experience. Well done Vinayak Mehta, Ketan bhutt , Pranu!.</p>
+
+<p>About this app:
+Summarize it is a chat summarizer plugin for instant messaging applications. It summarizes the large content of chat logs which enables users to quickly understand the current context of the conversation. Currently Summarize it works on top of Slack as its plugin.</p>
+
+<p><a href="http://iyask.me/SummarizeIt/">App Link</a></p>
+
+<h2>One last thing&hellip;!</h2>
+
+<h4>Teaching Django</h4>
+
+<p> I have started teaching Django web developement to college students as a part of their summer training. First class was on tuesday which was an introductory class. All of the students are enthusiastic! I really like Django and this is going to be a great experiance.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Gsoc Update]]></title>
+        <link href="http://iyask.me/blog/2015/06/17/gsoc-update/"/>
+        <updated>2015-06-17T20:45:38+05:30</updated>
+        <id>http://iyask.me/blog/2015/06/17/gsoc-update</id>
+        <content type="html"><![CDATA[<h3>Informal Intro</h3>
+
+<blockquote><p>Phew! So my end-terms exams just ended on 15th June.</p><footer><strong>@yask123</strong> <cite>https://twitter.com/yask123/status/611206296411344897</cite></footer></blockquote>
+
+
+<p>But I had long gaps in between my exams so I was contributing to MoinMoin side by side in my free time.
+Now since my exams have finally ended, I can devote myself 100% to this. \o/</p>
+
+<!--more-->
+
+
+<h3>Progress</h3>
+
+<p>As I mentioned in my introductory blog post, we decided to use <code>Less</code>. I started by <code>modernized</code> theme. It used <code>stylus</code> for <code>CSS preprocessing</code>. Since our new <code>basic</code> theme worked on top of <code>Bootstrap's less</code> files we decided to redesign and port theme to work on top of it.
+I finished writing the base new theme for <code>modernized</code> and also rewrote the base template <code>layout.html</code> to use this theme.</p>
+
+<h3>Show me the code!!</h3>
+
+<p><a href="https://codereview.appspot.com/245270044/">Code Review</a> <em>On process</em></p>
+
+<h4>Description:</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>This is a rewrite of the `layout.html` template to work on top of Boostrap.
+</span><span class='line'>It also replaces the old stylus theme by new modernized bootstrap theme. The theme is written in `theme.less` and `modernized.less` file. The rest of the .less files are Bootstrap's default less files.
+</span><span class='line'>To test it on your machine: compile this file MoinMoin/themes/modernized/static/css/theme.less by lessc `$ lessc theme.less > ../css/ `
+</span><span class='line'>So the files to look for are:
+</span><span class='line'>`theme.less`
+</span><span class='line'>`layout.html`
+</span><span class='line'>`modernized.less`
+</span><span class='line'>Rest of the less files are from bootstrap source.
+</span><span class='line'>Rest of the css files are compiled form of less files by lessc.
+</span><span class='line'>
+</span><span class='line'>#ChangeLog from patch #2
+</span><span class='line'>Fixed the alignment of sub menu tabs and item views tabs
+</span><span class='line'>Added active visual effect to the current tab view
+</span><span class='line'>Fixed horizontal scroll bug
+</span><span class='line'>Fixed padding inside sub menu
+</span><span class='line'>Increased font size for wiki contents
+</span><span class='line'>
+</span><span class='line'>Now the files to look for are :
+</span><span class='line'>`theme.less`
+</span><span class='line'>`layout.html`
+</span><span class='line'>`modernized.less`
+</span><span class='line'>'common.js'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is how our previous modernized theme looks:</p>
+
+<p><img src="http://i.imgur.com/Z3giFwq.png"></p>
+
+<p>This is how I styled it&rsquo;s menu and sub menu tabs:
+<img src="http://i.imgur.com/0gaA1qh.png"></p>
+
+<p>New Roboto fonts for the wiki contents
+<img src="http://i.imgur.com/uYuMYoj.png"></p>
+
+<p>Complete new look:</p>
+
+<p><img src="http://i.imgur.com/2SHHUOJ.png"></p>
+
+<p>The code review is still under process so no commits have been made as yet.
+We also had a weekly meeting yesterday on <em>IRC channel</em> : <em>#moin-dev</em> where we discussed about our progress and future plannnings with all our mentors.</p>
+
+<h3>My developement configuration</h3>
+
+<p>I like to see the changes as I make thus compiling less file to css everytime after I made minor change was a big No No.</p>
+
+<p>I have added the complete project to <code>Codekit</code> and it automatically compiles and refreshes the page as soon as it detects any changes in the source code. :)</p>
+
+<p>We use mercurial as our version control system and this project is hosted on Bitbucket.
+I like to use sublime text as its super light.</p>
+
+<h3>Future Plans</h3>
+
+<ol>
+<li>Make changes in <code>make.py</code> file to automate the less file&rsquo;s compilation for modernized theme.</li>
+<li>Write CSS rules for all the elements</li>
+<li>Design footer, user setting page,&hellip; etc.</li>
+<li>Implement the changes mentioned my mentors on previous CR.</li>
+</ol>
+
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[I have been vimified  | Graph algo #2]]></title>
+        <link href="http://iyask.me/blog/2015/04/21/i-have-been-vimified-graph-algo-2/"/>
+        <updated>2015-04-21T14:01:26+05:30</updated>
+        <id>http://iyask.me/blog/2015/04/21/i-have-been-vimified-graph-algo-2</id>
+        <content type="html"><![CDATA[<p>Inspired from <a href="https://www.dropbox.com/sh/ot1cdzqoorzobm6/AAAObIcj8xgsOfGbj4CppPPCa?dl=0">slides</a> I decided to write my own DFS implementation [ Just to get the hang of vim ].
+ <!--more--></p>
+
+<p>Nah! I actually wrote lots of code [ Now I force my self to make Django applications on vim , more on that later. ] to get the hang of it, Just passing DFS gist here because I think it is cool :P .</p>
+
+<p>It was fun writing it because now I feel like a vim ninja. After weeks of frustration I finally feel like I have got the hang of it. I can perform all the basic thing like buffer copy paste , clipboard copy paste with indentations :) ,beautiful color scheme , awesome iterative search , auto complete , python auto indent , gist , running scripts from vim and much more :</p>
+
+<p>Here instead of making <code>visited</code> dictionary object I instead made <code>visited</code> list and conditioned <code>if in list</code> to avoid putting up the visited in <code>stack</code> .</p>
+
+<div><script src='https://gist.github.com/cedc8944b3460f0970f4.js'></script>
+<noscript><pre><code>graph = { &#39;A&#39;:set([&#39;B&#39;, &#39;C&#39;]),
+         &#39;B&#39;: set([&#39;A&#39;, &#39;D&#39;, &#39;E&#39;]),
+         &#39;C&#39;: set([&#39;A&#39;, &#39;F&#39;]),
+         &#39;D&#39;: set([&#39;B&#39;]),
+         &#39;E&#39;: set([&#39;B&#39;, &#39;F&#39;]),
+         &#39;F&#39;: set([&#39;C&#39;, &#39;E&#39;])}
+
+s= &#39;A&#39;
+visited = set()
+stack = [s]
+
+while stack:
+    vertex = stack.pop()
+    if vertex not in visited:
+        visited.add(vertex)
+        stack.extend(graph[vertex] - visited)
+
+print visited</code></pre></noscript></div>
+
+
+
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Dev tools changes]]></title>
+        <link href="http://iyask.me/blog/2015/04/19/dev-tools-changes/"/>
+        <updated>2015-04-19T18:54:56+05:30</updated>
+        <id>http://iyask.me/blog/2015/04/19/dev-tools-changes</id>
+        <content type="html"><![CDATA[<p>Spoiler : By dev tools I mean Text Editor 😒</p>
+
+<p>I have started using <code>vim</code> these days. Sublime text is distracting for me. The random popups to register and it doesn&rsquo;t run inside from a terminal.😤
+ <!--more--></p>
+
+<p>On the other hand working on vim is much distraction free environment. It&rsquo;s full screen , you don&rsquo;t even touch mouse and the thought of checking Facebook notification goes because you are too lazy to move to mouse  .😜</p>
+
+<p>I was using <code>Janus</code> first which cluttered my <code>.vimrc</code> file with ugly configurations I could barely understand. On mac I upgraded to latest vim <code>brew install vim</code> and straight away went to this awesome website. <a href="http://vimawesome.com">http://vimawesome.com</a></p>
+
+<p>Installed the most important stuff required in code-editor <code>solarized color scheme</code>. And some more custom plugins I can&rsquo;t like without like <code>NERDTree</code> <code>CTRLP</code> <code>Gist</code> .. and stuff.</p>
+
+<p>I have a basic .vimrc file most of the stuff related to color scheme and the last line for python file execution [remapping key f9]
+<a href="https://gist.github.com/361e25c91a29c0ce176a">https://gist.github.com/361e25c91a29c0ce176a</a></p>
+
+<p>Here is a list of bundles I installed , pasting it here for future reference: 😇</p>
+
+<p>➜ bundle ls
+auto-pairs gist-vim molokai python-syntax test.py vim-colors-solarized vim-indent-guides vim-surround
+ctrlp.vim html5.vim nerdtree supertab vim-airline vim-colorschemes vim-javascript-syntax webapi-vim</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Nodes -> Reversal -> FindingMiddleTerm-> None]]></title>
+        <link href="http://iyask.me/blog/2015/04/19/nodes-reversal-findingmiddleterm-none/"/>
+        <updated>2015-04-19T18:36:18+05:30</updated>
+        <id>http://iyask.me/blog/2015/04/19/nodes-reversal-findingmiddleterm-none</id>
+        <content type="html"><![CDATA[<p>Linked list is OLD</p>
+
+<p>I can&rsquo;t think of it&rsquo;s implementation these days. It should be a crime to be even discussing about it today when  we can use awesome objects such as a list [as in Python]. But somewhere across a reddit post some one mentioned linked list reversal thing and I thought to myself to implement this in python because I have nothing to do.
+ <!--more--></p>
+
+<p>I haven&rsquo;t done much object-oriented related stuff in python much. Mostly working with script without ever making classes or even a function. So this was  just to revise pretty basic stuff.</p>
+
+<p>Here is a simple implementation on linked list , function to reverse it and to find the middle element by Floyed&rsquo;s Algorithm.</p>
+
+<p>(% gist aceae3d2cda50740ec25 %}</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Tree implementation in python]]></title>
+        <link href="http://iyask.me/blog/2015/04/10/tree-implementation-in-python/"/>
+        <updated>2015-04-10T18:25:08+05:30</updated>
+        <id>http://iyask.me/blog/2015/04/10/tree-implementation-in-python</id>
+        <content type="html"><![CDATA[<p>Python doesn&rsquo;t come with pre-defined tree objects but due to it&rsquo;s dynamic nature we can easily implement it either via objects attributes or by dictionary. For tree traversing I find this representation to be the most simplistic
+ <!--more--></p>
+
+<p>[code language=&ldquo;python&rdquo;]</p>
+
+<p>tree  = { parent : [left_child,right_child] , parent #2 :[left_child,right_child]&hellip;.}</p>
+
+<p>[/code]</p>
+
+<p>It&rsquo;s easy for traversing , check out my inorder,postorder,pre-order traversal [by recursion]</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">tree</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="mi">2</span><span class="p">:[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span><span class="mi">3</span><span class="p">:[</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">],</span><span class="mi">4</span><span class="p">:[</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">],</span><span class="mi">5</span><span class="p">:[</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">]}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">inorder</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">if</span> <span class="n">root</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">return</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inorder</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">root</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</span><span class='line'>  <span class="k">print</span> <span class="p">(</span><span class="n">root</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">inorder</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">root</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="n">inorder</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">postorder</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">root</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">return</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">postorder</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">root</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</span><span class='line'>  <span class="n">postorder</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">root</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>  <span class="k">print</span> <span class="n">root</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="n">postorder</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">preorder</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">root</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">return</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">print</span> <span class="n">root</span>
+</span><span class='line'>  <span class="n">preorder</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">root</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</span><span class='line'>  <span class="n">preorder</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">root</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="n">preorder</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And while we are at it lets modify this to calculate the size of the tree</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">tree</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="mi">2</span><span class="p">:[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span><span class="mi">3</span><span class="p">:[</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">],</span><span class="mi">4</span><span class="p">:[</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">],</span><span class="mi">5</span><span class="p">:[</span><span class="bp">None</span><span class="p">,</span><span class="bp">None</span><span class="p">]}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">root</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">return</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">root</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">size</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">root</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+</span><span class='line'><span class="k">print</span> <span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This technique is slow and uses recursion which can be ofcourse enhanced by implementing threaded tree.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Tango with Django]]></title>
+        <link href="http://iyask.me/blog/2015/04/05/tango-with-django/"/>
+        <updated>2015-04-05T20:52:41+05:30</updated>
+        <id>http://iyask.me/blog/2015/04/05/tango-with-django</id>
+        <content type="html"><![CDATA[<p><img src="http://i.imgur.com/lNdCyzL.png" alt="" />
+Recently I was working on a Django web application.
+I was already developing web applications on Google App engine python sdk platform for quite sometime.But&hellip;</p>
+
+<!-- more -->
+
+
+<p>But I think I prefer django now for reason that it provides awesome abstraction and at the same time is the purest python framework.</p>
+
+<p>This means I can run my bash script on <code>Herkoku</code> server which interferes with it&rsquo;s model database or maybe play with the database model interactively on it <code>manage.py shell</code> python shell.</p>
+
+<p>App engine also resitricts you from using any other web hosting servers. I don&rsquo;t like restrictions. Although setting up a GAE app is much easier.</p>
+
+<p>So I had an awesome script that could make API calls to a Facebook group <code>Tribe of Dardnaak jokes</code> and extract all the posts. I wanted to play with this data in database and Django&rsquo;s <code>manage.py shell</code> provided the interactive environment to learn and play at the same time.</p>
+
+<p><img src="http://i.imgur.com/iX2nbgQ.png" alt="" /></p>
+
+<p>At this moment the script isn&rsquo;t intergated inside the web app but instead is run from <code>Heroku</code>&rsquo;s server. So the script runs from <code>heroku run bash ./script</code> and fiddles with Django&rsquo;s models.</p>
+
+<p>At the moment I am reading ~2000 posts from the group&rsquo;s post and storing the top ~120 feeds in database. I think I can increase this number to around 5000 to get better results.</p>
+
+<p>I made some more tweaks in the script file. The results are much better and will reflect on the webpage when I push the changes later (~ Maybe next week).</p>
+
+<p>Another crucial requrement at this stage is a user&rsquo;s model which is lacking. So to restrict a user from making multiple upvotes in a single joke I had to use <code>Session</code> even though it is temporary (It will remember data for ~20 days).
+<img src="http://i.imgur.com/OYH6WKH.png" alt="" /></p>
+
+<p>But since the feed data is dynamically changing there is a high probability that the joke won&rsquo;t be listed for the next ~20 days (unless it recieved extraordinary likes).</p>
+
+<p>Setting up a user model will get rid of the current <code>session</code> hack.</p>
+
+<p>Check out the current version:
+<a href="https://dardnaak.herokuapp.com/">Dardnaak Jokes</a>
+<img src="http://i.imgur.com/kXESugZ.png" alt="Dardnaak Jokes web app" /></p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Simple BFS implementation in Python]]></title>
+        <link href="http://iyask.me/blog/2015/04/01/simple-dfs-implementation-in-python/"/>
+        <updated>2015-04-01T01:19:24+05:30</updated>
+        <id>http://iyask.me/blog/2015/04/01/simple-dfs-implementation-in-python</id>
+        <content type="html"><![CDATA[<p>I was revising some basic DS stuff. So this is mine basic implementation of BFS algorithm in the most simplistic form.
+ <!--more-->
+[code language=&ldquo;python&rdquo;]
+graph = {&lsquo;0&rsquo;: set([&lsquo;1&rsquo;, &lsquo;2&rsquo;]),
+         &lsquo;1&rsquo;: set([&lsquo;2&rsquo;]),
+         &lsquo;2&rsquo;: set([&lsquo;0&rsquo;, &lsquo;3&rsquo;]),
+         &lsquo;3&rsquo;: set([&lsquo;3&rsquo;])}</p>
+
+<p>visited={}
+for each_node in graph:
+    visited[each_node]=False</p>
+
+<p>s=&lsquo;2&rsquo;</p>
+
+<p>queue=[]
+queue.append(s)</p>
+
+<p>while len(queue) &amp;gt;0:
+    s=queue.pop(0)
+    print s
+    for each_node in graph[s]:
+        #print queue
+        if not visited[each_node]:
+            visited[each_node]=True
+            queue.append(each_node)
+[/code]</p>
+
+<p>Neat eh?</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[My secret for productivity :P]]></title>
+        <link href="http://iyask.me/blog/2015/03/29/my-secret-for-productivity-p/"/>
+        <updated>2015-03-29T00:04:20+05:30</updated>
+        <id>http://iyask.me/blog/2015/03/29/my-secret-for-productivity-p</id>
+        <content type="html"><![CDATA[<p>I was recently writng a summer of code proposal where I had to put up screnshots. Many many screenshots!</p>
+
+<p>So it was:</p>
+
+<p> <!--more--></p>
+
+<ol>
+<li><p>Press command+shift+4</p></li>
+<li><p>open url browser</p></li>
+<li><p>visit some image sharing website</p></li>
+<li><p>click upload</p></li>
+<li><p>browse the screenshot file</p></li>
+<li><p>click upload</p></li>
+<li><p>Phew</p></li>
+<li><p>Now right click the url</p></li>
+<li><p>click copy</p></li>
+<li><p>Delete the screenshot file from my computer</p></li>
+</ol>
+
+
+<p>Thats freaking 10 steps which were driving me crazy! So I had to write a script.</p>
+
+<p>It’s a python script which will do all of that in one keyboard short cut.</p>
+
+<p>I was going to use my own web app [imagepastry] for this.But then I saw imgurl has really cool api for image upload.So I used it instead.</p>
+
+<p>For creating unique file names for every screenshot I used <code>currentDatecurrentTime</code>.png format</p>
+
+<p>Create as many screenshots without cluttering your screen!</p>
+
+<p><a href="https://github.com/yask123/AutoScreenshotUploader-/tree/master">Link</a></p>
+
+<p>In OSX you can add keyboard shortcuts to the script by Automator.</p>
+
+<p>[code language=&ldquo;python&rdquo;]</p>
+
+<p>import base64
+import requests
+import os
+from datetime import datetime
+import os
+import webbrowser
+os.getcwd()</p>
+
+<h1>This api key is only for testing. If you plan to use this script , please get your own api :)</h1>
+
+<p>api_key = &ldquo;4adaaf1bd8caec42a5b007405e829eb0&rdquo;
+url = &ldquo;<a href="http://api.imgur.com/2/upload.json">http://api.imgur.com/2/upload.json</a>&rdquo;</p>
+
+<p>os.system(&lsquo;&rsquo;)</p>
+
+<p>filename=datetime.now().strftime(&lsquo;%Y-%m-%d%H:%M:%S&rsquo;)
+t=filename+&lsquo;.png&rsquo;</p>
+
+<p>print t
+os.system(&lsquo;screencapture &rsquo;+t)
+fileadd=os.getcwd()+&lsquo;/&rsquo;+t</p>
+
+<p>fh = open(fileadd, &lsquo;rb&rsquo;);
+base64img = base64.b64encode(fh.read())
+r = requests.post(url, data={&lsquo;key&rsquo;: api_key, &lsquo;image&rsquo;:base64img})
+print (r.json()[&lsquo;upload&rsquo;][&lsquo;links&rsquo;][&lsquo;original&rsquo;])
+link = r.json()[&lsquo;upload&rsquo;][&lsquo;links&rsquo;][&lsquo;original&rsquo;]</p>
+
+<p>os.system(&ldquo;echo &lsquo;%s&rsquo; | pbcopy&rdquo; % link)
+webbrowser.open(link)
+os.command(&lsquo;rm fileadd&rsquo;)</p>
+
+<p>[/code]</p>
+
+<p><img src="http://yask007.files.wordpress.com/2015/03/a4847d08-2c66-4cd7-9205-3526ceb94558.png" alt="" /></p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[... deployed!]]></title>
+        <link href="http://iyask.me/blog/2015/03/21/add-a-post-title/"/>
+        <updated>2015-03-21T18:56:46+05:30</updated>
+        <id>http://iyask.me/blog/2015/03/21/add-a-post-title</id>
+        <content type="html"><![CDATA[<p>Yesterday on my birthday at around 8 pm I finally purchased the domain name <code>www.Anonymouschatters.com</code>.</p>
+
+<p>I was watching a video on Youtube tittled <code>You are overdoing your UI/UX</code>. His speach inspired me to go ahead with whatever I had.</p>
+
+<p>The core-chat app will get a significant update after I change it from <code>Ajax</code> and implement it with <code>channel api</code>.
+ <!--more-->
+It’s a small yet significantly usefull application. Anonymous chatts with awesome people can reveal significant insights. The candid , bold opinions are priceless!</p>
+
+<p>I take UI/UX very seriously. Elegant and minimalistic design with short typical description ` A product is a</p>
+
+<p><strong><strong><strong><strong>_ that allows </strong></strong> to </strong></strong>__.` on landing page.</p>
+
+<p>Check it out: <a href="http://www.anonymouschatters.com">Anonymouschatters</a></p>
+
+<p><img src="http://yask007.files.wordpress.com/2015/03/1_screenshot2015-03-21at6-36-37pm.png" alt="" /><img src="http://yask007.files.wordpress.com/2015/03/screenshot2015-03-21at6-41-42pm.png" alt="" /><img src="http://yask007.files.wordpress.com/2015/03/screenshot2015-03-21at6-42-03pm.png" alt="" /></p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[console.log("-_-");]]></title>
+        <link href="http://iyask.me/blog/2015/03/13/_/"/>
+        <updated>2015-03-13T21:03:45+05:30</updated>
+        <id>http://iyask.me/blog/2015/03/13/_</id>
+        <content type="html"><![CDATA[<p>Lastly I was working on an Anonymous chatters web app.I played with it for a while today. Rewrote the complete chat app inside it.</p>
+
+<p>Earlier it was more like a discussion page rather than a chat page. Enteries were written/read to/from the database only at the time of submission.</p>
+
+<p>Now I wrote an ajax chat box , updating the part of the chatterbox every 5s.
+ <!--more-->
+[code language=&ldquo;javascript&rdquo;]</p>
+
+<p>function setup() {
+window.setInterval(&ldquo;updateChat()&rdquo;, 5000);
+updateChat();
+}</p>
+
+<p>function updateChat() {
+downloadUrl(&ldquo;/getchats/?groupname=&rdquo;, &ldquo;GET&rdquo;, null, onChatsReturned);
+}</p>
+
+<p>[/code]</p>
+
+<p>This is how it looks :D</p>
+
+<p><img src="http://yask007.files.wordpress.com/2015/03/1_screenshot2015-03-13at8-51-45pm.png" alt="" /></p>
+
+<p>Much better eh?</p>
+
+<p>Javascript is really a fun language. Lots of hacks. Everytime while fixing bugs I learn something new. Which brings me to another topic , FOSS.</p>
+
+<p>Currently I am mostly contributing to moin-moin as I talked before. Fixing bugs here and getting Javascript code reviewed by mentors has certainly improved me.</p>
+
+<p>Yea!Before CRing I make sure code is void of any Jslint errors and yea the annoying trailing spaces … er..!</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Phew! Just finished writing AnonymousChatters Application ! It's live :)]]></title>
+        <link href="http://iyask.me/blog/2015/03/07/phew-just-finished-writing-anonymouschatters-application-its-live/"/>
+        <updated>2015-03-07T03:45:45+05:30</updated>
+        <id>http://iyask.me/blog/2015/03/07/phew-just-finished-writing-anonymouschatters-application-its-live</id>
+        <content type="html"><![CDATA[<p>&ldquo;Man is least himself when he talks in his own person. Give him a <strong>mask</strong>, and he will tell you the truth.&rdquo; - <em>Oscar Wilde</em></p>
+
+<p>Ah! So finally I took out some time to build this application!</p>
+
+<p>About the app:
+ <!--more-->
+How it works?</p>
+
+<p><strong><em>Create secret chat rooms -> share keys with the people you wish to discuss the topic -> Start bold discussions! </em></strong></p>
+
+<p>No signups ! No registrations ! No IP address  tracking!</p>
+
+<p>In fact there isn&rsquo;t any column in the backend table to store anything other than chat messages and their timings.</p>
+
+<p>emojis are awesome :D</p>
+
+<p>Here are the screenshots:</p>
+
+<p><a href="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-38-46.png"><img src="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-38-46.png?w=605" alt="Screenshot_2015-03-07-02-38-46" /></a> <a href="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-42-21.png"><img src="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-42-21.png?w=605" alt="Screenshot_2015-03-07-02-42-21" /></a> <a href="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-43-01.png"><img src="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-43-01.png?w=605" alt="Screenshot_2015-03-07-02-43-01" /></a> <a href="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-55-00.png"><img src="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-55-00.png?w=605" alt="Screenshot_2015-03-07-02-55-00" /></a> <a href="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-55-05.png"><img src="https://yask007.files.wordpress.com/2015/03/screenshot_2015-03-07-02-55-05.png?w=188" alt="Screenshot_2015-03-07-02-55-05" /></a> <a href="https://yask007.files.wordpress.com/2015/03/screen-shot-2015-03-06-at-12-23-34-pm.png"><img src="https://yask007.files.wordpress.com/2015/03/screen-shot-2015-03-06-at-12-23-34-pm.png?w=605" alt="Screen Shot 2015-03-06 at 12.23.34 PM" /></a></p>
+
+<p>Thats too much for a single post I guess :P</p>
+
+<p>This is just the beta version , few things which will be updated very quickly :</p>
+
+<ol>
+<li><p>Encrypted room keys</p></li>
+<li><p>Live reloading in chats</p></li>
+<li><p>Design improvements</p></li>
+</ol>
+
+
+<p>Website is live here: <a href="http://anonymouschatters.appspot.com/">http://anonymouschatters.appspot.com/</a></p>
+
+<p>Suggestions are welcome.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[What's up?]]></title>
+        <link href="http://iyask.me/blog/2015/03/02/whats-up/"/>
+        <updated>2015-03-02T02:00:36+05:30</updated>
+        <id>http://iyask.me/blog/2015/03/02/whats-up</id>
+        <content type="html"><![CDATA[<h3>Opensource</h3>
+
+<p>Inspiration :</p>
+
+<p>&ldquo;I&rsquo;m doing a free operating system just a hobby, won&rsquo;t be big and professional like gnu for 386 (486) AT clones.&rdquo;
+-Linus Torvalds</p>
+
+<p>It&rsquo;s not that I haven&rsquo;t been writing lately. It&rsquo;s just that I am writing at too many places now <strong>sigh</strong>.
+ <!--more--></p>
+
+<p>Updates?</p>
+
+<p>Well my exams got over last week.</p>
+
+<p>These days I am super active in open source contribution. I was super psyched and was even fixing bugs during my exams.</p>
+
+<p>I started open source contribution with  Kuma a django based project of Mozilla community. I had fixed a few bugs and some of my patches were eventually merged in the main branch. It felt really  exhilarating that my code was running on Mozilla Developer Network website and was effecting thousands of users worldwide.</p>
+
+<p>But then my focus shifted towards my self taken projects and competitive programming due to ACM-ICPC event. The event was awesome ! We <a href="http://icpc.baylor.edu/regionals/finder/kharagpur-2014/standings">ranked under 50 </a> (<a href="http://icpc.baylor.edu/regionals/finder/kharagpur-2014/standings">Baylor&rsquo;s rank list</a>) [Team name: <code>limitless</code>].</p>
+
+<p>We were also called for Directi internship interview. I cleared the 1st round. The competition on round 2 was a bit tough for me and I couldn&rsquo;t clear it. Really need to improve myself in this. But overall it was a nice experience and we also got Amazon shopping vouchers :D .</p>
+
+<p>Coming back to open source I think I really found the project that I am passionate about. Yes I am working in a python community , Duh! One of which is python library for symbolic mathematics and the other one is a python wiki. Till now I have posted 4-5 bugs and submitted patches for 4 bugs. Some of my patches have been merged on the main branch while the others are on their way.</p>
+
+<p>I am learning a lot in this community. Open source  really teaches teamwork and discipline.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Youtube AutoLooper JS script hack]]></title>
+        <link href="http://iyask.me/blog/2015/01/23/youtube-autolooper-js-script-hack/"/>
+        <updated>2015-01-23T20:53:43+05:30</updated>
+        <id>http://iyask.me/blog/2015/01/23/youtube-autolooper-js-script-hack</id>
+        <content type="html"><![CDATA[<p>This song <a href="https://www.youtube.com/watch?v=NJX17WtsaCk">Facebook - 10 Years Look Back Instrumental Music</a> was stuck in my head today.</p>
+
+<p>I played this 3.4 minute video on youtube . Frustrated by clicking play button again and again after the music finished I decided to write a simple Javascript hack to auto-loop this music video.</p>
+
+<!--more-->
+
+
+<p></p>
+
+<h3>How did you do it ?</h3>
+
+<p>Using Chrome&rsquo;s Dev Tools I observed the source code , button properties and the youtube video player controls form.</p>
+
+<p>Found the button by <code>ClassName</code> attribute and initiated self written <code>doWork()</code> function which sleeps while the song is playing and wakes up only after the song has finished playing , thereby avoiding unnecessary workload by browser.</p>
+
+<h3>Show me the code!</h3>
+
+<p>Here is the final Javascript :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">repeater</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">doWork</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">time</span><span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;html5-progress-bar ytp-force-transform red&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;aria-valuetext&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;of&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">current_time</span>  <span class="o">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">t</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">end</span><span class="o">=</span><span class="nx">time</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;seconds&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">total_time</span> <span class="o">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">t</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span><span class="nx">end</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'> <span class="nx">current_time</span><span class="o">=</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">current_time</span><span class="p">);</span>
+</span><span class='line'> <span class="nx">total_time</span><span class="o">=</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">total_time</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">replayAfterTime</span><span class="o">=</span> <span class="p">(</span><span class="nx">total_time</span><span class="o">-</span><span class="nx">current_time</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Will replay after &quot;</span><span class="o">+</span><span class="nx">replayAfterTime</span><span class="o">+</span><span class="s2">&quot; Seconds&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;ytp-button ytp-button-replay&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Trying to press Replay button&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>      <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">click</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'> <span class="nx">repeater</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">doWork</span><span class="p">,</span> <span class="p">(</span><span class="nx">replayAfterTime</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span><span class="o">+</span><span class="mi">500</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">doWork</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I then built a Google Chrome extention to enable user&rsquo;s to easily enable <code>Auto-Looper</code> feauture on Youtube Player.</p>
+
+<p>I couldn&rsquo;t submit this extension to chrome&rsquo;s app store as I havn&rsquo;t paid $ 5 for Developer account so you&rsquo;ll have to install this manually.</p>
+
+<p>Here are the instructions:</p>
+
+<ol>
+<li>Go to chrome&rsquo;s setting page</li>
+<li>Select Extensions</li>
+<li>Enable <code>Developer Options</code></li>
+<li>Select <code>Load unpacked extension</code></li>
+<li>Select the downloaded extension&rsquo;s extracted folder.</li>
+</ol>
+
+
+<h3>How to use it?</h3>
+
+<p>A new youtube-looper icon will appear on your chrome after installation.</p>
+
+<p>While playing any youtube video , click on the youtube-autolooper icon. Your video is on loop!
+Enjoy!</p>
+
+<h3>Wait .. Download link.?</h3>
+
+<p>Whhoops ! almost forgot , <a href="https://www.dropbox.com/s/ivk5v0ekbxy1k92/Youtube-Looper-by-Yask%202.zip?dl=0">here you go</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[How to cheat cookies and secure them]]></title>
+        <link href="http://iyask.me/blog/2015/01/20/how-to-cheat-cookies-and-secure-them/"/>
+        <updated>2015-01-20T01:37:20+05:30</updated>
+        <id>http://iyask.me/blog/2015/01/20/how-to-cheat-cookies-and-secure-them</id>
+        <content type="html"><![CDATA[<p>Cookies are small data files stored in the browser for storing temporary information such as the current user.</p>
+
+<p>Cookies are sent to the browsers via <code>HTTP</code> headers. It sends the HTTP response header with the <code>Set-Cookie: xyz</code> parameter.
+ <!--more-->
+This is a sample implementation of sending cookie information in HTTP response via Google App Engine (python)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">MainPage</span><span class="p">(</span><span class="n">Handler</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>                <span class="bp">self</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s">&#39;Content-Type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;text/plain&#39;</span>
+</span><span class='line'>                <span class="n">users</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;username&#39;</span><span class="p">,</span> <span class="s">&#39;yask123&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Cookies are secure as they only allows the writing and reading of cookie information from a particular domain only. But user can always change it.</p>
+
+<p>In chrome you can use the function :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nb">document</span><span class="p">.</span><span class="nx">setcookie</span><span class="p">(</span><span class="s2">&quot;username:yask123&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This makes them insecure.
+But we can secure it by encrypting the data written in the cookie files.</p>
+
+<p>There are number of hashing encryption methods available.For our example we use a weak <code>md5</code> hashing function.</p>
+
+<p>Now instead of storing values like <code>Set-Cookie:"username:yask123"</code> we store values in this form :
+ <code>javascript
+ Set-Cookie:"username:yask123,[hash]"
+</code></p>
+
+<p>Let&rsquo;s call this hash function <code>H()</code> .
+here [hash] = H(&ldquo;yask123&rdquo;)</p>
+
+<p>We can verify if our cookie hasn&rsquo;t been modified by confirming if h(&ldquo;modified-username&rdquo;) == [hash]</p>
+
+<p>Here is the simple implimentation in Python</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">hashlib</span>
+</span><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="s">&quot;username:yask123&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">x</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Output: <code>06399d25d06c8ca19ad9d1e29567e24d</code></p>
+
+<p>But what if user knows which hash function we are using?
+Then he can edit the cookie like <code>Set-Cookie:"username:new_username",[H("new_user")]</code></p>
+
+<p>And we will be fooloed into believing this as a valid cookie.</p>
+
+<p>What if we store the encrypted information as <code>H("Secret-key"+"username")</code>?</p>
+
+<p>Now the hacker has to guess not only which encryption we used , but also what our <code>Secret-Key</code> .</p>
+
+<p>There is a library called <code>hmac</code> that does that for us.</p>
+
+<p>This is our new implementation of secure cookie:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">hmac</span>
+</span><span class='line'><span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s">&quot;secret-key&quot;</span><span class="p">,</span> <span class="s">&quot;username:yask123&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is certainly a secure way to store information in cookie.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Writing a JS script for Facebook hacks]]></title>
+        <link href="http://iyask.me/blog/2015/01/20/writing-a-js-script-for-facebook-hacks/"/>
+        <updated>2015-01-20T01:36:48+05:30</updated>
+        <id>http://iyask.me/blog/2015/01/20/writing-a-js-script-for-facebook-hacks</id>
+        <content type="html"><![CDATA[<p>Let&rsquo;s write a simple Javascript to instantly send invites to <code>Like a page</code> or <code>Send invities</code>.</p>
+
+<p>Although there are various scripts already available online , but we can&rsquo;t trust them.Running malicious script on your Facebook page can be dangerous.</p>
+
+<p>Let the hacking begun!
+ <!--more-->
+Steps:</p>
+
+<ol>
+<li><p>Open up your facebook page in Chrome/Safari</p></li>
+<li><p>Right click on the <code>invite</code> button and select inspect items.
+<img src="http://iyask.me/images/second.png" width="400" height="300"></p></li>
+<li>Notice the class of the button. Copy this.
+<img src="http://iyask.me/images/third.png" width="500" height="300"></li>
+<li>Next in your developer console select all such buttons with the class by following JS code.</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">&quot;Paste_the_class_name&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This returns an array <code>inputs[]</code>.</p>
+
+<p> Iterate through this array and run <code>.click()</code> function for each.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">inputs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nx">inputs</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">click</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> Reward yourself with a hot cup of coffee :)</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[3 days with serenity]]></title>
+        <link href="http://iyask.me/blog/2015/01/12/3-days-with-serenity/"/>
+        <updated>2015-01-12T15:19:46+05:30</updated>
+        <id>http://iyask.me/blog/2015/01/12/3-days-with-serenity</id>
+        <content type="html"><![CDATA[<p>How did that happen?</p>
+
+<p>Sometimes I guess to teach me patience &lsquo;He&rsquo; disconnects my internet for few days.</p>
+
+<p>On 9th my exams came to an end and so did my internet connection. Stupid MTNL. They don&rsquo;t easily attend complaints. Not for 3 days at least.
+ <!--more--></p>
+
+<p>I didn&rsquo;t have any interesting book nor any pdf stories so I decided to pass time watching telly.</p>
+
+<p>Got bored easily.Although I did listen to the songs for hours as VH1 played in their <code>top 100 songs of the decade</code> playlist .</p>
+
+<p>Heard some really old songs. Reminded me of schooldays, the songs we used to practice in school&rsquo;s talent contest , school buddies , the songs we used to listen in school cab on FM 95.0 , chords I learnt when I first bought my guitar and my first crush . Old songs always brings nostalgia.</p>
+
+<p>My brother had few movies , I watched :</p>
+
+<p>Then the wildest thought crossed my mind. Why don&rsquo;t I go outside?</p>
+
+<p>At around 4pm the weather was awesome with light breeze and pinkinsh sky . I decided to stroll in Lodi Garden.</p>
+
+<p>Since it was Sunday the place was crowded. Athletes jogging , families enjoying picnics , tourists ,photographers and the light water drops falling from the fountains on your skin :) .</p>
+
+<p>This park is really inspiring . Most of the people were jogging. Kids , adults , cute girls  and even old people.</p>
+
+<p>I was obliged to start jogging. I jogged but got tired in a few minutes.</p>
+
+<p>The place is awesome ! Situated in institutional area surrounded by greenery somewhat isolated from outside street noise.</p>
+
+<p>I strolled listenting to the music of birds , went inside an old fort , played soudtrack of Game Of Thrones inside my head and pretended to be a King .</p>
+
+<p>Then I sat next to a pond watched swans and ducks hunting for fishes.</p>
+
+<p>Swans are beautiful.</p>
+
+<p>Ducks appears to be softly floating on pond but in fact they are swiftly moving there legs all the time.</p>
+
+<p>Fuck MTNL!</p>
+
+<p>I should be writing about codes not nature!!  -_-</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Hey]]></title>
+        <link href="http://iyask.me/blog/2015/01/07/hey/"/>
+        <updated>2015-01-07T17:09:47+05:30</updated>
+        <id>http://iyask.me/blog/2015/01/07/hey</id>
+        <content type="html"><![CDATA[<p>This is a test!</p>
+
+<p>I am using Desk Application to publish this blog.</p>
+
+<p> <!--more--></p>
+]]></content>
+    </entry>
+    
+</feed>

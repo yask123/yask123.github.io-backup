@@ -1,0 +1,413 @@
+<!doctype html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+    
+      
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>New UserSettings and various tweaks - Yask's Personal Blog</title>
+        <meta name="author" content="Yask Srivastava">
+        
+        <meta name="description" content="New UserSettings and various tweaks Jun 28th, 2015 gsoc My last commit for xstatic was finally merged.
+The less file compiled for both the themes &hellip;">
+        
+        <meta name="viewport" content="width=device-width">
+        <link rel="canonical" href="http://iyask.me/blog/2015/06/28/new-usersettings-and-various-tweaks">
+
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+
+        
+        <link href="/favicon.png" rel="icon">
+        <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet">
+        <link href="/atom.xml" rel="alternate" title="Yask's Personal Blog" type="application/atom+xml">
+    </head>
+
+
+    <body >
+
+        <header id="header">
+    <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-4">
+        <a href="/" class="site-title">Yask's Personal Blog</a>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-8">
+        <nav>
+    <input type="checkbox" id="toggle">
+    <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+    <ul class="menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog/">Blog</a></li>
+</ul>
+
+</nav>
+
+    </div>
+</div>
+
+</header>
+
+
+        <div id="main-content">
+
+            <!--[if lte IE 9]>
+<div class="row upgrade-row">
+    <div class="col-lg-12">
+        <div class="upgrade">
+            <i class="upgrade__icon fa fa-warning"></i>
+            <h1 class="upgrade__title h6">Ohnoes!</h1>
+            <p class="upgrade__text">
+                Unfortunately, certain parts of this site may not display correctly in your version of Internet Explorer!<br>
+                If possible, you should consider <a href="http://browsehappy.com/">upgrading your browser</a>.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- <![endif]-->
+
+
+            
+
+            <div class="row top-xs center-sm center-md center-lg site-wrapper">
+                
+                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                
+                    <article class="article article--single">
+    <header class="article__header">
+    
+        <h1 class="article__title">New UserSettings and various tweaks</h1>
+    
+
+    
+        <div class="article__meta clearfix">
+            
+
+
+
+
+
+
+    <time class="article__date pull-left" datetime="2015-06-28T02:45:13+05:30" pubdate><i class="fa fa-calendar"></i> Jun 28th, 2015</time>
+
+
+
+
+            
+
+    <div class="article__tags pull-left">
+        <i class="fa fa-tags"></i>
+        <ul class="unstyled">
+        
+
+            
+                <li><a class='category' href='/blog/categories/gsoc/'>gsoc</a></li>
+            
+        
+        </ul>
+    </div>
+
+
+            
+        </div>
+    
+</header>
+
+
+
+
+    <p>My last commit for xstatic was finally <a href="https://bitbucket.org/thomaswaldmann/xstatic-bootstrap/pull-request/2/updated-bootstrap-to-version-version-335">merged</a>.
+The less file compiled for both the themes successfully and there were no issues even with <code>Basic theme</code>.</p>
+
+<p>Instead of making a todo list in etherpad, I have started making issues in <code>Bitbucket</code>. Since the theme has started coming out with basic functionality. Other people who notice the bug may also create issues there.
+<a href="https://bitbucket.org/yask123/moin-2.0">Issues Page</a> :</p>
+
+<!--more-->
+
+
+<p><code>`
+RogerHaase pointed another bug which was the weird overlay of forms and menu when</code>hamburger<code>button was clicked to collapse the navbar in menu bar. This issue was fixed in [cumulative patch</code>#2` of CR](<a href="https://codereview.appspot.com/245670043/">https://codereview.appspot.com/245670043/</a>)</p>
+
+<h3>New User Setting</h3>
+
+<p><img src="http://i.imgur.com/R0dbC1R.png">
+I finally implemented a new user setting page which uses bootstrap forms. This wasn&rsquo;t as easy at it sounds. We use <code>flatland</code> for forms. The way we rendered the form was through pre-defined macros. But the pre-defined macros also rendered unwanted stuff such as <code>label</code>,<code>table</code>,<code>td</code>.. etc.</p>
+
+<p>So the way forms work in <code>Moin Moin</code> is like this.
+There are <code>html</code> macros defined in <code>forms.html</code>. There is a <code>forms.py</code> while which contains  <code>Flatland</code>form related constants.
+So lets say we wish to render a form for <code>css input</code> field.
+Code snippet :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">forms</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s">&#39;css_url&#39;</span><span class="p">])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We have form&rsquo;s class defined in <code>views.py</code> file:
+In this case it looks like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">UserSettingsUIForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">name</span> <span class="o">=</span> <span class="s">&#39;usersettings_ui&#39;</span>
+</span><span class='line'>        <span class="n">theme_name</span> <span class="o">=</span> <span class="n">Select</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&#39;Theme name&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">out_of</span><span class="p">(</span>
+</span><span class='line'>            <span class="p">((</span><span class="nb">unicode</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">identifier</span><span class="p">),</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">get_themes_list</span><span class="p">()),</span> <span class="n">sort_by</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">css_url</span> <span class="o">=</span> <span class="n">URL</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&#39;User CSS URL&#39;</span><span class="p">),</span> <span class="n">optional</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">with_properties</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">placeholder</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&quot;Give the URL of your custom CSS (optional)&quot;</span><span class="p">))</span>
+</span><span class='line'>        <span class="n">edit_rows</span> <span class="o">=</span> <span class="n">Natural</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&#39;Editor size&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">with_properties</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">placeholder</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&quot;Editor textarea height (0=auto)&quot;</span><span class="p">))</span>
+</span><span class='line'>        <span class="n">results_per_page</span> <span class="o">=</span> <span class="n">Natural</span><span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&#39;History results per page&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">with_properties</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">placeholder</span><span class="o">=</span><span class="n">L_</span><span class="p">(</span><span class="s">&quot;Number of results per page (0=no paging)&quot;</span><span class="p">))</span>
+</span><span class='line'>        <span class="n">submit_label</span> <span class="o">=</span> <span class="n">L_</span><span class="p">(</span><span class="s">&#39;Save&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This class creates provides the basic skeleton for forms. The forms.py file detects the kind of html tag required for the form field, example:input text, checkbox,submit.. etc and renders the macros present in <code>forms.html</code>file.</p>
+
+<p>For convenience we have macros defined which contains some unwanted stuff such as <code>labels</code> with <code>table form</code> design (<code>td dd,dt</code>)</p>
+
+<p>Editing this file would have changed the behavior in other non bootstrap themes which depend on this design.
+So I had to make exclusive <code>forms.html</code> template file for <code>modernized</code> theme.</p>
+
+<p>I also changed the setting tabs design to match the current design of the theme.</p>
+
+<p>Another issue I encountered was with the <code>common.css</code>. It contains global css style rules that are supposed to be used by all themes.
+But Bootstrap contains its own style rules. I was inheriting style rules from both the files which resulted in weird layout.
+The only hack was to override these styles.
+If only their was something like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.className</span><span class="p">{</span>
+</span><span class='line'>  <span class="n">reset</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So I ended up opening developers tool and under style tab it showed me the properties which were being inherited and I manually override thos styles in my <code>modernized theme.less</code> file.
+This hack fixes the weird table layout in <code>global history</code> template page.
+<a href="https://codereview.appspot.com/245670043/">Code Review patch(pending)</a> :</p>
+
+<h4>ChangeLogs for the patch</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Uses latest xstatic, bootstrap version: 3.3.5.1
+</span><span class='line'># Fix for footer jump. Now footer won't jump in any page ( Even when the content is null).
+</span><span class='line'>
+</span><span class='line'># User setting forms rewritten in bootstrap form design fashion (without &lt;td> &lt;tl> tags) to suit the current design of theme.
+</span><span class='line'># Macros in forms.html changed for compatibility reasons (as their is no requirement of labels and input box to be in &lt;td>.. tags.
+</span><span class='line'># written css rules in theme.less to override default styling of tables written in `common.css`.
+</span><span class='line'># minor changes in footer.
+</span><span class='line'># Various style improvements
+</span><span class='line'>
+</span><span class='line'>Changelog2:
+</span><span class='line'>#overlay issues afer reducing table width to ~900 pixels and clicking on the hamburger thing
+</span><span class='line'>#Darker text</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Anyway, this is how it</p>
+
+<h3>looked:</h3>
+
+<p><img src="http://i.imgur.com/9NHUZpw.png"></p>
+
+<h3>Now</h3>
+
+<p><img src="http://i.imgur.com/R0dbC1R.png"></p>
+
+<p><img src="http://i.imgur.com/sxbcX6d.png"></p>
+
+<p><img src="http://i.imgur.com/aLyGwaj.png"></p>
+
+<p><img src="http://i.imgur.com/tpaF7DJ.png"></p>
+
+
+
+</article>
+
+
+
+                </div>
+
+                
+                <aside class="sidebar col-xs-12 col-md-4 col-lg-4">
+                    <div class="row">
+
+    
+        <section class="hire--aside col-xs-12 col-sm-10 col-md-12">
+            
+    
+
+
+
+    
+
+
+
+
+<div class="hire hire--available">
+    <a class="hire__link" href="mailto:?subject=New%20job%20opportunity">
+        Available for new opportunities
+    </a>
+</div>
+
+
+        </section>
+    
+
+    
+<section class="social col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Follow me!
+    </h1>
+    <ul class="unstyled">
+        
+        
+        
+        
+        <li><a class="github" href="//github.com/yask123"><i class="fa fa-github"></i> Github</a></li>
+        <li><a class="googleplus" href="//plus.google.com/+yasksrivastava"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+        <li><a class="hackernews" href="//news.ycombinator.com/user?id=yask123"><i class="fa fa-hacker-news"></i> Hacker News</a></li>
+        
+        <li><a class="linkedin" href="//linkedin.com/in/yask123"><i class="fa fa-linkedin-square"></i> LinkedIn</a></li>
+        
+        <li><a class="reddit" href="//reddit.com/user/yask123"><i class="fa fa-reddit"></i> reddit</a></li>
+        <li><a class="stackoverflow" href="//stackoverflow.com/users/3574214/yask"><i class="fa fa-stack-overflow"></i> StackOverflow</a></li>
+        <li><a class="twitter" href="//twitter.com/yask123"><i class="fa fa-twitter"></i> Twitter</a></li>
+        <li><a class="youtube" href="//youtube.com/user/yask124"><i class="fa fa-youtube"></i> YouTube</a></li>
+    </ul>
+</section>
+
+
+
+    <section id="recent-posts" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>Recent Posts</h1>
+    <ul class="divided">
+        
+        <li class="post">
+            <a href="/blog/2015/07/15/gsoc-updates/">GSoC Updates</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/28/new-usersettings-and-various-tweaks/">New UserSettings and various tweaks</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/25/gsoc-update/">GSoC Updates | Hackathon | Teaching Django</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/06/17/gsoc-update/">Gsoc Update</a>
+        </li>
+        
+        <li class="post">
+            <a href="/blog/2015/04/21/i-have-been-vimified-graph-algo-2/">I have been vimified  | Graph algo #2</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+
+
+
+<section id="twitter-timeline" class="col-xs-12 col-sm-6 col-md-12">
+    <h1>
+        Latest Tweets
+        
+        <small class="pull-right">
+            <a class="btn" href="//twitter.com/yask123" title="@yask123 on Twitter" target="_blank">
+                <i class="fa fa-external-link"></i>
+            </a>
+        </small>
+        
+    </h1>
+
+    <a class="twitter-timeline" data-dnt="true" href="//twitter.com/yask123"  data-widget-id="615244773633298432"  data-link-color="#049cdb" data-tweet-limit="" data-chrome="noheader nofooter transparent noscrollbar">Tweets by @yask123</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+
+
+</div>
+
+                </aside>
+                
+            </div>
+        </div>
+
+        
+
+    
+    
+
+
+
+
+<footer class="footer">
+    <div class="row middle-xs">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="footer__copyright">
+    All content copyright Yask Srivastava.<br>
+    Code under <a href="//github.com/coogie/oscailte/blob/master/README.md">MIT Licence</a>.
+</p>
+
+        </div>
+        
+        
+    </div>
+</footer>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script defer src="/javascripts/octopress.js"></script>
+
+
+<script>
+    var _gaq=[['_setAccount','UA-61023878-2'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+</html>

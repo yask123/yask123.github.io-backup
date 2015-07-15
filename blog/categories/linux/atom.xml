@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[Category: linux | Yask's Personal Blog]]></title>
+    <link href="http://iyask.me/blog/categories/linux/atom.xml" rel="self"/>
+    <link href="http://iyask.me/"/>
+    <updated>2015-07-15T15:49:03+05:30</updated>
+    <id>http://iyask.me/</id>
+    <author>
+        <name><![CDATA[Yask Srivastava]]></name>
+        
+      </author>
+    <generator uri="http://octopress.org/">Octopress</generator>
+
+    
+    <entry>
+        <title type="html"><![CDATA[GGSIPU Result Checker App!]]></title>
+        <link href="http://iyask.me/blog/2014/08/05/ggsipu-result-checker-app/"/>
+        <updated>2014-08-05T21:29:28+05:30</updated>
+        <id>http://iyask.me/blog/2014/08/05/ggsipu-result-checker-app</id>
+        <content type="html"><![CDATA[<p>Just finished writing this application , phew!</p>
+
+<p>If you want to be one of the first person to check out your result as soon as it arrives , this application is for you.This application will continuously check if the result has been uploaded on University&rsquo;s website or not.As soon as it arrives , you are notified immediately with the result PDF link.</p>
+
+<p><a href="https://yask007.files.wordpress.com/2014/08/app_ipu.png"><img src="http://yask007.files.wordpress.com/2014/08/app_ipu.png" alt="app_ipu" /></a></p>
+
+<p>I have uploaded the repository on my Github account , find it <a href="https://github.com/yask123/ipu_result">here</a>:</p>
+
+<p>Change Log:</p>
+
+<p><a href="https://yask007.files.wordpress.com/2014/08/update-app.png"><img src="http://yask007.files.wordpress.com/2014/08/update-app.png" alt="update-app" /></a></p>
+
+<p>Here is the Screenshot of the markdown readme file:</p>
+
+<p><a href="https://yask007.files.wordpress.com/2014/08/readme.png"><img src="http://yask007.files.wordpress.com/2014/08/readme.png" alt="readme" /></a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Linux experience for a while]]></title>
+        <link href="http://iyask.me/blog/2014/06/10/linux-experience-for-a-while/"/>
+        <updated>2014-06-10T20:29:54+05:30</updated>
+        <id>http://iyask.me/blog/2014/06/10/linux-experience-for-a-while</id>
+        <content type="html"><![CDATA[<p>I had heard quite a lot about nix operating system.I had Mac OS X Mountain Lion installed on my desktop (Technically Hackintosh) , but just as I updated it , it ran into kernel panic mode.Due to busy schedule , I didn&rsquo;t bother repairing it and installed windows.</p>
+
+<p>It&rsquo;s been a while since I moved to Linux.It was a bit frustrating a bit in early stages , but now I seem to have made a full transition.</p>
+
+<p>There were lots of problems for a general user.First , there are so many packaging for different distro.There isn&rsquo;t a uniformity.Developers have to employ significant amount of time , just to get there software working on Linux(Different Distros).Secondly , there are quite a few Linux users(Desktop) , that means the market is low for major software developers.Google Drive is still not available to Linux(Although Dropbox is , thank GOD!) ,GUI GIT isn&rsquo;t available(Who cares?) , but the list doesn&rsquo;t stop there.There are many softwares you won&rsquo;t find on windows.Remember how easy it was to install uTorrent client on windows , It is sick on linux.It runs inside a freaking browser!</p>
+
+<p>&hellip;</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[Finally GRUB 2 boot menu problem solved!.]]></title>
+        <link href="http://iyask.me/blog/2014/05/08/finally-grub-2-boot-menu-problem-solved/"/>
+        <updated>2014-05-08T19:59:57+05:30</updated>
+        <id>http://iyask.me/blog/2014/05/08/finally-grub-2-boot-menu-problem-solved</id>
+        <content type="html"><![CDATA[<p>To understand the solution , It would be better if we discuss about different types of partition and different UEFI first.</p>
+
+<p>The most common partition type we have heard of is MBR.While I was trying to fix the bootloader , I realized mine had GPT partition.That meant I couldn&rsquo;t have loaded OS in UEFI mode as it was written is bootable USB for MBR system.</p>
+
+<p>I downloaded a software and re-wrote Ubuntu , but this time for GPT with UEFI , and now the problem seems to have gone! ;) .</p>
+
+<p>To write data ,or create partitions on the hard disks there it must have a Type of partition table.There are 2 types of them.The good old MBR(master boot record) and GPT(GUID partition table).</p>
+
+<p>MBR was discovered way back in 1980s( I guess) , Well known for it&rsquo;s good compatibility with numerous operating systems , but limits the usage of the disk&rsquo;s size to 2 TB.</p>
+
+<p>GUID works for bigger sizes , but requires compatible operating system and hardware.So , that was a n00b introduction to the partition tables.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+        <title type="html"><![CDATA[UEFI /BIOS secure boot crap!]]></title>
+        <link href="http://iyask.me/blog/2014/05/07/uefi-bios-secure-boot-crap/"/>
+        <updated>2014-05-07T15:04:18+05:30</updated>
+        <id>http://iyask.me/blog/2014/05/07/uefi-bios-secure-boot-crap</id>
+        <content type="html"><![CDATA[<p>BIOS <del>is</del> the first thing that appears in older computers.</p>
+
+<p>I recently purchased a new Laptop with UEFI . It felt awesome at first.The booting experience was quick and smooth.There was no flickering in the screen to indicate now the windows starts to load.Instead , the loading appears almost instantly as you press the power button.</p>
+
+<p>I had purchased this laptop as it came with pre-installed windows.Never had I thought this would create wonderful problems for me.I am seriously addicted to Linux.But also wanted Genuine windows on the dual boot.But little did I knew about this stupid secure boot crap.</p>
+
+<p>At first I created a 64-bit Ubuntu(14.04 LTS) .It refused to boot up at all.I disabled secure boot , no changes.I changed from UEFI to CMS , Ubuntu loaded up , but failed to recognize windows 8.1 on the other partition.I installed Ubuntu in another partition and it booted after the smooth installation.</p>
+
+<p>Problems?</p>
+
+<p>1)Brightness wouldn&rsquo;t change at all.It was 100% , and my eyes were under strain.But I looked in the support forum and solved the problem.</p>
+
+<ul>
+<li><p>Open terminal</p></li>
+<li><p>Type &ldquo;$ sudo gedit /etc/grub.d/10_linux</p></li>
+<li><p>Edit the file</p></li>
+<li><p>Replace where $4 is written by &ldquo;args="acpi_backlight=vendor $4&rdquo;</p></li>
+<li><p>Save and exit gedit</p></li>
+<li><p>type $ sudo update-grub &amp;&amp; sudo reboot</p></li>
+</ul>
+
+
+<p>2) Windows 8 doesn&rsquo;t show up in the GRUB menu.This is probably because it was preinstalled in UEFI mode.But then I tested it in windows Powershell command , it returned &ldquo;False&rdquo;.But why can&rsquo;t i boot Ubuntu in UEFI mode?</p>
+
+<p>I also tried ubuntu&rsquo;s boot repair , but situation got worse.I got runtime error , and had to reinstall ubuntu to bring it to it&rsquo;s original state.</p>
+
+<p>I am done with this now.No more experimenting on it.To boot to windows i&rsquo;ll set UEFI mode , for booting in Ubunto , CMS mode.</p>
+]]></content>
+    </entry>
+    
+</feed>
