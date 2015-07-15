@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: http://iyask.me/sitemap.xml
+Sitemap: http://yask123.github.io/sitemap.xml

@@ -2,22 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[Category: python | Yask's Personal Blog]]></title>
-    <link href="http://iyask.me/blog/categories/python/atom.xml" rel="self"/>
-    <link href="http://iyask.me/"/>
-    <updated>2015-07-15T15:49:03+05:30</updated>
-    <id>http://iyask.me/</id>
+    <link href="http://yask123.github.io/blog/categories/python/atom.xml" rel="self"/>
+    <link href="http://yask123.github.io/"/>
+    <updated>2015-07-15T16:02:58+05:30</updated>
+    <id>http://yask123.github.io/</id>
     <author>
         <name><![CDATA[Yask Srivastava]]></name>
-        
+        <email><![CDATA[yask123@gmail.com]]></email>
       </author>
     <generator uri="http://octopress.org/">Octopress</generator>
 
     
     <entry>
         <title type="html"><![CDATA[Tree implementation in python]]></title>
-        <link href="http://iyask.me/blog/2015/04/10/tree-implementation-in-python/"/>
+        <link href="http://yask123.github.io/blog/2015/04/10/tree-implementation-in-python/"/>
         <updated>2015-04-10T18:25:08+05:30</updated>
-        <id>http://iyask.me/blog/2015/04/10/tree-implementation-in-python</id>
+        <id>http://yask123.github.io/blog/2015/04/10/tree-implementation-in-python</id>
         <content type="html"><![CDATA[<p>Python doesn&rsquo;t come with pre-defined tree objects but due to it&rsquo;s dynamic nature we can easily implement it either via objects attributes or by dictionary. For tree traversing I find this representation to be the most simplistic
  <!--more--></p>
 
@@ -85,9 +85,9 @@ print preorder(1)
     
     <entry>
         <title type="html"><![CDATA[Phew! Just finished writing AnonymousChatters Application ! It's live :)]]></title>
-        <link href="http://iyask.me/blog/2015/03/07/phew-just-finished-writing-anonymouschatters-application-its-live/"/>
+        <link href="http://yask123.github.io/blog/2015/03/07/phew-just-finished-writing-anonymouschatters-application-its-live/"/>
         <updated>2015-03-07T03:45:45+05:30</updated>
-        <id>http://iyask.me/blog/2015/03/07/phew-just-finished-writing-anonymouschatters-application-its-live</id>
+        <id>http://yask123.github.io/blog/2015/03/07/phew-just-finished-writing-anonymouschatters-application-its-live</id>
         <content type="html"><![CDATA[<p>&ldquo;Man is least himself when he talks in his own person. Give him a <strong>mask</strong>, and he will tell you the truth.&rdquo; - <em>Oscar Wilde</em></p>
 
 <p>Ah! So finally I took out some time to build this application!</p>
@@ -127,9 +127,9 @@ How it works?</p>
     
     <entry>
         <title type="html"><![CDATA[What's up?]]></title>
-        <link href="http://iyask.me/blog/2015/03/02/whats-up/"/>
+        <link href="http://yask123.github.io/blog/2015/03/02/whats-up/"/>
         <updated>2015-03-02T02:00:36+05:30</updated>
-        <id>http://iyask.me/blog/2015/03/02/whats-up</id>
+        <id>http://yask123.github.io/blog/2015/03/02/whats-up</id>
         <content type="html"><![CDATA[<h3>Opensource</h3>
 
 <p>Inspiration :</p>
@@ -160,9 +160,9 @@ How it works?</p>
     
     <entry>
         <title type="html"><![CDATA[BVPmart ~Web App]]></title>
-        <link href="http://iyask.me/blog/2014/08/18/bvpmart-web-app/"/>
+        <link href="http://yask123.github.io/blog/2014/08/18/bvpmart-web-app/"/>
         <updated>2014-08-18T23:41:06+05:30</updated>
-        <id>http://iyask.me/blog/2014/08/18/bvpmart-web-app</id>
+        <id>http://yask123.github.io/blog/2014/08/18/bvpmart-web-app</id>
         <content type="html"><![CDATA[<p><a href="https://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204217.png"><img src="http://yask007.files.wordpress.com/2014/08/screenshot-from-2014-08-18-204217.png" alt="Screenshot from 2014-08-18 20:42:17" /></a></p>
 
 <p>Today I finished writing the web app &lsquo;<a href="http://www.bvpmart.co.nr/">BVPmart'</a> and deployed it on Google App engine.This is my 4th application on this platform and I followed the same scripting language , Python 2.7 for this.Although I did get a bit adventurous this time and decided to use <a href="http://jinja.pocoo.org/">Jijna2 Python Template</a> [instead of Django] ,Nevertheless  it was fairly easy to learn due to its comprehensive documentation.</p>
@@ -185,7 +185,7 @@ How it works?</p>
 
 <p>4) I don&rsquo;t like the idea of openly sharing the phone number of the seller.Some mechanism to avoid this.</p>
 
-<p>If you have any suggestions , please comment bellow or mail me at <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x79;&#x61;&#x73;&#107;&#x31;&#50;&#51;&#64;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#121;&#97;&#115;&#x6b;&#x31;&#x32;&#51;&#x40;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;</a></p>
+<p>If you have any suggestions , please comment bellow or mail me at <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x79;&#97;&#115;&#x6b;&#49;&#x32;&#x33;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#x6d;">&#121;&#97;&#x73;&#x6b;&#x31;&#50;&#51;&#x40;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;</a></p>
 
 <p>App Link: <a href="http://www.bvpmart.co.nr/">http://www.bvpmart.co.nr/</a></p>
 
@@ -195,9 +195,9 @@ How it works?</p>
     
     <entry>
         <title type="html"><![CDATA[Result Checker App Demo]]></title>
-        <link href="http://iyask.me/blog/2014/08/10/result-checker-app-demo/"/>
+        <link href="http://yask123.github.io/blog/2014/08/10/result-checker-app-demo/"/>
         <updated>2014-08-10T16:06:20+05:30</updated>
-        <id>http://iyask.me/blog/2014/08/10/result-checker-app-demo</id>
+        <id>http://yask123.github.io/blog/2014/08/10/result-checker-app-demo</id>
         <content type="html"><![CDATA[<p>Here is the Demo video of the application.</p>
 
 <p><a href="https://github.com/yask123/ipu_result">Github Link</a></p>

@@ -2,22 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[Yask's Personal Blog]]></title>
-    <link href="http://iyask.me/atom.xml" rel="self"/>
-    <link href="http://iyask.me/"/>
-    <updated>2015-07-15T15:49:03+05:30</updated>
-    <id>http://iyask.me/</id>
+    <link href="http://yask123.github.io/atom.xml" rel="self"/>
+    <link href="http://yask123.github.io/"/>
+    <updated>2015-07-15T16:02:58+05:30</updated>
+    <id>http://yask123.github.io/</id>
     <author>
         <name><![CDATA[Yask Srivastava]]></name>
-        
+        <email><![CDATA[yask123@gmail.com]]></email>
     </author>
     <generator uri="http://octopress.org/">Octopress</generator>
 
     
     <entry>
         <title type="html"><![CDATA[GSoC Updates]]></title>
-        <link href="http://iyask.me/blog/2015/07/15/gsoc-updates/"/>
+        <link href="http://yask123.github.io/blog/2015/07/15/gsoc-updates/"/>
         <updated>2015-07-15T13:35:53+05:30</updated>
-        <id>http://iyask.me/blog/2015/07/15/gsoc-updates</id>
+        <id>http://yask123.github.io/blog/2015/07/15/gsoc-updates</id>
         <content type="html"><![CDATA[<p><a href="https://codereview.appspot.com/252930043/">Lastly</a> I worked on UserSetting. But most of that work had to be reverted after discussions. I was pointed to <a href="https://bitbucket.org/thomaswaldmann/moin-2.0/issues/471/merge-most-basic-theme-templates-into">this issue</a> where it is suggested to merge template with common features.</p>
 
 <!--more-->
@@ -142,9 +142,9 @@
     
     <entry>
         <title type="html"><![CDATA[New UserSettings and various tweaks]]></title>
-        <link href="http://iyask.me/blog/2015/06/28/new-usersettings-and-various-tweaks/"/>
+        <link href="http://yask123.github.io/blog/2015/06/28/new-usersettings-and-various-tweaks/"/>
         <updated>2015-06-28T02:45:13+05:30</updated>
-        <id>http://iyask.me/blog/2015/06/28/new-usersettings-and-various-tweaks</id>
+        <id>http://yask123.github.io/blog/2015/06/28/new-usersettings-and-various-tweaks</id>
         <content type="html"><![CDATA[<p>My last commit for xstatic was finally <a href="https://bitbucket.org/thomaswaldmann/xstatic-bootstrap/pull-request/2/updated-bootstrap-to-version-version-335">merged</a>.
 The less file compiled for both the themes successfully and there were no issues even with <code>Basic theme</code>.</p>
 
@@ -275,9 +275,9 @@ This hack fixes the weird table layout in <code>global history</code> template p
     
     <entry>
         <title type="html"><![CDATA[GSoC Updates | Hackathon | Teaching Django]]></title>
-        <link href="http://iyask.me/blog/2015/06/25/gsoc-update/"/>
+        <link href="http://yask123.github.io/blog/2015/06/25/gsoc-update/"/>
         <updated>2015-06-25T18:24:33+05:30</updated>
-        <id>http://iyask.me/blog/2015/06/25/gsoc-update</id>
+        <id>http://yask123.github.io/blog/2015/06/25/gsoc-update</id>
         <content type="html"><![CDATA[<h3>Informal Intro</h3>
 
 <blockquote><p>Ah! This week was a bit hectic. But I was able to do considerable amount of work.</p><footer><strong>@yask123</strong></footer></blockquote>
@@ -430,9 +430,9 @@ Summarize it is a chat summarizer plugin for instant messaging applications. It 
     
     <entry>
         <title type="html"><![CDATA[Gsoc Update]]></title>
-        <link href="http://iyask.me/blog/2015/06/17/gsoc-update/"/>
+        <link href="http://yask123.github.io/blog/2015/06/17/gsoc-update/"/>
         <updated>2015-06-17T20:45:38+05:30</updated>
-        <id>http://iyask.me/blog/2015/06/17/gsoc-update</id>
+        <id>http://yask123.github.io/blog/2015/06/17/gsoc-update</id>
         <content type="html"><![CDATA[<h3>Informal Intro</h3>
 
 <blockquote><p>Phew! So my end-terms exams just ended on 15th June.</p><footer><strong>@yask123</strong> <cite>https://twitter.com/yask123/status/611206296411344897</cite></footer></blockquote>
@@ -541,9 +541,9 @@ I like to use sublime text as its super light.</p>
     
     <entry>
         <title type="html"><![CDATA[I have been vimified  | Graph algo #2]]></title>
-        <link href="http://iyask.me/blog/2015/04/21/i-have-been-vimified-graph-algo-2/"/>
+        <link href="http://yask123.github.io/blog/2015/04/21/i-have-been-vimified-graph-algo-2/"/>
         <updated>2015-04-21T14:01:26+05:30</updated>
-        <id>http://iyask.me/blog/2015/04/21/i-have-been-vimified-graph-algo-2</id>
+        <id>http://yask123.github.io/blog/2015/04/21/i-have-been-vimified-graph-algo-2</id>
         <content type="html"><![CDATA[<p>Inspired from <a href="https://www.dropbox.com/sh/ot1cdzqoorzobm6/AAAObIcj8xgsOfGbj4CppPPCa?dl=0">slides</a> I decided to write my own DFS implementation [ Just to get the hang of vim ].
  <!--more--></p>
 
@@ -580,9 +580,9 @@ print visited</code></pre></noscript></div>
     
     <entry>
         <title type="html"><![CDATA[Dev tools changes]]></title>
-        <link href="http://iyask.me/blog/2015/04/19/dev-tools-changes/"/>
+        <link href="http://yask123.github.io/blog/2015/04/19/dev-tools-changes/"/>
         <updated>2015-04-19T18:54:56+05:30</updated>
-        <id>http://iyask.me/blog/2015/04/19/dev-tools-changes</id>
+        <id>http://yask123.github.io/blog/2015/04/19/dev-tools-changes</id>
         <content type="html"><![CDATA[<p>Spoiler : By dev tools I mean Text Editor 😒</p>
 
 <p>I have started using <code>vim</code> these days. Sublime text is distracting for me. The random popups to register and it doesn&rsquo;t run inside from a terminal.😤
@@ -607,9 +607,9 @@ ctrlp.vim html5.vim nerdtree supertab vim-airline vim-colorschemes vim-javascrip
     
     <entry>
         <title type="html"><![CDATA[Nodes -> Reversal -> FindingMiddleTerm-> None]]></title>
-        <link href="http://iyask.me/blog/2015/04/19/nodes-reversal-findingmiddleterm-none/"/>
+        <link href="http://yask123.github.io/blog/2015/04/19/nodes-reversal-findingmiddleterm-none/"/>
         <updated>2015-04-19T18:36:18+05:30</updated>
-        <id>http://iyask.me/blog/2015/04/19/nodes-reversal-findingmiddleterm-none</id>
+        <id>http://yask123.github.io/blog/2015/04/19/nodes-reversal-findingmiddleterm-none</id>
         <content type="html"><![CDATA[<p>Linked list is OLD</p>
 
 <p>I can&rsquo;t think of it&rsquo;s implementation these days. It should be a crime to be even discussing about it today when  we can use awesome objects such as a list [as in Python]. But somewhere across a reddit post some one mentioned linked list reversal thing and I thought to myself to implement this in python because I have nothing to do.
@@ -625,9 +625,9 @@ ctrlp.vim html5.vim nerdtree supertab vim-airline vim-colorschemes vim-javascrip
     
     <entry>
         <title type="html"><![CDATA[Tree implementation in python]]></title>
-        <link href="http://iyask.me/blog/2015/04/10/tree-implementation-in-python/"/>
+        <link href="http://yask123.github.io/blog/2015/04/10/tree-implementation-in-python/"/>
         <updated>2015-04-10T18:25:08+05:30</updated>
-        <id>http://iyask.me/blog/2015/04/10/tree-implementation-in-python</id>
+        <id>http://yask123.github.io/blog/2015/04/10/tree-implementation-in-python</id>
         <content type="html"><![CDATA[<p>Python doesn&rsquo;t come with pre-defined tree objects but due to it&rsquo;s dynamic nature we can easily implement it either via objects attributes or by dictionary. For tree traversing I find this representation to be the most simplistic
  <!--more--></p>
 
@@ -729,9 +729,9 @@ ctrlp.vim html5.vim nerdtree supertab vim-airline vim-colorschemes vim-javascrip
     
     <entry>
         <title type="html"><![CDATA[Tango with Django]]></title>
-        <link href="http://iyask.me/blog/2015/04/05/tango-with-django/"/>
+        <link href="http://yask123.github.io/blog/2015/04/05/tango-with-django/"/>
         <updated>2015-04-05T20:52:41+05:30</updated>
-        <id>http://iyask.me/blog/2015/04/05/tango-with-django</id>
+        <id>http://yask123.github.io/blog/2015/04/05/tango-with-django</id>
         <content type="html"><![CDATA[<p><img src="http://i.imgur.com/lNdCyzL.png" alt="" />
 Recently I was working on a Django web application.
 I was already developing web applications on Google App engine python sdk platform for quite sometime.But&hellip;</p>
@@ -770,9 +770,9 @@ I was already developing web applications on Google App engine python sdk platfo
     
     <entry>
         <title type="html"><![CDATA[Simple BFS implementation in Python]]></title>
-        <link href="http://iyask.me/blog/2015/04/01/simple-dfs-implementation-in-python/"/>
+        <link href="http://yask123.github.io/blog/2015/04/01/simple-dfs-implementation-in-python/"/>
         <updated>2015-04-01T01:19:24+05:30</updated>
-        <id>http://iyask.me/blog/2015/04/01/simple-dfs-implementation-in-python</id>
+        <id>http://yask123.github.io/blog/2015/04/01/simple-dfs-implementation-in-python</id>
         <content type="html"><![CDATA[<p>I was revising some basic DS stuff. So this is mine basic implementation of BFS algorithm in the most simplistic form.
  <!--more-->
 [code language=&ldquo;python&rdquo;]
@@ -806,9 +806,9 @@ queue.append(s)</p>
     
     <entry>
         <title type="html"><![CDATA[My secret for productivity :P]]></title>
-        <link href="http://iyask.me/blog/2015/03/29/my-secret-for-productivity-p/"/>
+        <link href="http://yask123.github.io/blog/2015/03/29/my-secret-for-productivity-p/"/>
         <updated>2015-03-29T00:04:20+05:30</updated>
-        <id>http://iyask.me/blog/2015/03/29/my-secret-for-productivity-p</id>
+        <id>http://yask123.github.io/blog/2015/03/29/my-secret-for-productivity-p</id>
         <content type="html"><![CDATA[<p>I was recently writng a summer of code proposal where I had to put up screnshots. Many many screenshots!</p>
 
 <p>So it was:</p>
@@ -885,9 +885,9 @@ os.command(&lsquo;rm fileadd&rsquo;)</p>
     
     <entry>
         <title type="html"><![CDATA[... deployed!]]></title>
-        <link href="http://iyask.me/blog/2015/03/21/add-a-post-title/"/>
+        <link href="http://yask123.github.io/blog/2015/03/21/add-a-post-title/"/>
         <updated>2015-03-21T18:56:46+05:30</updated>
-        <id>http://iyask.me/blog/2015/03/21/add-a-post-title</id>
+        <id>http://yask123.github.io/blog/2015/03/21/add-a-post-title</id>
         <content type="html"><![CDATA[<p>Yesterday on my birthday at around 8 pm I finally purchased the domain name <code>www.Anonymouschatters.com</code>.</p>
 
 <p>I was watching a video on Youtube tittled <code>You are overdoing your UI/UX</code>. His speach inspired me to go ahead with whatever I had.</p>
@@ -908,9 +908,9 @@ It’s a small yet significantly usefull application. Anonymous chatts with awes
     
     <entry>
         <title type="html"><![CDATA[console.log("-_-");]]></title>
-        <link href="http://iyask.me/blog/2015/03/13/_/"/>
+        <link href="http://yask123.github.io/blog/2015/03/13/_/"/>
         <updated>2015-03-13T21:03:45+05:30</updated>
-        <id>http://iyask.me/blog/2015/03/13/_</id>
+        <id>http://yask123.github.io/blog/2015/03/13/_</id>
         <content type="html"><![CDATA[<p>Lastly I was working on an Anonymous chatters web app.I played with it for a while today. Rewrote the complete chat app inside it.</p>
 
 <p>Earlier it was more like a discussion page rather than a chat page. Enteries were written/read to/from the database only at the time of submission.</p>
@@ -946,9 +946,9 @@ downloadUrl(&ldquo;/getchats/?groupname=&rdquo;, &ldquo;GET&rdquo;, null, onChat
     
     <entry>
         <title type="html"><![CDATA[Phew! Just finished writing AnonymousChatters Application ! It's live :)]]></title>
-        <link href="http://iyask.me/blog/2015/03/07/phew-just-finished-writing-anonymouschatters-application-its-live/"/>
+        <link href="http://yask123.github.io/blog/2015/03/07/phew-just-finished-writing-anonymouschatters-application-its-live/"/>
         <updated>2015-03-07T03:45:45+05:30</updated>
-        <id>http://iyask.me/blog/2015/03/07/phew-just-finished-writing-anonymouschatters-application-its-live</id>
+        <id>http://yask123.github.io/blog/2015/03/07/phew-just-finished-writing-anonymouschatters-application-its-live</id>
         <content type="html"><![CDATA[<p>&ldquo;Man is least himself when he talks in his own person. Give him a <strong>mask</strong>, and he will tell you the truth.&rdquo; - <em>Oscar Wilde</em></p>
 
 <p>Ah! So finally I took out some time to build this application!</p>
@@ -988,9 +988,9 @@ How it works?</p>
     
     <entry>
         <title type="html"><![CDATA[What's up?]]></title>
-        <link href="http://iyask.me/blog/2015/03/02/whats-up/"/>
+        <link href="http://yask123.github.io/blog/2015/03/02/whats-up/"/>
         <updated>2015-03-02T02:00:36+05:30</updated>
-        <id>http://iyask.me/blog/2015/03/02/whats-up</id>
+        <id>http://yask123.github.io/blog/2015/03/02/whats-up</id>
         <content type="html"><![CDATA[<h3>Opensource</h3>
 
 <p>Inspiration :</p>
@@ -1021,9 +1021,9 @@ How it works?</p>
     
     <entry>
         <title type="html"><![CDATA[Youtube AutoLooper JS script hack]]></title>
-        <link href="http://iyask.me/blog/2015/01/23/youtube-autolooper-js-script-hack/"/>
+        <link href="http://yask123.github.io/blog/2015/01/23/youtube-autolooper-js-script-hack/"/>
         <updated>2015-01-23T20:53:43+05:30</updated>
-        <id>http://iyask.me/blog/2015/01/23/youtube-autolooper-js-script-hack</id>
+        <id>http://yask123.github.io/blog/2015/01/23/youtube-autolooper-js-script-hack</id>
         <content type="html"><![CDATA[<p>This song <a href="https://www.youtube.com/watch?v=NJX17WtsaCk">Facebook - 10 Years Look Back Instrumental Music</a> was stuck in my head today.</p>
 
 <p>I played this 3.4 minute video on youtube . Frustrated by clicking play button again and again after the music finished I decided to write a simple Javascript hack to auto-loop this music video.</p>
@@ -1138,9 +1138,9 @@ Enjoy!</p>
     
     <entry>
         <title type="html"><![CDATA[How to cheat cookies and secure them]]></title>
-        <link href="http://iyask.me/blog/2015/01/20/how-to-cheat-cookies-and-secure-them/"/>
+        <link href="http://yask123.github.io/blog/2015/01/20/how-to-cheat-cookies-and-secure-them/"/>
         <updated>2015-01-20T01:37:20+05:30</updated>
-        <id>http://iyask.me/blog/2015/01/20/how-to-cheat-cookies-and-secure-them</id>
+        <id>http://yask123.github.io/blog/2015/01/20/how-to-cheat-cookies-and-secure-them</id>
         <content type="html"><![CDATA[<p>Cookies are small data files stored in the browser for storing temporary information such as the current user.</p>
 
 <p>Cookies are sent to the browsers via <code>HTTP</code> headers. It sends the HTTP response header with the <code>Set-Cookie: xyz</code> parameter.
@@ -1221,9 +1221,9 @@ Then he can edit the cookie like <code>Set-Cookie:"username:new_username",[H("ne
     
     <entry>
         <title type="html"><![CDATA[Writing a JS script for Facebook hacks]]></title>
-        <link href="http://iyask.me/blog/2015/01/20/writing-a-js-script-for-facebook-hacks/"/>
+        <link href="http://yask123.github.io/blog/2015/01/20/writing-a-js-script-for-facebook-hacks/"/>
         <updated>2015-01-20T01:36:48+05:30</updated>
-        <id>http://iyask.me/blog/2015/01/20/writing-a-js-script-for-facebook-hacks</id>
+        <id>http://yask123.github.io/blog/2015/01/20/writing-a-js-script-for-facebook-hacks</id>
         <content type="html"><![CDATA[<p>Let&rsquo;s write a simple Javascript to instantly send invites to <code>Like a page</code> or <code>Send invities</code>.</p>
 
 <p>Although there are various scripts already available online , but we can&rsquo;t trust them.Running malicious script on your Facebook page can be dangerous.</p>
@@ -1235,9 +1235,9 @@ Steps:</p>
 <ol>
 <li><p>Open up your facebook page in Chrome/Safari</p></li>
 <li><p>Right click on the <code>invite</code> button and select inspect items.
-<img src="http://iyask.me/images/second.png" width="400" height="300"></p></li>
+<img src="http://yask123.github.io/images/second.png" width="400" height="300"></p></li>
 <li>Notice the class of the button. Copy this.
-<img src="http://iyask.me/images/third.png" width="500" height="300"></li>
+<img src="http://yask123.github.io/images/third.png" width="500" height="300"></li>
 <li>Next in your developer console select all such buttons with the class by following JS code.</li>
 </ol>
 
@@ -1268,9 +1268,9 @@ Steps:</p>
     
     <entry>
         <title type="html"><![CDATA[3 days with serenity]]></title>
-        <link href="http://iyask.me/blog/2015/01/12/3-days-with-serenity/"/>
+        <link href="http://yask123.github.io/blog/2015/01/12/3-days-with-serenity/"/>
         <updated>2015-01-12T15:19:46+05:30</updated>
-        <id>http://iyask.me/blog/2015/01/12/3-days-with-serenity</id>
+        <id>http://yask123.github.io/blog/2015/01/12/3-days-with-serenity</id>
         <content type="html"><![CDATA[<p>How did that happen?</p>
 
 <p>Sometimes I guess to teach me patience &lsquo;He&rsquo; disconnects my internet for few days.</p>
@@ -1314,9 +1314,9 @@ Steps:</p>
     
     <entry>
         <title type="html"><![CDATA[Hey]]></title>
-        <link href="http://iyask.me/blog/2015/01/07/hey/"/>
+        <link href="http://yask123.github.io/blog/2015/01/07/hey/"/>
         <updated>2015-01-07T17:09:47+05:30</updated>
-        <id>http://iyask.me/blog/2015/01/07/hey</id>
+        <id>http://yask123.github.io/blog/2015/01/07/hey</id>
         <content type="html"><![CDATA[<p>This is a test!</p>
 
 <p>I am using Desk Application to publish this blog.</p>

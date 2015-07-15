@@ -2,22 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[Category: linux | Yask's Personal Blog]]></title>
-    <link href="http://iyask.me/blog/categories/linux/atom.xml" rel="self"/>
-    <link href="http://iyask.me/"/>
-    <updated>2015-07-15T15:49:03+05:30</updated>
-    <id>http://iyask.me/</id>
+    <link href="http://yask123.github.io/blog/categories/linux/atom.xml" rel="self"/>
+    <link href="http://yask123.github.io/"/>
+    <updated>2015-07-15T16:02:58+05:30</updated>
+    <id>http://yask123.github.io/</id>
     <author>
         <name><![CDATA[Yask Srivastava]]></name>
-        
+        <email><![CDATA[yask123@gmail.com]]></email>
       </author>
     <generator uri="http://octopress.org/">Octopress</generator>
 
     
     <entry>
         <title type="html"><![CDATA[GGSIPU Result Checker App!]]></title>
-        <link href="http://iyask.me/blog/2014/08/05/ggsipu-result-checker-app/"/>
+        <link href="http://yask123.github.io/blog/2014/08/05/ggsipu-result-checker-app/"/>
         <updated>2014-08-05T21:29:28+05:30</updated>
-        <id>http://iyask.me/blog/2014/08/05/ggsipu-result-checker-app</id>
+        <id>http://yask123.github.io/blog/2014/08/05/ggsipu-result-checker-app</id>
         <content type="html"><![CDATA[<p>Just finished writing this application , phew!</p>
 
 <p>If you want to be one of the first person to check out your result as soon as it arrives , this application is for you.This application will continuously check if the result has been uploaded on University&rsquo;s website or not.As soon as it arrives , you are notified immediately with the result PDF link.</p>
@@ -38,9 +38,9 @@
     
     <entry>
         <title type="html"><![CDATA[Linux experience for a while]]></title>
-        <link href="http://iyask.me/blog/2014/06/10/linux-experience-for-a-while/"/>
+        <link href="http://yask123.github.io/blog/2014/06/10/linux-experience-for-a-while/"/>
         <updated>2014-06-10T20:29:54+05:30</updated>
-        <id>http://iyask.me/blog/2014/06/10/linux-experience-for-a-while</id>
+        <id>http://yask123.github.io/blog/2014/06/10/linux-experience-for-a-while</id>
         <content type="html"><![CDATA[<p>I had heard quite a lot about nix operating system.I had Mac OS X Mountain Lion installed on my desktop (Technically Hackintosh) , but just as I updated it , it ran into kernel panic mode.Due to busy schedule , I didn&rsquo;t bother repairing it and installed windows.</p>
 
 <p>It&rsquo;s been a while since I moved to Linux.It was a bit frustrating a bit in early stages , but now I seem to have made a full transition.</p>
@@ -53,9 +53,9 @@
     
     <entry>
         <title type="html"><![CDATA[Finally GRUB 2 boot menu problem solved!.]]></title>
-        <link href="http://iyask.me/blog/2014/05/08/finally-grub-2-boot-menu-problem-solved/"/>
+        <link href="http://yask123.github.io/blog/2014/05/08/finally-grub-2-boot-menu-problem-solved/"/>
         <updated>2014-05-08T19:59:57+05:30</updated>
-        <id>http://iyask.me/blog/2014/05/08/finally-grub-2-boot-menu-problem-solved</id>
+        <id>http://yask123.github.io/blog/2014/05/08/finally-grub-2-boot-menu-problem-solved</id>
         <content type="html"><![CDATA[<p>To understand the solution , It would be better if we discuss about different types of partition and different UEFI first.</p>
 
 <p>The most common partition type we have heard of is MBR.While I was trying to fix the bootloader , I realized mine had GPT partition.That meant I couldn&rsquo;t have loaded OS in UEFI mode as it was written is bootable USB for MBR system.</p>
@@ -72,9 +72,9 @@
     
     <entry>
         <title type="html"><![CDATA[UEFI /BIOS secure boot crap!]]></title>
-        <link href="http://iyask.me/blog/2014/05/07/uefi-bios-secure-boot-crap/"/>
+        <link href="http://yask123.github.io/blog/2014/05/07/uefi-bios-secure-boot-crap/"/>
         <updated>2014-05-07T15:04:18+05:30</updated>
-        <id>http://iyask.me/blog/2014/05/07/uefi-bios-secure-boot-crap</id>
+        <id>http://yask123.github.io/blog/2014/05/07/uefi-bios-secure-boot-crap</id>
         <content type="html"><![CDATA[<p>BIOS <del>is</del> the first thing that appears in older computers.</p>
 
 <p>I recently purchased a new Laptop with UEFI . It felt awesome at first.The booting experience was quick and smooth.There was no flickering in the screen to indicate now the windows starts to load.Instead , the loading appears almost instantly as you press the power button.</p>

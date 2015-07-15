@@ -2,22 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[Category: maths | Yask's Personal Blog]]></title>
-    <link href="http://iyask.me/blog/categories/maths/atom.xml" rel="self"/>
-    <link href="http://iyask.me/"/>
-    <updated>2015-07-15T15:49:03+05:30</updated>
-    <id>http://iyask.me/</id>
+    <link href="http://yask123.github.io/blog/categories/maths/atom.xml" rel="self"/>
+    <link href="http://yask123.github.io/"/>
+    <updated>2015-07-15T16:02:58+05:30</updated>
+    <id>http://yask123.github.io/</id>
     <author>
         <name><![CDATA[Yask Srivastava]]></name>
-        
+        <email><![CDATA[yask123@gmail.com]]></email>
       </author>
     <generator uri="http://octopress.org/">Octopress</generator>
 
     
     <entry>
         <title type="html"><![CDATA[Q] Find out the middle node of a linked list]]></title>
-        <link href="http://iyask.me/blog/2014/10/28/q-find-out-the-middle-node-of-a-linked-list/"/>
+        <link href="http://yask123.github.io/blog/2014/10/28/q-find-out-the-middle-node-of-a-linked-list/"/>
         <updated>2014-10-28T17:04:09+05:30</updated>
-        <id>http://iyask.me/blog/2014/10/28/q-find-out-the-middle-node-of-a-linked-list</id>
+        <id>http://yask123.github.io/blog/2014/10/28/q-find-out-the-middle-node-of-a-linked-list</id>
         <content type="html"><![CDATA[<p>There is a better way of doing this compared to the Counting the number of nodes <code>L</code> first and then traversing back to <code>L/2</code> .</p>
 
 <p>This method is called <strong>Floyd&rsquo;s cycle-finding algorithm </strong>also known as</p>
@@ -133,9 +133,9 @@ void display_middle(struct node *tort)
     
     <entry>
         <title type="html"><![CDATA[The  Hot secretary problem!]]></title>
-        <link href="http://iyask.me/blog/2014/08/09/the-hot-secretary-problem/"/>
+        <link href="http://yask123.github.io/blog/2014/08/09/the-hot-secretary-problem/"/>
         <updated>2014-08-09T18:06:08+05:30</updated>
-        <id>http://iyask.me/blog/2014/08/09/the-hot-secretary-problem</id>
+        <id>http://yask123.github.io/blog/2014/08/09/the-hot-secretary-problem</id>
         <content type="html"><![CDATA[<p><a href="https://yask007.files.wordpress.com/2014/08/dick-parsons-explains-why-the-way-to-carl-icahns-heart-is-through-his-secretaries1.jpg"><img src="http://yask007.files.wordpress.com/2014/08/dick-parsons-explains-why-the-way-to-carl-icahns-heart-is-through-his-secretaries1.jpg" alt="secretary" /></a></p>
 
 <p>Imagine a situation , where you have to recruit a secretary and there are large number of them to choose from.Each one of them arrives one by one for an interview and you are supposed to select only one of them , at the spot and decide which one to recruit .

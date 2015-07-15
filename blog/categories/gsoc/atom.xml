@@ -2,22 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[Category: gsoc | Yask's Personal Blog]]></title>
-    <link href="http://iyask.me/blog/categories/gsoc/atom.xml" rel="self"/>
-    <link href="http://iyask.me/"/>
-    <updated>2015-07-15T15:49:03+05:30</updated>
-    <id>http://iyask.me/</id>
+    <link href="http://yask123.github.io/blog/categories/gsoc/atom.xml" rel="self"/>
+    <link href="http://yask123.github.io/"/>
+    <updated>2015-07-15T16:02:58+05:30</updated>
+    <id>http://yask123.github.io/</id>
     <author>
         <name><![CDATA[Yask Srivastava]]></name>
-        
+        <email><![CDATA[yask123@gmail.com]]></email>
       </author>
     <generator uri="http://octopress.org/">Octopress</generator>
 
     
     <entry>
         <title type="html"><![CDATA[New UserSettings and various tweaks]]></title>
-        <link href="http://iyask.me/blog/2015/06/28/new-usersettings-and-various-tweaks/"/>
+        <link href="http://yask123.github.io/blog/2015/06/28/new-usersettings-and-various-tweaks/"/>
         <updated>2015-06-28T02:45:13+05:30</updated>
-        <id>http://iyask.me/blog/2015/06/28/new-usersettings-and-various-tweaks</id>
+        <id>http://yask123.github.io/blog/2015/06/28/new-usersettings-and-various-tweaks</id>
         <content type="html"><![CDATA[<p>My last commit for xstatic was finally <a href="https://bitbucket.org/thomaswaldmann/xstatic-bootstrap/pull-request/2/updated-bootstrap-to-version-version-335">merged</a>.
 The less file compiled for both the themes successfully and there were no issues even with <code>Basic theme</code>.</p>
 
@@ -164,9 +164,9 @@ This hack fixes the weird table layout in <code>global history</code> template p
     
     <entry>
         <title type="html"><![CDATA[GSoC Updates | Hackathon | Teaching Django]]></title>
-        <link href="http://iyask.me/blog/2015/06/25/gsoc-update/"/>
+        <link href="http://yask123.github.io/blog/2015/06/25/gsoc-update/"/>
         <updated>2015-06-25T18:24:33+05:30</updated>
-        <id>http://iyask.me/blog/2015/06/25/gsoc-update</id>
+        <id>http://yask123.github.io/blog/2015/06/25/gsoc-update</id>
         <content type="html"><![CDATA[<h3>Informal Intro</h3>
 
 <p><blockquote><p>Ah! This week was a bit hectic. But I was able to do considerable amount of work.</p><footer><strong>@yask123</strong></footer></blockquote></p>
@@ -344,9 +344,9 @@ Summarize it is a chat summarizer plugin for instant messaging applications. It 
     
     <entry>
         <title type="html"><![CDATA[Gsoc Update]]></title>
-        <link href="http://iyask.me/blog/2015/06/17/gsoc-update/"/>
+        <link href="http://yask123.github.io/blog/2015/06/17/gsoc-update/"/>
         <updated>2015-06-17T20:45:38+05:30</updated>
-        <id>http://iyask.me/blog/2015/06/17/gsoc-update</id>
+        <id>http://yask123.github.io/blog/2015/06/17/gsoc-update</id>
         <content type="html"><![CDATA[<h3>Informal Intro</h3>
 
 <p><blockquote><p>Phew! So my end-terms exams just ended on 15th June.</p><footer><strong>@yask123</strong> <cite><a href="https://twitter.com/yask123/status/611206296411344897">https://twitter.com/yask123/status/611206296411344897</a></cite></footer></blockquote>

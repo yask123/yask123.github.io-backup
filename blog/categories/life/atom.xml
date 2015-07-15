@@ -2,22 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[Category: life | Yask's Personal Blog]]></title>
-    <link href="http://iyask.me/blog/categories/life/atom.xml" rel="self"/>
-    <link href="http://iyask.me/"/>
-    <updated>2015-07-15T15:49:03+05:30</updated>
-    <id>http://iyask.me/</id>
+    <link href="http://yask123.github.io/blog/categories/life/atom.xml" rel="self"/>
+    <link href="http://yask123.github.io/"/>
+    <updated>2015-07-15T16:02:58+05:30</updated>
+    <id>http://yask123.github.io/</id>
     <author>
         <name><![CDATA[Yask Srivastava]]></name>
-        
+        <email><![CDATA[yask123@gmail.com]]></email>
       </author>
     <generator uri="http://octopress.org/">Octopress</generator>
 
     
     <entry>
         <title type="html"><![CDATA[I have been vimified  | Graph algo #2]]></title>
-        <link href="http://iyask.me/blog/2015/04/21/i-have-been-vimified-graph-algo-2/"/>
+        <link href="http://yask123.github.io/blog/2015/04/21/i-have-been-vimified-graph-algo-2/"/>
         <updated>2015-04-21T14:01:26+05:30</updated>
-        <id>http://iyask.me/blog/2015/04/21/i-have-been-vimified-graph-algo-2</id>
+        <id>http://yask123.github.io/blog/2015/04/21/i-have-been-vimified-graph-algo-2</id>
         <content type="html"><![CDATA[<p>Inspired from <a href="https://www.dropbox.com/sh/ot1cdzqoorzobm6/AAAObIcj8xgsOfGbj4CppPPCa?dl=0">slides</a> I decided to write my own DFS implementation [ Just to get the hang of vim ].
  <!--more--></p>
 
@@ -51,9 +51,9 @@ print visited</code></pre></noscript></div>
     
     <entry>
         <title type="html"><![CDATA[Dev tools changes]]></title>
-        <link href="http://iyask.me/blog/2015/04/19/dev-tools-changes/"/>
+        <link href="http://yask123.github.io/blog/2015/04/19/dev-tools-changes/"/>
         <updated>2015-04-19T18:54:56+05:30</updated>
-        <id>http://iyask.me/blog/2015/04/19/dev-tools-changes</id>
+        <id>http://yask123.github.io/blog/2015/04/19/dev-tools-changes</id>
         <content type="html"><![CDATA[<p>Spoiler : By dev tools I mean Text Editor 😒</p>
 
 <p>I have started using <code>vim</code> these days. Sublime text is distracting for me. The random popups to register and it doesn&rsquo;t run inside from a terminal.😤
@@ -78,9 +78,9 @@ ctrlp.vim html5.vim nerdtree supertab vim-airline vim-colorschemes vim-javascrip
     
     <entry>
         <title type="html"><![CDATA[Nodes -> Reversal -> FindingMiddleTerm-> None]]></title>
-        <link href="http://iyask.me/blog/2015/04/19/nodes-reversal-findingmiddleterm-none/"/>
+        <link href="http://yask123.github.io/blog/2015/04/19/nodes-reversal-findingmiddleterm-none/"/>
         <updated>2015-04-19T18:36:18+05:30</updated>
-        <id>http://iyask.me/blog/2015/04/19/nodes-reversal-findingmiddleterm-none</id>
+        <id>http://yask123.github.io/blog/2015/04/19/nodes-reversal-findingmiddleterm-none</id>
         <content type="html"><![CDATA[<p>Linked list is OLD</p>
 
 <p>I can&rsquo;t think of it&rsquo;s implementation these days. It should be a crime to be even discussing about it today when  we can use awesome objects such as a list [as in Python]. But somewhere across a reddit post some one mentioned linked list reversal thing and I thought to myself to implement this in python because I have nothing to do.
@@ -96,9 +96,9 @@ ctrlp.vim html5.vim nerdtree supertab vim-airline vim-colorschemes vim-javascrip
     
     <entry>
         <title type="html"><![CDATA[Simple BFS implementation in Python]]></title>
-        <link href="http://iyask.me/blog/2015/04/01/simple-dfs-implementation-in-python/"/>
+        <link href="http://yask123.github.io/blog/2015/04/01/simple-dfs-implementation-in-python/"/>
         <updated>2015-04-01T01:19:24+05:30</updated>
-        <id>http://iyask.me/blog/2015/04/01/simple-dfs-implementation-in-python</id>
+        <id>http://yask123.github.io/blog/2015/04/01/simple-dfs-implementation-in-python</id>
         <content type="html"><![CDATA[<p>I was revising some basic DS stuff. So this is mine basic implementation of BFS algorithm in the most simplistic form.
  <!--more-->
 [code language=&ldquo;python&rdquo;]
@@ -132,9 +132,9 @@ queue.append(s)</p>
     
     <entry>
         <title type="html"><![CDATA[My secret for productivity :P]]></title>
-        <link href="http://iyask.me/blog/2015/03/29/my-secret-for-productivity-p/"/>
+        <link href="http://yask123.github.io/blog/2015/03/29/my-secret-for-productivity-p/"/>
         <updated>2015-03-29T00:04:20+05:30</updated>
-        <id>http://iyask.me/blog/2015/03/29/my-secret-for-productivity-p</id>
+        <id>http://yask123.github.io/blog/2015/03/29/my-secret-for-productivity-p</id>
         <content type="html"><![CDATA[<p>I was recently writng a summer of code proposal where I had to put up screnshots. Many many screenshots!</p>
 
 <p>So it was:</p>
